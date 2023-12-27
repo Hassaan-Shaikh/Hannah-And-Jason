@@ -1,0 +1,4 @@
+CharacterBody3D
+CollisionShape3D
+MeshInstance3D
+Player

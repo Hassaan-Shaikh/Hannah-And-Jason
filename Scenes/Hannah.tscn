@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://b88u2mk643itp"]
+
+[ext_resource type="Script" path="res://Scripts/CSharp/Hannah.cs" id="1_qgewe"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ph2w"]
+radius = 0.25
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wokyh"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bpudb"]
+material = SubResource("StandardMaterial3D_wokyh")
+radius = 0.25
+height = 1.0
+radial_segments = 32
+rings = 4
+
+[sub_resource type="BoxMesh" id="BoxMesh_ppuba"]
+size = Vector3(0.1, 0.3, 0.2)
+
+[node name="Hannah" type="CharacterBody3D" node_paths=PackedStringArray("camera", "camHolder") groups=["Character", "Hannah"]]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_qgewe")
+moveSpeed = 2.4
+sprintSpeed = 4.8
+acceleration = 2.0
+jumpForce = 4.1
+isUserControlled = true
+camera = NodePath("CamHolder/SpringArm3D/HannahCam")
+camHolder = NodePath("CamHolder")
+
+[node name="HannahCol" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_1ph2w")
+
+[node name="TempMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CapsuleMesh_bpudb")
+
+[node name="TempMesh2" type="MeshInstance3D" parent="TempMesh"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.242621, -0.201824)
+mesh = SubResource("BoxMesh_ppuba")
+skeleton = NodePath("../..")
+
+[node name="CamHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CamHolder"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
+collision_mask = 13
+spring_length = 2.0
+
+[node name="HannahCam" type="Camera3D" parent="CamHolder/SpringArm3D"]

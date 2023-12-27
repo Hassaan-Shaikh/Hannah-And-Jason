@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxs0yvpro5e6u"]
+
+[ext_resource type="Script" path="res://Scripts/CSharp/Player.cs" id="1_mcyeh"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_lf6jy"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_mcyeh")
+
+[node name="PlayerCol" type="CollisionShape3D" parent="."]
+shape = SubResource("SeparationRayShape3D_lf6jy")
