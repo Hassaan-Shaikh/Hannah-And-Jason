@@ -5,6 +5,8 @@ using System;
 [GlobalClass]
 public partial class Player : CharacterBody3D
 {
+    [Signal] public delegate void SwitchedCharacterEventHandler(string name);
+
     [ExportGroup("Player Configuration")]
     [ExportSubgroup("Movement")]    
 	[Export] public float gravity = 9.8f;
@@ -21,10 +23,13 @@ public partial class Player : CharacterBody3D
     [Export] public float lowerClampAngle = -80.0f;
     [Export] public float upperClampAngle = 80.0f;
     [ExportGroup("References")]
-	[Export] public Camera3D camera;
-    [Export] public Node3D camHolder;
+	[Export] public Node3D camHolder;
+    [Export] public SpringArm3D camSpring;
+    [Export] public Camera3D camera;
+    
 
     public Vector3 p_Velocity;
+    public Vector3 direction;
     public float currentSpeed;
 
     public const string forwardKey = "forward";
@@ -38,35 +43,13 @@ public partial class Player : CharacterBody3D
     public override void _PhysicsProcess(double delta)
 	{
         base._PhysicsProcess(delta);
-
-        if (Input.IsActionJustPressed(pauseKey))
-        {
-            GetTree().Quit();
-        }
     }
 
     public void MovePlayer(float delta)
     {
         p_Velocity = Velocity;
 
-        Vector3 direction = Input.GetAxis(leftKey, rightKey) * Vector3.Right + Input.GetAxis(backKey, forwardKey) * Vector3.Forward;
-        direction = Transform.Basis * direction.Normalized();
-
-        if(direction != Vector3.Zero)
-        {
-            if(Input.IsActionPressed(sprintKey))
-            {
-                currentSpeed = sprintSpeed;
-            }
-            else
-            {
-                currentSpeed = moveSpeed;
-            }
-        }
-
-        p_Velocity = p_Velocity.Lerp(direction * currentSpeed + p_Velocity.Y * Vector3.Up, acceleration * delta);
-
-        if (IsOnFloor() && Input.IsActionJustPressed(jumpKey))
+        if (IsOnFloor() && Input.IsActionJustPressed(jumpKey) && isUserControlled)
         {
             if (canJump)
             {
@@ -78,22 +61,27 @@ public partial class Player : CharacterBody3D
             p_Velocity.Y -= gravity * delta;
         }
 
+        if (isUserControlled)
+        {
+            direction = Input.GetAxis(leftKey, rightKey) * Vector3.Right + Input.GetAxis(backKey, forwardKey) * Vector3.Forward;
+            direction = Transform.Basis * direction.Normalized();
+
+            if (direction != Vector3.Zero)
+            {
+                if (Input.IsActionPressed(sprintKey))
+                {
+                    currentSpeed = sprintSpeed;
+                }
+                else
+                {
+                    currentSpeed = moveSpeed;
+                }
+            }
+        }
+
+        p_Velocity = p_Velocity.Lerp(direction * currentSpeed + p_Velocity.Y * Vector3.Up, acceleration * delta);
+
         Velocity = p_Velocity;
         MoveAndSlide();
-    }
-
-    public override void _Input(InputEvent @event)
-    {
-        base._Input(@event);
-        if (!isUserControlled)
-        {
-            return;
-        }
-        if (@event is InputEventMouseMotion)
-        {
-            InputEventMouseMotion mouseMotion = (InputEventMouseMotion) @event;
-            Rotation = new Vector3(0, Rotation.Y - mouseMotion.Relative.X / 1000 * sensitivity, 0f);
-            camHolder.Rotation = new Vector3(Mathf.Clamp(Rotation.X - mouseMotion.Relative.Y / 1000 * sensitivity, Mathf.DegToRad(lowerClampAngle), Mathf.DegToRad(upperClampAngle)), 0f, 0f);
-        }
     }
 }

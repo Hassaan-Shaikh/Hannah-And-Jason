@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cd6oepy8alxa8"]
+[gd_scene load_steps=10 format=3 uid="uid://cd6oepy8alxa8"]
 
 [ext_resource type="PackedScene" uid="uid://b88u2mk643itp" path="res://Scenes/Hannah.tscn" id="1_tssld"]
+[ext_resource type="PackedScene" uid="uid://ccy1jdl8xb4xo" path="res://Scenes/Jason.tscn" id="2_3o78u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ipgka"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -54,5 +55,23 @@ collision_mask = 15
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall1/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hhbi6")
 
-[node name="Hannah" parent="." instance=ExtResource("1_tssld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.33466, 0.486456, 2.79026)
+[node name="Wall2" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.5, 0, 0, 0, 1.22284, 0, 0, 0, 4.08066, -4.7117, 1.79802, -4.29201)
+mesh = SubResource("BoxMesh_qe8mr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall2"]
+collision_mask = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hhbi6")
+
+[node name="Hannah" parent="." node_paths=PackedStringArray("jason") instance=ExtResource("1_tssld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73801, 0.486456, -3.89005)
+jason = NodePath("../Jason")
+
+[node name="Jason" parent="." node_paths=PackedStringArray("hannah") instance=ExtResource("2_3o78u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99128, 0, -3.44237)
+hannah = NodePath("../Hannah")
+
+[connection signal="SwitchedCharacter" from="Hannah" to="Hannah" method="OnSwitchedCharacter"]
+[connection signal="SwitchedCharacter" from="Jason" to="Jason" method="OnSwitchedCharacter"]
