@@ -20,8 +20,7 @@ public partial class Player : CharacterBody3D
 	[Export] public bool canJump = true;
     [ExportSubgroup("Camera")]
     [Export] public float sensitivity = 4f;
-    [Export] public float lowerClampAngle = -80.0f;
-    [Export] public float upperClampAngle = 80.0f;
+    [Export] public float clampAngle = 60.0f;
     [ExportGroup("References")]
 	[Export] public Node3D camHolder;
     [Export] public SpringArm3D camSpring;
@@ -43,6 +42,11 @@ public partial class Player : CharacterBody3D
     public override void _PhysicsProcess(double delta)
 	{
         base._PhysicsProcess(delta);
+
+        if (Input.IsActionJustPressed(switchKey))
+        {
+            isUserControlled = !isUserControlled;
+        }
     }
 
     public void MovePlayer(float delta)
@@ -78,10 +82,29 @@ public partial class Player : CharacterBody3D
                 }
             }
         }
+        else if (IsOnFloor())
+        {
+            direction = Vector3.Zero;
+        }
 
         p_Velocity = p_Velocity.Lerp(direction * currentSpeed + p_Velocity.Y * Vector3.Up, acceleration * delta);
 
         Velocity = p_Velocity;
         MoveAndSlide();
+    }
+
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        base._UnhandledInput(@event);
+        if (!isUserControlled)
+        {
+            return;
+        }
+        if (@event is InputEventMouseMotion)
+        {
+            InputEventMouseMotion mouseMotion = (InputEventMouseMotion)@event;
+            Rotation = new Vector3(0, Rotation.Y - mouseMotion.Relative.X / 1000 * sensitivity, 0f);
+            camHolder.Rotation = new Vector3(Mathf.Clamp(camHolder.Rotation.X - mouseMotion.Relative.Y / 1000 * sensitivity, Mathf.DegToRad((clampAngle * -1.0f)), Mathf.DegToRad(clampAngle)), 0, 0);
+        }
     }
 }

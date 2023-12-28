@@ -17,11 +17,10 @@ public partial class Jason : Player
     {
         base._PhysicsProcess(delta);
 
-        if (Input.IsActionJustPressed(switchKey))
-        {
-            isUserControlled = !isUserControlled;
-            //hannah.isUserControlled = true;
-        }
+        //if (Input.IsActionJustPressed(switchKey))
+        //{
+        //    isUserControlled = !isUserControlled;
+        //}
 
         MovePlayer((float)delta);
 
@@ -31,21 +30,6 @@ public partial class Jason : Player
         }
 
         camera.Current = isUserControlled;
-    }
-
-    public override void _UnhandledInput(InputEvent @event)
-    {
-        base._UnhandledInput(@event);
-        if (!isUserControlled)
-        {
-            return;
-        }
-        if (@event is InputEventMouseMotion)
-        {
-            InputEventMouseMotion mouseMotion = (InputEventMouseMotion)@event;
-            Rotation = new Vector3(0, Rotation.Y - mouseMotion.Relative.X / 1000 * sensitivity, 0f);
-            camSpring.Rotation = new Vector3(Mathf.Clamp(camSpring.Rotation.X - mouseMotion.Relative.Y / 1000 * sensitivity, Mathf.DegToRad(-80), Mathf.DegToRad(80)), 0, 0);
-        }
     }
 
     private void OnSwitchedCharacter(string name)
