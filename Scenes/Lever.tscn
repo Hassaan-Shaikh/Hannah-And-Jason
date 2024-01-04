@@ -1,0 +1,150 @@
+[gd_scene load_steps=13 format=3 uid="uid://6spuhhdj4apo"]
+
+[ext_resource type="Script" path="res://Scripts/CSharp/Lever.cs" id="1_5afa2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dpi8c"]
+size = Vector3(0.5, 0.2, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8bxj1"]
+size = Vector3(0.5, 0.2, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obbgu"]
+albedo_color = Color(0.392157, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t262g"]
+material = SubResource("StandardMaterial3D_obbgu")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.5
+radial_segments = 16
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_l3maf"]
+albedo_color = Color(0.470588, 0.470588, 0.470588, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ch34e"]
+material = SubResource("ORMMaterial3D_l3maf")
+top_radius = 0.06
+bottom_radius = 0.06
+height = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5v1r4"]
+
+[sub_resource type="Animation" id="Animation_wv4ep"]
+resource_name = "FlipOn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeverBaseMesh/LeverPivot:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.872665), Vector3(0, 0, -0.872665)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:canInteract")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ni1xf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeverBaseMesh/LeverPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.872665)]
+}
+
+[sub_resource type="Animation" id="Animation_m8f1j"]
+resource_name = "FlipOff"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeverBaseMesh/LeverPivot:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.872665), Vector3(0, 0, 0.872665)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:canInteract")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ml5li"]
+_data = {
+"FlipOff": SubResource("Animation_m8f1j"),
+"FlipOn": SubResource("Animation_wv4ep"),
+"RESET": SubResource("Animation_ni1xf")
+}
+
+[node name="Lever" type="AnimatableBody3D" node_paths=PackedStringArray("leverPivot", "leverAnim")]
+script = ExtResource("1_5afa2")
+leverPivot = NodePath("LeverBaseMesh/LeverPivot")
+leverAnim = NodePath("LeverAnim")
+
+[node name="LeverCol" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dpi8c")
+
+[node name="LeverBaseMesh" type="MeshInstance3D" parent="."]
+layers = 4
+mesh = SubResource("BoxMesh_8bxj1")
+
+[node name="LeverPivot" type="Node3D" parent="LeverBaseMesh"]
+transform = Transform3D(0.642788, -0.766044, 0, 0.766044, 0.642788, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="LeverHandleMesh" type="MeshInstance3D" parent="LeverBaseMesh/LeverPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+layers = 4
+mesh = SubResource("CylinderMesh_t262g")
+skeleton = NodePath("../..")
+
+[node name="LeverTopMesh" type="MeshInstance3D" parent="LeverBaseMesh/LeverPivot/LeverHandleMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.214987, 0)
+mesh = SubResource("CylinderMesh_ch34e")
+
+[node name="InteractionZone" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 6
+
+[node name="InteractionShape" type="CollisionShape3D" parent="InteractionZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.398571, 0)
+shape = SubResource("BoxShape3D_5v1r4")
+
+[node name="LeverAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ml5li")
+}
+
+[connection signal="body_entered" from="InteractionZone" to="." method="OnInteractionZoneBodyEntered"]
+[connection signal="body_exited" from="InteractionZone" to="." method="OnInteractionZoneBodyExited"]
+[connection signal="animation_finished" from="LeverAnim" to="." method="OnLeverAnimAnimationFinished"]

@@ -10,23 +10,29 @@ public partial class Hannah : Player
         base._Ready();
 
         jason = GetTree().GetFirstNodeInGroup("Jason") as Jason;
-        Input.MouseMode = Input.MouseModeEnum.Captured;
     }
+
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
 
-        //if (Input.IsActionJustPressed(switchKey))
-        //{
-        //    isUserControlled = !isUserControlled;
-        //}
-
-        MovePlayer((float)delta);
-
-        if (!isUserControlled)
+        if (Input.IsActionJustPressed(repathKey) && isUserControlled)
         {
-            return;
+            jason.navAgent.TargetPosition = GlobalPosition;
+            jason.currentSpeed = moveSpeed;
         }
+
+        if (isUserControlled)
+        {
+            HandleUserControl((float)delta);
+            navAgent.TargetPosition = GlobalPosition;
+        }
+        else
+        {
+            HandleAIControl((float)delta);
+        }
+
+        HandleInteraction();
 
         camera.Current = isUserControlled;
     }

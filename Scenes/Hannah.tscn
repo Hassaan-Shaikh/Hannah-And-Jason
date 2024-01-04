@@ -19,22 +19,29 @@ rings = 4
 [sub_resource type="BoxMesh" id="BoxMesh_ppuba"]
 size = Vector3(0.1, 0.3, 0.2)
 
-[node name="Hannah" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "camSpring", "camera") groups=["Character", "Hannah"]]
+[node name="Hannah" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "camSpring", "camera", "rayCast", "navAgent") groups=["Character", "Hannah"]]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_qgewe")
 moveSpeed = 2.4
 sprintSpeed = 4.8
-acceleration = 2.0
 jumpForce = 4.1
+acceleration = 2.0
+rotationAcceleration = 10.0
 isUserControlled = true
 camHolder = NodePath("CamHolder")
 camSpring = NodePath("CamHolder/SpringArm3D")
 camera = NodePath("CamHolder/SpringArm3D/HannahCam")
+rayCast = NodePath("CamHolder/SpringArm3D/HannahCam/HannahRay")
+navAgent = NodePath("HNavAgent")
 
 [node name="HannahCol" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_1ph2w")
+
+[node name="HNavAgent" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.5
+debug_path_custom_color = Color(0.607843, 0, 0.607843, 1)
 
 [node name="HTempMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -49,9 +56,37 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CamHolder"]
-transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0.636, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0.4, 0, 0)
 collision_mask = 13
 margin = 0.2
 
 [node name="HannahCam" type="Camera3D" parent="CamHolder/SpringArm3D"]
 near = 0.001
+
+[node name="HannahRay" type="RayCast3D" parent="CamHolder/SpringArm3D/HannahCam"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 29
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

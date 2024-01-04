@@ -2,3 +2,7 @@ CharacterBody3D
 CollisionShape3D
 MeshInstance3D
 Player
+RigidBody3D
+Timer
+RayCast3D
+Area3D
