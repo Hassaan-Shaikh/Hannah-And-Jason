@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PressurePlateConfig" load_steps=2 format=3 uid="uid://bb50ekngdk2ik"]
+
+[ext_resource type="Script" path="res://Scripts/CSharp/PressurePlateConfig.cs" id="1_ks4hl"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_ks4hl")
+plateType = 1

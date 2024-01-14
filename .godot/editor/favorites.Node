@@ -6,3 +6,4 @@ RigidBody3D
 Timer
 RayCast3D
 Area3D
+AnimationPlayer

@@ -1,0 +1,115 @@
+[gd_scene load_steps=12 format=3 uid="uid://dsh3y2ej5e8ry"]
+
+[ext_resource type="Script" path="res://Scripts/CSharp/PressurePlate.cs" id="1_8anj6"]
+[ext_resource type="Resource" uid="uid://bd6cn5lpe8oar" path="res://Resources/LightPressurePlate.tres" id="2_ej80j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xym2s"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6hvvv"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6t6w8"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_fwrkw"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_6t6w8")
+size = Vector3(0.8, 0.1, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_004t1"]
+size = Vector3(0.8, 0.175, 0.8)
+
+[sub_resource type="Animation" id="Animation_ls3bi"]
+resource_name = "PushIn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlateBaseMesh/PlateMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.07, 0), Vector3(0, 0.01, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_li6mw"]
+resource_name = "PushOut"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlateBaseMesh/PlateMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.01, 0), Vector3(0, 0.07, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eg0a2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlateBaseMesh/PlateMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.07, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nmyok"]
+_data = {
+"PushIn": SubResource("Animation_ls3bi"),
+"PushOut": SubResource("Animation_li6mw"),
+"RESET": SubResource("Animation_eg0a2")
+}
+
+[node name="PressurePlate" type="AnimatableBody3D" node_paths=PackedStringArray("plateAnim", "plateMesh")]
+collision_layer = 16
+collision_mask = 14
+script = ExtResource("1_8anj6")
+plateConfiguration = ExtResource("2_ej80j")
+plateAnim = NodePath("PlateAnim")
+plateMesh = NodePath("PlateBaseMesh/PlateMesh")
+
+[node name="PlateColShape" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xym2s")
+
+[node name="PlateBaseMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_6hvvv")
+
+[node name="PlateMesh" type="MeshInstance3D" parent="PlateBaseMesh"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+mesh = SubResource("BoxMesh_fwrkw")
+
+[node name="DetectionZone" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 14
+
+[node name="DetectionShape" type="CollisionShape3D" parent="DetectionZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, 0)
+shape = SubResource("BoxShape3D_004t1")
+
+[node name="PlateAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nmyok")
+}
+
+[connection signal="body_entered" from="DetectionZone" to="." method="OnDetectionZoneBodyEntered"]
+[connection signal="body_exited" from="DetectionZone" to="." method="OnDetectionZoneBodyExited"]
+[connection signal="animation_finished" from="PlateAnim" to="." method="OnPlateAnimAnimationFinished"]

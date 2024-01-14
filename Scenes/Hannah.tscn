@@ -26,6 +26,7 @@ script = ExtResource("1_qgewe")
 moveSpeed = 2.4
 sprintSpeed = 4.8
 jumpForce = 4.1
+mass = 4.0
 acceleration = 2.0
 rotationAcceleration = 10.0
 isUserControlled = true

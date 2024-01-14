@@ -24,6 +24,7 @@ script = ExtResource("1_4gex0")
 moveSpeed = 3.7
 sprintSpeed = 5.6
 jumpForce = 6.3
+mass = 15.0
 acceleration = 2.0
 rotationAcceleration = 10.0
 camHolder = NodePath("CamHolder")

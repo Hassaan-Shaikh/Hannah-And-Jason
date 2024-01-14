@@ -11,6 +11,7 @@ public partial class Player : CharacterBody3D
     [Export] public float moveSpeed;
     [Export] public float sprintSpeed;
     [Export] public float jumpForce;
+    [Export] public float mass;
     [ExportSubgroup("Lerp Tools")]
     [Export] public float acceleration;
     [Export] public float rotationAcceleration;
@@ -151,6 +152,11 @@ public partial class Player : CharacterBody3D
                 }
             }
         }
+    }
+
+    public float GetMass()
+    {
+        return mass;
     }
 
     public override void _UnhandledInput(InputEvent @event)
