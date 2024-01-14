@@ -4,5 +4,7 @@
 
 [resource]
 resource_local_to_scene = true
+resource_name = "Heavy Pressure Plate"
 script = ExtResource("1_ks4hl")
 plateType = 1
+weightThreshold = 12.0

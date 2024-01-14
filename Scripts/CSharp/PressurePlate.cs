@@ -7,24 +7,6 @@ public partial class PressurePlate : AnimatableBody3D
 {
     [Signal] public delegate void PlatePushedEventHandler();
 
-    //public enum PlateType
-    //{
-    //    Light,
-    //    Heavy
-    //}
-
-    //private PlateType _plateType;
-    //[Export]
-    //private PlateType plateType
-    //{
-    //    get => _plateType;
-    //    set
-    //    {
-    //        _plateType = value;
-    //        NotifyPropertyListChanged();
-    //    }
-    //}
-    //[Export] private float weightThreshold;
     [Export] public PressurePlateConfig plateConfiguration; 
     [Export] private AnimationPlayer plateAnim;
     [Export] private MeshInstance3D plateMesh;
@@ -36,15 +18,16 @@ public partial class PressurePlate : AnimatableBody3D
     {
         base._Ready();
         plateMesh = GetNode<MeshInstance3D>("PlateBaseMesh/PlateMesh");
+        weight = plateConfiguration.GetWeightThreshold();
         Material material = plateMesh.Mesh.SurfaceGetMaterial(0);
-        if (plateConfiguration.plateType == PressurePlateConfig.PlateType.Light)
+        if (plateConfiguration.GetPlateType() == PressurePlateConfig.PlateType.Light)
         {
             material.Set("albedo_color", Color.Color8(0, 255, 0, 255));
         }
-        else if (plateConfiguration.plateType == PressurePlateConfig.PlateType.Heavy)
+        else if (plateConfiguration.GetPlateType() == PressurePlateConfig.PlateType.Heavy)
         {
             material.Set("albedo_color", Color.Color8(255, 0, 0, 255));
-            GD.Print(Name + "\'s Weight Threshold = " + plateConfiguration.GetWeightThreshold());
+            GD.Print(Name + "\'s Weight Threshold = " + weight);
         }
     }
 
@@ -54,7 +37,7 @@ public partial class PressurePlate : AnimatableBody3D
     {
         if (body.IsInGroup("Character") && !isActive)
         {
-            switch (plateConfiguration.plateType)
+            switch (plateConfiguration.GetPlateType())
             {
                 case PressurePlateConfig.PlateType.Light:
                     GD.Print(body.Name + " has entered " + Name + "\'s detection zone");
@@ -83,12 +66,12 @@ public partial class PressurePlate : AnimatableBody3D
             plateAnim.Play("PushOut");
             isActive = false;
             Material material = plateMesh.Mesh.SurfaceGetMaterial(0);
-            if (plateConfiguration.plateType == PressurePlateConfig.PlateType.Light)
+            if (plateConfiguration.GetPlateType() == PressurePlateConfig.PlateType.Light)
             {
                 material.Set("emission", Color.Color8(0, 255, 0));
                 material.Set("emission_energy_multiplier", 0f);
             }
-            else if (plateConfiguration.plateType == PressurePlateConfig.PlateType.Heavy)
+            else if (plateConfiguration.GetPlateType() == PressurePlateConfig.PlateType.Heavy)
             {
                 material.Set("albedo_color", Color.Color8(255, 0, 0));
                 material.Set("emission_energy_multiplier", 0f);
@@ -101,12 +84,12 @@ public partial class PressurePlate : AnimatableBody3D
         if(animName.Equals("PushIn"))
         {
             Material material = plateMesh.Mesh.SurfaceGetMaterial(0);
-            if (plateConfiguration.plateType == PressurePlateConfig.PlateType.Light)
+            if (plateConfiguration.GetPlateType() == PressurePlateConfig.PlateType.Light)
             {
                 material.Set("emission", Color.Color8(0, 255, 0));
                 material.Set("emission_energy_multiplier", 1.5f);
             }
-            else if (plateConfiguration.plateType == PressurePlateConfig.PlateType.Heavy)
+            else if (plateConfiguration.GetPlateType() == PressurePlateConfig.PlateType.Heavy)
             {
                 material.Set("albedo_color", Color.Color8(255, 0, 0));
                 material.Set("emission_energy_multiplier", 5f);

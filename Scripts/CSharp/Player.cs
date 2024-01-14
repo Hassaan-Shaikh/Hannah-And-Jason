@@ -123,6 +123,10 @@ public partial class Player : CharacterBody3D
         direction = GlobalPosition.DirectionTo(nextPos);
         TurnToDirection(delta);
         Velocity = direction * currentSpeed;
+        if (!IsOnFloor() && !isUserControlled)
+        {
+            Velocity = Vector3.Down;
+        }
         MoveAndSlide();
     }
 

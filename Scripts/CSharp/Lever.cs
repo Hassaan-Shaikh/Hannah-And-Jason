@@ -1,14 +1,17 @@
 using Godot;
+using Godot.Collections;
 using System;
 
 public partial class Lever : AnimatableBody3D
 {
     [Signal] public delegate void LeverFlippedEventHandler(bool flippedOn);
 
-    [Export] private bool flippedOn;
-    [Export] private Node3D leverPivot;
-    [Export] private AnimationPlayer leverAnim;
-    [Export] private bool canInteract;
+    [Export] private bool isConflicting;
+    [Export] public Array<Lever> conflictingLevers;
+    [Export] public bool flippedOn;
+    [Export] public Node3D leverPivot;
+    [Export] public AnimationPlayer leverAnim;
+    [Export] public bool canInteract;
 
     public override void _Ready()
     {
@@ -22,6 +25,17 @@ public partial class Lever : AnimatableBody3D
             if (!flippedOn)
             {
                 leverAnim.Play("FlipOn");
+                if (isConflicting)
+                {
+                    foreach(Lever conflictLever in conflictingLevers) 
+                    {
+                        if (conflictLever.flippedOn)
+                        {
+                            conflictLever.leverAnim.Play("FlipOff");
+                            conflictLever.flippedOn = false;
+                        }
+                    }
+                }
             }
             else
             {

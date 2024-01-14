@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsh3y2ej5e8ry"]
+[gd_scene load_steps=11 format=3 uid="uid://dsh3y2ej5e8ry"]
 
 [ext_resource type="Script" path="res://Scripts/CSharp/PressurePlate.cs" id="1_8anj6"]
-[ext_resource type="Resource" uid="uid://bd6cn5lpe8oar" path="res://Resources/LightPressurePlate.tres" id="2_ej80j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xym2s"]
 size = Vector3(1, 0.1, 1)
@@ -82,7 +81,6 @@ _data = {
 collision_layer = 16
 collision_mask = 14
 script = ExtResource("1_8anj6")
-plateConfiguration = ExtResource("2_ej80j")
 plateAnim = NodePath("PlateAnim")
 plateMesh = NodePath("PlateBaseMesh/PlateMesh")
 

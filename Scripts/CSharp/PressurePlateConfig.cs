@@ -2,7 +2,6 @@ using Godot;
 using Godot.Collections;
 using System;
 
-[Tool]
 [GlobalClass]
 public partial class PressurePlateConfig : Resource
 {
@@ -14,7 +13,7 @@ public partial class PressurePlateConfig : Resource
 
     private PlateType _plateType;
     [Export]
-    public PlateType plateType
+    private PlateType plateType
     {
         get => _plateType;
         set
@@ -24,23 +23,6 @@ public partial class PressurePlateConfig : Resource
         }
     }
     [Export] private float weightThreshold;
-
-    public override void _ValidateProperty(Dictionary property)
-    {
-        base._ValidateProperty(property);
-        if (property["name"].AsStringName().Equals(PropertyName.weightThreshold))
-        {
-            switch (plateType)
-            {
-                case PlateType.Light:
-                    property["usage"] = (int)PropertyUsageFlags.NoEditor;
-                    break;
-                case PlateType.Heavy:
-                    property["usage"] = (int)PropertyUsageFlags.Editor;
-                    break;
-            }
-        }
-    }
 
     public PlateType GetPlateType()
     {

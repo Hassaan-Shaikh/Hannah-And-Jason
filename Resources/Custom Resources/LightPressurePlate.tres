@@ -4,6 +4,7 @@
 
 [resource]
 resource_local_to_scene = true
+resource_name = "Light Pressure Plate"
 script = ExtResource("1_4b0dr")
 plateType = 0
 weightThreshold = 0.0

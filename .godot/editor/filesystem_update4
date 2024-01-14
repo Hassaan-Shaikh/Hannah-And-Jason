@@ -14,3 +14,6 @@ res://Scenes/Lever.tscn
 res://Scenes/PressurePlate.tscn
 res://Scripts/CSharp/Lever.cs
 res://Scripts/CSharp/Player.cs
+res://Resources/HeavyPressurePlate.tres
+res://Scripts/CSharp/LeverConfiguration.cs
+res://Resources/Custom Resources/LeverConfig.tres
