@@ -1,7 +1,9 @@
 [gd_scene load_steps=21 format=3 uid="uid://cd6oepy8alxa8"]
 
+[ext_resource type="NavigationMesh" uid="uid://dxin2cg1qqenj" path="res://Resources/NavigationMesh Resources/HannahNavMesh.tres" id="1_05lw0"]
 [ext_resource type="PackedScene" uid="uid://b88u2mk643itp" path="res://Scenes/Hannah.tscn" id="1_tssld"]
 [ext_resource type="PackedScene" uid="uid://ccy1jdl8xb4xo" path="res://Scenes/Jason.tscn" id="2_3o78u"]
+[ext_resource type="NavigationMesh" uid="uid://bufamhra507mf" path="res://Resources/NavigationMesh Resources/JasonNavMesh.tres" id="2_hdpy5"]
 [ext_resource type="PackedScene" uid="uid://cxssi885lntcl" path="res://Scenes/PhysicalButton.tscn" id="3_xrwed"]
 [ext_resource type="PackedScene" uid="uid://ugx7pm700e1s" path="res://Scenes/TimedButton.tscn" id="4_heriw"]
 [ext_resource type="PackedScene" uid="uid://6spuhhdj4apo" path="res://Scenes/Lever.tscn" id="5_6302e"]
@@ -21,20 +23,6 @@ sky = SubResource("Sky_821oo")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_k4oo6"]
-vertices = PackedVector3Array(-1.5, 0.5, 1.25, -1.5, 0.5, 0.5, -2.25, 0.5, 0.25, -2.75, 0.5, 1.25, -2.25, 0.5, -1, -1.25, 0.5, -1.25, -1.25, 0.5, -9.75, -2.75, 0.5, 1.25, -2.25, 0.5, 0.25, -2.25, 0.5, -1, -3, 0.5, 2, -2.75, 0.5, 1.25, -2.25, 0.5, -1, -1.25, 0.5, -9.75, -9.75, 0.5, -9.75, -9.75, 0.5, 2, -0.5, 0.5, 0.25, -1.5, 0.5, 0.5, -1.5, 0.5, 1.25, 1, 0.5, 1.25, -0.5, 0.5, -1, 1, 0.5, 1.25, 9.75, 0.5, 2, 9.75, 0.5, -9.75, -1.25, 0.5, -9.75, -0.5, 0.5, -1, -0.5, 0.5, 0.25, 1, 0.5, 1.25, 1, 0.5, 1.25, 1.25, 0.5, 2, 9.75, 0.5, 2, -1.25, 0.5, -9.75, -1.25, 0.5, -1.25, -0.5, 0.5, -1, -6.25, 2.75, -6.25, -6.25, 2.75, -2.5, -3, 2.75, -2.5, -3, 2.75, -6.25, -1.75, 2, -0.75, -1.75, 2, 0, -1, 2, 0, -1, 2, -0.75, -2.5, 2.5, 1.75, -2.5, 2.5, 2.25, 0.5, 2.5, 2.25, 0.5, 2.5, 1.75, -1, 0.5, 9.75, -1, 0.5, 3, -2.75, 0.5, 3, -2.75, 0.5, 3, -3, 0.5, 2, -9.75, 0.5, 2, -2.75, 0.5, 3, -9.75, 0.5, 2, -9.75, 0.5, 9.75, -1, 0.5, 9.75, 0.75, 0.5, 3, -1, 0.5, 3, -1, 0.5, 9.75, 1.25, 0.5, 2, 0.75, 0.5, 3, -1, 0.5, 9.75, 9.75, 0.5, 9.75, 9.75, 0.5, 2)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(9, 8, 7), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 15), PackedInt32Array(12, 15, 14), PackedInt32Array(12, 14, 13), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 24), PackedInt32Array(22, 24, 23), PackedInt32Array(27, 26, 25), PackedInt32Array(30, 29, 28), PackedInt32Array(33, 32, 31), PackedInt32Array(37, 36, 34), PackedInt32Array(34, 36, 35), PackedInt32Array(41, 40, 38), PackedInt32Array(38, 40, 39), PackedInt32Array(45, 44, 42), PackedInt32Array(42, 44, 43), PackedInt32Array(48, 47, 46), PackedInt32Array(51, 50, 49), PackedInt32Array(53, 52, 54), PackedInt32Array(54, 52, 55), PackedInt32Array(58, 57, 56), PackedInt32Array(60, 59, 61), PackedInt32Array(61, 59, 63), PackedInt32Array(61, 63, 62)]
-geometry_source_geometry_mode = 1
-agent_height = 0.7
-agent_radius = 0.25
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_45l4b"]
-vertices = PackedVector3Array(-1.25, 0.5, 1, -1.25, 0.5, 0.75, -2.5, 0.5, 0.5, -3, 0.5, 1, -7, 0.5, -6.75, -4.5, 0.5, -7, -4.5, 0.5, -9.5, -9.5, 0.5, -9.5, -2.5, 0.5, 0.5, -2.25, 0.5, -1.5, -2.5, 0.5, -1.75, -3, 0.5, 1, -7, 0.5, -2, -7, 0.5, -6.75, -9.5, 0.5, -9.5, -9.5, 0.5, 1.75, -3.25, 0.5, 1.5, -3, 0.5, 1, -2.5, 0.5, -1.75, -7, 0.5, -2, -9.5, 0.5, 1.75, -0.25, 0.5, 0.5, -1.25, 0.5, 0.75, -1.25, 0.5, 1, 1.25, 0.5, 1, 1.25, 0.5, 1, 1.5, 0.5, 2, 9.5, 0.5, 2, -2.5, 0.5, -1.75, -2.25, 0.5, -1.5, -0.25, 0.5, -1.25, -2.25, 0.5, -6.75, -0.25, 0.5, -1.25, -0.25, 0.5, 0.5, 1.25, 0.5, 1, -4.5, 0.5, -9.5, -4.5, 0.5, -7, -2.25, 0.5, -6.75, 9.5, 0.5, -9.5, -2.25, 0.5, -6.75, -0.25, 0.5, -1.25, 1.25, 0.5, 1, 9.5, 0.5, 2, 9.5, 0.5, -9.5, -6, 2.75, -6, -6, 2.75, -2.75, -3.25, 2.75, -2.75, -3.25, 2.75, -6, -3, 0.5, 3.25, -3.25, 0.5, 1.5, -9.5, 0.5, 1.75, -0.25, 0.5, 9.5, -0.5, 0.5, 3.25, -3, 0.5, 3.25, -9.5, 0.5, 9.5, -0.25, 0.5, 9.5, -3, 0.5, 3.25, -9.5, 0.5, 1.75, 1, 0.5, 3.25, -0.5, 0.5, 3.25, -0.25, 0.5, 9.5, 1.5, 0.5, 2, 1, 0.5, 3.25, -0.25, 0.5, 9.5, 9.5, 0.5, 9.5, 9.5, 0.5, 2)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(19, 16, 20), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(25, 27, 26), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 31), PackedInt32Array(34, 33, 32), PackedInt32Array(36, 35, 37), PackedInt32Array(37, 35, 38), PackedInt32Array(40, 39, 41), PackedInt32Array(41, 39, 42), PackedInt32Array(42, 39, 43), PackedInt32Array(47, 46, 44), PackedInt32Array(44, 46, 45), PackedInt32Array(48, 50, 49), PackedInt32Array(53, 52, 51), PackedInt32Array(57, 56, 54), PackedInt32Array(54, 56, 55), PackedInt32Array(60, 59, 58), PackedInt32Array(62, 61, 63), PackedInt32Array(63, 61, 65), PackedInt32Array(63, 65, 64)]
-geometry_source_geometry_mode = 1
-agent_height = 2.0
-agent_max_climb = 0.5
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_6hgbj"]
 size = Vector2(20, 20)
 
@@ -50,14 +38,14 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_vvbpq"]
 
-[sub_resource type="Resource" id="Resource_t5ig5"]
+[sub_resource type="Resource" id="Resource_ky3tm"]
 resource_local_to_scene = true
 resource_name = "Heavy Pressure Plate"
 script = ExtResource("7_52e6y")
 plateType = 1
-weightThreshold = 0.0
+weightThreshold = 12.0
 
-[sub_resource type="Resource" id="Resource_4vh57"]
+[sub_resource type="Resource" id="Resource_6tgrc"]
 resource_local_to_scene = true
 resource_name = "Light Pressure Plate"
 script = ExtResource("7_52e6y")
@@ -74,10 +62,10 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="HNavRegion" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_k4oo6")
+navigation_mesh = ExtResource("1_05lw0")
 
 [node name="JNavRegion" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_45l4b")
+navigation_mesh = ExtResource("2_hdpy5")
 navigation_layers = 2
 
 [node name="Floor" type="MeshInstance3D" parent="." groups=["navigation_mesh_source_group"]]
@@ -137,14 +125,13 @@ transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.3
 isConflicting = true
 conflictingLevers = [NodePath("../Lever2")]
 
-[node name="Lever2" parent="." node_paths=PackedStringArray("conflictingLevers") instance=ExtResource("5_6302e")]
+[node name="Lever2" parent="." instance=ExtResource("5_6302e")]
 transform = Transform3D(-4.37114e-08, 0, -1, -1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1.91069e-15, -0.0683179, 0.742323, 2.5308)
-conflictingLevers = []
 
 [node name="PressurePlate" parent="." instance=ExtResource("6_m06xk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.78228, -4.76837e-07, 2.20172)
-plateConfiguration = SubResource("Resource_t5ig5")
+plateConfiguration = SubResource("Resource_ky3tm")
 
 [node name="PressurePlate2" parent="." instance=ExtResource("6_m06xk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.29618, 0, -0.00487471)
-plateConfiguration = SubResource("Resource_4vh57")
+plateConfiguration = SubResource("Resource_6tgrc")

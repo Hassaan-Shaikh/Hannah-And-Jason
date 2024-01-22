@@ -19,7 +19,7 @@ rings = 4
 [sub_resource type="BoxMesh" id="BoxMesh_ppuba"]
 size = Vector3(0.1, 0.3, 0.2)
 
-[node name="Hannah" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "camSpring", "camera", "rayCast", "navAgent") groups=["Character", "Hannah"]]
+[node name="Hannah" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "camSpring", "camera", "rayCast") groups=["Character", "Hannah"]]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_qgewe")
@@ -34,7 +34,6 @@ camHolder = NodePath("CamHolder")
 camSpring = NodePath("CamHolder/SpringArm3D")
 camera = NodePath("CamHolder/SpringArm3D/HannahCam")
 rayCast = NodePath("CamHolder/SpringArm3D/HannahCam/HannahRay")
-navAgent = NodePath("HNavAgent")
 
 [node name="HannahCol" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

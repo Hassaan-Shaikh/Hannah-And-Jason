@@ -16,21 +16,7 @@ public partial class Hannah : Player
     {
         base._PhysicsProcess(delta);
 
-        if (Input.IsActionJustPressed(repathKey) && isUserControlled)
-        {
-            jason.navAgent.TargetPosition = GlobalPosition;
-            jason.currentSpeed = moveSpeed;
-        }
-
-        if (isUserControlled)
-        {
-            HandleUserControl((float)delta);
-            navAgent.TargetPosition = GlobalPosition;
-        }
-        else
-        {
-            HandleAIControl((float)delta);
-        }
+        HandleUserControl((float)delta);
 
         HandleInteraction();
 

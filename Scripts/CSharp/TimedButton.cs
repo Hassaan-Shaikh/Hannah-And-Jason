@@ -3,8 +3,10 @@ using System;
 
 public partial class TimedButton : AnimatableBody3D
 {
-    [Signal] public delegate void ButtonPushedEventHandler();
+    [Signal] public delegate void ButtonPushedEventHandler(int affectorId, bool pushed);
 
+    [Export] private int affectorId;
+    [ExportGroup("References")]
     [Export] public AnimationPlayer buttonAnim;
     [Export] public Timer buttonTimer;
 
@@ -28,11 +30,6 @@ public partial class TimedButton : AnimatableBody3D
         }
 
         base._PhysicsProcess(delta);
-
-        //if (Input.IsActionJustPressed(interactKey))
-        //{
-        //    ToggleButton();
-        //}
     }
 
     public void ToggleButton()
@@ -43,9 +40,9 @@ public partial class TimedButton : AnimatableBody3D
             {
                 buttonAnim.Play("Push");
                 isPushed = true;
-                EmitSignal(SignalName.ButtonPushed);
+                EmitSignal(SignalName.ButtonPushed, affectorId, isPushed);
                 buttonTimer.Start();
-                GD.Print("The timed button has been pushed.");
+                //GD.Print("The timed button has been pushed.");
             }
         }
     }
@@ -54,7 +51,7 @@ public partial class TimedButton : AnimatableBody3D
     {
         if (body.IsInGroup("Character"))
         {
-            GD.Print(body.Name + " has entered " + Name + "\'s interaction zone.");
+            //GD.Print(body.Name + " has entered " + Name + "\'s interaction zone.");
             canInteract = true;
         }
     }
@@ -63,7 +60,7 @@ public partial class TimedButton : AnimatableBody3D
     {
         if (body.IsInGroup("Character"))
         {
-            GD.Print(body.Name + " has exited " + Name + "\'s interaction zone.");
+            //GD.Print(body.Name + " has exited " + Name + "\'s interaction zone.");
             canInteract = false;
         }
     }
@@ -72,5 +69,6 @@ public partial class TimedButton : AnimatableBody3D
     {
         buttonAnim.Play("Unpush");
         isPushed = false;
+        EmitSignal(SignalName.ButtonPushed, affectorId, isPushed);
     }
 }

@@ -4,8 +4,9 @@ using System;
 [GlobalClass]
 public partial class PhysicalButton : AnimatableBody3D
 {
-    [Signal] public delegate void ButtonPushedEventHandler();
+    [Signal] public delegate void ButtonPushedEventHandler(int affectorId);
 
+    [Export] private int affectorId;
     [Export] public AnimationPlayer buttonAnim;
 
     public bool canInteract;
@@ -43,7 +44,7 @@ public partial class PhysicalButton : AnimatableBody3D
             {
                 buttonAnim.Play("Push");
                 isPushed = true;
-                EmitSignal(SignalName.ButtonPushed);
+                EmitSignal(SignalName.ButtonPushed, affectorId);
             }
         }
     }

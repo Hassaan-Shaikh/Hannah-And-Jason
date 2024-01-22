@@ -4,18 +4,24 @@ using System;
 
 public partial class Lever : AnimatableBody3D
 {
-    [Signal] public delegate void LeverFlippedEventHandler(bool flippedOn);
+    [Signal] public delegate void LeverFlippedEventHandler(int affectorId, bool flippedOn);
 
+    [Export] private int affectorId;
+    [Export] public bool flippedOn;
+    [Export] public bool canInteract;
+    [ExportGroup("Conflict Handling")]
     [Export] private bool isConflicting;
     [Export] public Array<Lever> conflictingLevers;
-    [Export] public bool flippedOn;
+    [ExportGroup("References")]
     [Export] public Node3D leverPivot;
     [Export] public AnimationPlayer leverAnim;
-    [Export] public bool canInteract;
 
     public override void _Ready()
     {
         base._Ready();
+
+        leverPivot = GetNode<Node3D>("LeverBaseMesh/LeverPivot") as Node3D;
+        leverAnim = GetNode<AnimationPlayer>("LeverAnim") as AnimationPlayer;
     }
 
     public void FlipLever()
@@ -42,6 +48,7 @@ public partial class Lever : AnimatableBody3D
                 leverAnim.Play("FlipOff");
             }
             flippedOn = !flippedOn;
+            GD.Print("The lever ", affectorId, " has been flipped: ", flippedOn);
         }
     }
 
@@ -49,7 +56,7 @@ public partial class Lever : AnimatableBody3D
     {
         if (body.IsInGroup("Character"))
         {
-            GD.Print(body.Name + " has entered " + Name + "\'s interaction zone.");
+            //GD.Print(body.Name + " has entered " + Name + "\'s interaction zone.");
             canInteract = true;
         }
     }
@@ -58,7 +65,7 @@ public partial class Lever : AnimatableBody3D
     {
         if (body.IsInGroup("Character"))
         {
-            GD.Print(body.Name + " has exited " + Name + "\'s interaction zone.");
+            //GD.Print(body.Name + " has exited " + Name + "\'s interaction zone.");
             canInteract = false;
         }
     }
@@ -67,7 +74,7 @@ public partial class Lever : AnimatableBody3D
     {
         if (animName.Equals("FlipOn") || animName.Equals("FlipOff"))
         {
-            EmitSignal(SignalName.LeverFlipped, flippedOn);
+            EmitSignal(SignalName.LeverFlipped, affectorId, flippedOn);
             GD.Print("Is " + Name + " flippedOn: " + flippedOn);
         }
     }

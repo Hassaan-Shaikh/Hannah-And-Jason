@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1705245376
+::res://::1705934102
 icon.svg::CompressedTexture2D::3160687383221461530::1703684519::1703684532::1::::<><>::
 README.md::TextFile::-1::1703684797::0::1::::<><>::
 ::res://addons/::1703686366
@@ -19,28 +19,37 @@ THIRDPARTY.txt::TextFile::-1::1703686367::0::1::::<><>::
 ::res://addons/godot-jolt/macos/godot-jolt_macos_editor.framework/::1703686367
 ::res://addons/godot-jolt/macos/godot-jolt_macos_editor.framework/Resources/::1703686367
 ::res://addons/godot-jolt/macos/godot-jolt_macos_editor.framework/_CodeSignature/::1703686367
-::res://addons/godot-jolt/windows/::1705242217
-::res://Resources/::1705245376
-LightPressurePlate.tres::Resource/PressurePlateConfig::2661129167670890673::1705244864::0::1::::<><>::res://Scripts/CSharp/PressurePlateConfig.cs
-::res://Resources/Custom Resources/::1705245376
-HeavyPressurePlate.tres::Resource/PressurePlateConfig::2520066473540712838::1705244853::0::1::::<><>::res://Scripts/CSharp/PressurePlateConfig.cs
-::res://Scenes/::1705245376
-Hannah.tscn::PackedScene::4772040193099512005::1705244937::0::1::::<><>::res://Scripts/CSharp/Hannah.cs
-Jason.tscn::PackedScene::4964359010809850984::1705244937::0::1::::<><>::res://Scripts/CSharp/Jason.cs
-Lever.tscn::PackedScene::2213959801748230308::1705244937::0::1::::<><>::res://Scripts/CSharp/Lever.cs
-PhysicalButton.tscn::PackedScene::6425452548482454323::1705244937::0::1::::<><>::res://Scripts/CSharp/PhysicalButton.cs
+::res://addons/godot-jolt/windows/::1705934093
+::res://Resources/::1705769732
+::res://Resources/Custom Resources/::1705245538
+HeavyPressurePlate.tres::Resource/Resource::2520066473540712838::1705244853::0::1::::<><>::res://Scripts/CSharp/PressurePlateConfig.cs
+LeverConfig.tres::Resource/Resource::8047766190020621058::1705245538::0::1::::<><>::res://Scripts/CSharp/LeverConfiguration.cs
+LightPressurePlate.tres::Resource/Resource::2661129167670890673::1705244864::0::1::::<><>::res://Scripts/CSharp/PressurePlateConfig.cs
+::res://Resources/NavigationMesh Resources/::1705839911
+HannahNavMesh.tres::NavigationMesh::8790958129646785555::1705839911::0::1::::<><>::
+JasonNavMesh.tres::NavigationMesh::3800541268717142533::1705839911::0::1::::<><>::
+::res://Resources/Occluder Resources/::1705770832
+DemoLevel1.occ::ArrayOccluder3D::3991831294281941558::1705770832::0::1::::<><>::
+::res://Scenes/::1705839983
+DemoLevel1.tscn::PackedScene::4900713639696199061::1705839983::0::1::::<><>::res://Scripts/CSharp/GameManager.cs<>uid://b88u2mk643itp::::res://Scenes/Hannah.tscn<>uid://bw4w44g5iofhe::::res://Resources/Occluder Resources/DemoLevel1.occ<>uid://ccy1jdl8xb4xo::::res://Scenes/Jason.tscn<>uid://cxssi885lntcl::::res://Scenes/PhysicalButton.tscn<>uid://6spuhhdj4apo::::res://Scenes/Lever.tscn
+Hannah.tscn::PackedScene::4772040193099512005::1705839982::0::1::::<><>::res://Scripts/CSharp/Hannah.cs
+Jason.tscn::PackedScene::4964359010809850984::1705839982::0::1::::<><>::res://Scripts/CSharp/Jason.cs
+Lever.tscn::PackedScene::2213959801748230308::1705839982::0::1::::<><>::res://Scripts/CSharp/Lever.cs
+PhysicalButton.tscn::PackedScene::6425452548482454323::1705839982::0::1::::<><>::res://Scripts/CSharp/PhysicalButton.cs
 Player.tscn::PackedScene::8812326165154718066::1703686403::0::1::::<><>::res://Scripts/CSharp/Player.cs
-PressurePlate.tscn::PackedScene::8438856240452359422::1705244937::0::1::::<><>::res://Scripts/CSharp/PressurePlate.cs
-TestingGround.tscn::PackedScene::5048261616175888501::1705245380::0::1::::<><>::uid://b88u2mk643itp::::res://Scenes/Hannah.tscn<>uid://ccy1jdl8xb4xo::::res://Scenes/Jason.tscn<>uid://cxssi885lntcl::::res://Scenes/PhysicalButton.tscn<>uid://ugx7pm700e1s::::res://Scenes/TimedButton.tscn<>uid://6spuhhdj4apo::::res://Scenes/Lever.tscn<>uid://dsh3y2ej5e8ry::::res://Scenes/PressurePlate.tscn<>res://Scripts/CSharp/PressurePlateConfig.cs
-TimedButton.tscn::PackedScene::1417617583399826926::1705244937::0::1::::<><>::res://Scripts/CSharp/TimedButton.cs
-::res://Scripts/::1703685699
-::res://Scripts/CSharp/::1705245340
-Hannah.cs::CSharpScript::-1::1705242286::0::1::::<>Player<>::
-Jason.cs::CSharpScript::-1::1705242286::0::1::::<>Player<>::
-Lever.cs::CSharpScript::-1::1705245330::0::1::::<>AnimatableBody3D<>::
-LeverConfiguration.cs::CSharpScript::-1::1705245340::0::1::::LeverConfiguration<>Resource<>::
-PhysicalButton.cs::CSharpScript::-1::1705242286::0::1::::PhysicalButton<>AnimatableBody3D<>::
-Player.cs::CSharpScript::-1::1704812575::0::1::::Player<>CharacterBody3D<>::
-PressurePlate.cs::CSharpScript::-1::1705243752::0::1::::<>AnimatableBody3D<>::
-PressurePlateConfig.cs::CSharpScript::-1::1705244766::0::1::::PressurePlateConfig<>Resource<>::
-TimedButton.cs::CSharpScript::-1::1705242286::0::1::::<>AnimatableBody3D<>::
+PressurePlate.tscn::PackedScene::8438856240452359422::1705839982::0::1::::<><>::res://Scripts/CSharp/PressurePlate.cs
+TestingGround.tscn::PackedScene::5048261616175888501::1705839982::0::1::::<><>::uid://dxin2cg1qqenj::::res://Resources/NavigationMesh Resources/HannahNavMesh.tres<>uid://b88u2mk643itp::::res://Scenes/Hannah.tscn<>uid://ccy1jdl8xb4xo::::res://Scenes/Jason.tscn<>uid://bufamhra507mf::::res://Resources/NavigationMesh Resources/JasonNavMesh.tres<>uid://cxssi885lntcl::::res://Scenes/PhysicalButton.tscn<>uid://ugx7pm700e1s::::res://Scenes/TimedButton.tscn<>uid://6spuhhdj4apo::::res://Scenes/Lever.tscn<>uid://dsh3y2ej5e8ry::::res://Scenes/PressurePlate.tscn<>res://Scripts/CSharp/PressurePlateConfig.cs
+TimedButton.tscn::PackedScene::1417617583399826926::1705839982::0::1::::<><>::res://Scripts/CSharp/TimedButton.cs
+::res://Scripts/::1705573441
+::res://Scripts/CSharp/::1705839912
+AffectorInstance.cs::CSharpScript::-1::1705768146::0::1::::AffectorInstance<>Resource<>::
+GameManager.cs::CSharpScript::-1::1705769427::0::1::::<>Node3D<>::
+Hannah.cs::CSharpScript::-1::1705839911::0::1::::<>Player<>::
+Jason.cs::CSharpScript::-1::1705839911::0::1::::<>Player<>::
+Lever.cs::CSharpScript::-1::1705770658::0::1::::<>AnimatableBody3D<>::
+LeverConfiguration.cs::CSharpScript::-1::1705572757::0::1::::LeverConfiguration<>Resource<>::
+PhysicalButton.cs::CSharpScript::-1::1705839912::0::1::::PhysicalButton<>AnimatableBody3D<>::
+Player.cs::CSharpScript::-1::1705769278::0::1::::Player<>CharacterBody3D<>::
+PressurePlate.cs::CSharpScript::-1::1705839912::0::1::::<>AnimatableBody3D<>::
+PressurePlateConfig.cs::CSharpScript::-1::1705839912::0::1::::PressurePlateConfig<>Resource<>::
+TimedButton.cs::CSharpScript::-1::1705839912::0::1::::<>AnimatableBody3D<>::

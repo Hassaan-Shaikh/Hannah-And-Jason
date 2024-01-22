@@ -5,21 +5,23 @@ using System;
 
 public partial class PressurePlate : AnimatableBody3D
 {
-    [Signal] public delegate void PlatePushedEventHandler();
+    [Signal] public delegate void PlatePushedEventHandler(int affectorId, bool pushed);
 
-    [Export] public PressurePlateConfig plateConfiguration; 
+    [Export] private int affectorId;
+    [Export] public PressurePlateConfig plateConfiguration;
     [Export] private AnimationPlayer plateAnim;
     [Export] private MeshInstance3D plateMesh;
 
     private bool isActive;
     private float weight;
+    private Material material;
 
     public override void _Ready()
     {
         base._Ready();
         plateMesh = GetNode<MeshInstance3D>("PlateBaseMesh/PlateMesh");
         weight = plateConfiguration.GetWeightThreshold();
-        Material material = plateMesh.Mesh.SurfaceGetMaterial(0);
+        material = plateMesh.Mesh.SurfaceGetMaterial(0);
         if (plateConfiguration.GetPlateType() == PressurePlateConfig.PlateType.Light)
         {
             material.Set("albedo_color", Color.Color8(0, 255, 0, 255));
@@ -27,7 +29,6 @@ public partial class PressurePlate : AnimatableBody3D
         else if (plateConfiguration.GetPlateType() == PressurePlateConfig.PlateType.Heavy)
         {
             material.Set("albedo_color", Color.Color8(255, 0, 0, 255));
-            GD.Print(Name + "\'s Weight Threshold = " + weight);
         }
     }
 
@@ -40,19 +41,18 @@ public partial class PressurePlate : AnimatableBody3D
             switch (plateConfiguration.GetPlateType())
             {
                 case PressurePlateConfig.PlateType.Light:
-                    GD.Print(body.Name + " has entered " + Name + "\'s detection zone");
+                    //GD.Print(body.Name + " has entered " + Name + "\'s detection zone");
                     plateAnim.Play("PushIn");
                     isActive = true;
                     break;
                 case PressurePlateConfig.PlateType.Heavy:
                     float bodyMass = (float)body.Call("GetMass");
-                    GD.Print(body.Name + "\'s Mass = " + bodyMass);
-                    if (bodyMass < plateConfiguration.GetWeightThreshold())
+                    //GD.Print(body.Name + "\'s Mass = " + bodyMass);
+                    if (bodyMass >= weight)
                     {
-                        return;
+                        plateAnim.Play("PushIn");
+                        isActive = true;
                     }
-                    plateAnim.Play("PushIn");
-                    isActive = true;
                     break;
             }
         }
@@ -62,20 +62,20 @@ public partial class PressurePlate : AnimatableBody3D
     {
         if (body.IsInGroup("Character") && isActive)
         {
-            GD.Print(body.Name + " has exited " + Name + "\'s detection zone");
+            //GD.Print(body.Name + " has exited " + Name + "\'s detection zone");
             plateAnim.Play("PushOut");
             isActive = false;
-            Material material = plateMesh.Mesh.SurfaceGetMaterial(0);
             if (plateConfiguration.GetPlateType() == PressurePlateConfig.PlateType.Light)
             {
                 material.Set("emission", Color.Color8(0, 255, 0));
                 material.Set("emission_energy_multiplier", 0f);
             }
-            else if (plateConfiguration.GetPlateType() == PressurePlateConfig.PlateType.Heavy)
+            else
             {
                 material.Set("albedo_color", Color.Color8(255, 0, 0));
                 material.Set("emission_energy_multiplier", 0f);
             }
+            EmitSignal(SignalName.PlatePushed, affectorId, isActive);
         }
     }
 
@@ -83,7 +83,6 @@ public partial class PressurePlate : AnimatableBody3D
     {
         if(animName.Equals("PushIn"))
         {
-            Material material = plateMesh.Mesh.SurfaceGetMaterial(0);
             if (plateConfiguration.GetPlateType() == PressurePlateConfig.PlateType.Light)
             {
                 material.Set("emission", Color.Color8(0, 255, 0));
@@ -94,6 +93,7 @@ public partial class PressurePlate : AnimatableBody3D
                 material.Set("albedo_color", Color.Color8(255, 0, 0));
                 material.Set("emission_energy_multiplier", 5f);
             }
+            EmitSignal(SignalName.PlatePushed, affectorId, isActive);
         }
     }
 }

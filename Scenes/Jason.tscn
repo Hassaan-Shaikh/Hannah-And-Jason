@@ -17,7 +17,7 @@ albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
 material = SubResource("StandardMaterial3D_fowyt")
 size = Vector3(0.7, 0.15, 0.2)
 
-[node name="Jason" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "camSpring", "camera", "rayCast", "navAgent") groups=["Character", "Jason"]]
+[node name="Jason" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "camSpring", "camera", "rayCast") groups=["Character", "Jason"]]
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_4gex0")
@@ -31,7 +31,6 @@ camHolder = NodePath("CamHolder")
 camSpring = NodePath("CamHolder/SpringArm3D")
 camera = NodePath("CamHolder/SpringArm3D/JasonCam")
 rayCast = NodePath("CamHolder/SpringArm3D/JasonCam/JasonRay")
-navAgent = NodePath("JNavAgent")
 
 [node name="JasonCol" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

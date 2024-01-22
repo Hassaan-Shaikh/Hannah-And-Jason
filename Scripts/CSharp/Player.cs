@@ -28,9 +28,8 @@ public partial class Player : CharacterBody3D
     [Export] public SpringArm3D camSpring;
     [Export] public Camera3D camera;
     [Export] public RayCast3D rayCast;
-    [Export] public NavigationAgent3D navAgent;
     
-    public Vector3 p_Velocity;
+    //public Vector3 p_Velocity;
     public Vector3 direction;
     public float currentSpeed;
 
@@ -67,7 +66,7 @@ public partial class Player : CharacterBody3D
 
     public void HandleUserControl(float delta)
     {
-        p_Velocity = Velocity;
+        Vector3 p_Velocity = Velocity;        
 
         if (IsOnFloor() && Input.IsActionJustPressed(jumpKey) && isUserControlled)
         {
@@ -106,27 +105,6 @@ public partial class Player : CharacterBody3D
         p_Velocity = p_Velocity.Lerp(direction * currentSpeed + p_Velocity.Y * Vector3.Up, acceleration * delta);
 
         Velocity = p_Velocity;
-        MoveAndSlide();
-    }
-
-    public void HandleAIControl(float delta)
-    {
-        if(navAgent.IsNavigationFinished() || isUserControlled)
-        {
-            navAgent.TargetPosition = GlobalPosition;
-            currentSpeed = 0;
-            Velocity = Vector3.Zero;
-            return; 
-        }
-        Vector3 nextPos, direction;
-        nextPos = navAgent.GetNextPathPosition();
-        direction = GlobalPosition.DirectionTo(nextPos);
-        TurnToDirection(delta);
-        Velocity = direction * currentSpeed;
-        if (!IsOnFloor() && !isUserControlled)
-        {
-            Velocity = Vector3.Down;
-        }
         MoveAndSlide();
     }
 

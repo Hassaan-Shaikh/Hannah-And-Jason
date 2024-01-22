@@ -94,11 +94,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GAME DEV\\GODOT PROJECTS\\PROJECT PALS\\HANNAH-AND-JASON\\Project Pals.csproj",
+      "projectUniqueName": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Project Pals.csproj",
       "projectName": "Project Pals",
-      "projectPath": "C:\\GAME DEV\\GODOT PROJECTS\\PROJECT PALS\\HANNAH-AND-JASON\\Project Pals.csproj",
+      "projectPath": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Project Pals.csproj",
       "packagesPath": "C:\\Users\\phngy\\.nuget\\packages\\",
-      "outputPath": "C:\\GAME DEV\\GODOT PROJECTS\\PROJECT PALS\\HANNAH-AND-JASON\\.godot\\mono\\temp\\obj\\",
+      "outputPath": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\.godot\\mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -161,7 +161,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
