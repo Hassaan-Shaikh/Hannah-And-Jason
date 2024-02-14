@@ -36,7 +36,7 @@ public partial class TimedButton : AnimatableBody3D
 
     public override void _PhysicsProcess(double delta)
     {
-        promptLabel.Visible = canInteract ? true : false;
+        promptLabel.Visible = canInteract;
         if (!canInteract)
         {
             return;
@@ -44,7 +44,8 @@ public partial class TimedButton : AnimatableBody3D
 
         base._PhysicsProcess(delta);
 
-        if (canInteract && currentlyControlledCharacter == GetCurrentUserControlledCharacter())
+        Player userControlledCharacter = GetCurrentUserControlledCharacter();
+        if (canInteract && currentlyControlledCharacter == userControlledCharacter)
         {
             promptLabel.Visible = true;
             if (Input.IsActionJustPressed(interactKey))
@@ -84,6 +85,7 @@ public partial class TimedButton : AnimatableBody3D
         {
             //GD.Print(body.Name + " has entered " + Name + "\'s interaction zone.");
             canInteract = true;
+            currentlyControlledCharacter = body as Player;
         }
     }
 
@@ -93,6 +95,7 @@ public partial class TimedButton : AnimatableBody3D
         {
             //GD.Print(body.Name + " has exited " + Name + "\'s interaction zone.");
             canInteract = false;
+            currentlyControlledCharacter = null;
         }
     }
 

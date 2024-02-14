@@ -32,7 +32,7 @@ public partial class PhysicalButton : AnimatableBody3D
 
     public override void _PhysicsProcess(double delta)
     {
-        promptLabel.Visible = canInteract ? true : false;
+        promptLabel.Visible = canInteract;
         if (!canInteract)
         {
             return;
@@ -40,7 +40,8 @@ public partial class PhysicalButton : AnimatableBody3D
 
         base._PhysicsProcess(delta);
 
-        if (canInteract && currentlyControlledCharacter == GetCurrentUserControlledCharacter())
+        Player userControlledCharacter = GetCurrentUserControlledCharacter();
+        if (canInteract && currentlyControlledCharacter == userControlledCharacter)
         {
             promptLabel.Visible = true;
             if (Input.IsActionJustPressed(interactKey))
@@ -86,8 +87,9 @@ public partial class PhysicalButton : AnimatableBody3D
     {
         if (body.IsInGroup("Character"))
         {
-            GD.Print(body.Name + " has exited " + Name + "\'s interaction zone.");
+            //GD.Print(body.Name + " has exited " + Name + "\'s interaction zone.");
             canInteract = false;
+            currentlyControlledCharacter = null;
         }
     }
 }

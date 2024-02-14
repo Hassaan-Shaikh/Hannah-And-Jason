@@ -1,3 +1,7 @@
+Label
+Button
+VBoxContainer
+MarginContainer
 Label3D
 CollisionShape3D
 Area3D
@@ -9,7 +13,3 @@ CSGCombiner3D
 CSGBox3D
 OccluderInstance3D
 AnimationPlayer
-NavigationAgent3D
-NavigationRegion3D
-ColorRect
-Control

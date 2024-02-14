@@ -16,6 +16,15 @@ public partial class GameManager : Node3D
         }
     }
 
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta);
+
+        if(Input.IsActionJustPressed("pause"))
+        {
+            GetTree().Quit(); // Replace this line with appropriate code
+        }
+    }
 
     private void OnPhysicalButtonButtonPushed(int affectorId)
 	{

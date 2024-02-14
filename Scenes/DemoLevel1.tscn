@@ -68,14 +68,14 @@ size = Vector3(3, 0.2, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jgm0j"]
 size = Vector3(3, 0.2, 3)
 
-[sub_resource type="Resource" id="Resource_2u4fg"]
+[sub_resource type="Resource" id="Resource_myyvp"]
 resource_local_to_scene = true
 resource_name = "Light Pressure Plate"
 script = ExtResource("9_ejscp")
 plateType = 0
 weightThreshold = 0.0
 
-[sub_resource type="Resource" id="Resource_tx7r2"]
+[sub_resource type="Resource" id="Resource_otpsb"]
 resource_local_to_scene = true
 resource_name = "Light Pressure Plate"
 script = ExtResource("9_ejscp")
@@ -342,12 +342,12 @@ conflictingLevers = [NodePath("../Lever")]
 [node name="PressurePlate" parent="PuzzleElements/PressurePlates" instance=ExtResource("7_c3nts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0.05, -4)
 affectorId = 3
-plateConfiguration = SubResource("Resource_2u4fg")
+plateConfiguration = SubResource("Resource_myyvp")
 
 [node name="PressurePlate2" parent="PuzzleElements/PressurePlates" instance=ExtResource("7_c3nts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.5, 0.05, -4.5)
 affectorId = 5
-plateConfiguration = SubResource("Resource_tx7r2")
+plateConfiguration = SubResource("Resource_otpsb")
 
 [connection signal="body_entered" from="KillZone" to="." method="OnKillZoneBodyEntered"]
 [connection signal="ButtonPushed" from="PuzzleElements/Buttons/PhysicalButton" to="." method="OnPhysicalButtonButtonPushed"]

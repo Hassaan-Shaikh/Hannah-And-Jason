@@ -55,7 +55,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51192, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CamHolder"]
-transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, -0.636, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0.636, 0, 0)
 collision_mask = 13
 spring_length = 1.6
 margin = 0.2
