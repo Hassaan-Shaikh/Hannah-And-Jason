@@ -81,6 +81,7 @@ _data = {
 collision_layer = 16
 collision_mask = 15
 script = ExtResource("1_d3tbp")
+timeLimit = 3.0
 buttonAnim = NodePath("ButtonAnim")
 buttonTimer = NodePath("ButtonTimer")
 
@@ -114,6 +115,17 @@ libraries = {
 process_callback = 0
 wait_time = 3.0
 one_shot = true
+
+[node name="PromptLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+top_level = true
+layers = 8
+sorting_offset = 1.0
+billboard = 1
+no_depth_test = true
+text = "Press 'E' to Interact"
+font_size = 16
+outline_size = 6
 
 [connection signal="body_entered" from="TimedInteractionZone" to="." method="OnTimedInteractionZoneBodyEntered"]
 [connection signal="body_exited" from="TimedInteractionZone" to="." method="OnTimedInteractionZoneBodyExited"]

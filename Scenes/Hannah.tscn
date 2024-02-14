@@ -19,9 +19,9 @@ rings = 4
 [sub_resource type="BoxMesh" id="BoxMesh_ppuba"]
 size = Vector3(0.1, 0.3, 0.2)
 
-[node name="Hannah" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "camSpring", "camera", "rayCast") groups=["Character", "Hannah"]]
+[node name="Hannah" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "propHoldPoint", "camSpring", "camera", "rayCast") groups=["Character", "Hannah"]]
 collision_layer = 2
-collision_mask = 13
+collision_mask = 45
 script = ExtResource("1_qgewe")
 moveSpeed = 2.4
 sprintSpeed = 4.8
@@ -31,6 +31,7 @@ acceleration = 2.0
 rotationAcceleration = 10.0
 isUserControlled = true
 camHolder = NodePath("CamHolder")
+propHoldPoint = NodePath("CamHolder/PropHoldPoint")
 camSpring = NodePath("CamHolder/SpringArm3D")
 camera = NodePath("CamHolder/SpringArm3D/HannahCam")
 rayCast = NodePath("CamHolder/SpringArm3D/HannahCam/HannahRay")
@@ -56,7 +57,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CamHolder"]
-transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0.4, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, -0.4, 0, 0)
 collision_mask = 13
 margin = 0.2
 
@@ -66,6 +67,9 @@ near = 0.001
 [node name="HannahRay" type="RayCast3D" parent="CamHolder/SpringArm3D/HannahCam"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 29
+
+[node name="PropHoldPoint" type="Node3D" parent="CamHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.401964, -0.149313, -1.64861)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

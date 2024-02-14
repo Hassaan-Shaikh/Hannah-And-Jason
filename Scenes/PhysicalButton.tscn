@@ -109,5 +109,16 @@ libraries = {
 "": SubResource("AnimationLibrary_i3ajm")
 }
 
+[node name="PromptLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+top_level = true
+layers = 8
+sorting_offset = 1.0
+billboard = 1
+no_depth_test = true
+text = "Press 'E' to Interact"
+font_size = 16
+outline_size = 6
+
 [connection signal="body_entered" from="InteractionZone" to="." method="OnInteractionZoneBodyEntered"]
 [connection signal="body_exited" from="InteractionZone" to="." method="OnInteractionZoneBodyExited"]

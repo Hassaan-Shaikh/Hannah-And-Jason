@@ -8,9 +8,13 @@ public partial class PhysicalButton : AnimatableBody3D
 
     [Export] private int affectorId;
     [Export] public AnimationPlayer buttonAnim;
+    [Export] public Label3D promptLabel;
+    [Export] public Hannah hannah;
+    [Export] public Jason jason;
 
     public bool canInteract;
     public bool isPushed;
+    public Player currentlyControlledCharacter;
 
     public const string interactKey = "interact";
 
@@ -19,10 +23,16 @@ public partial class PhysicalButton : AnimatableBody3D
         base._Ready();
 
         buttonAnim = GetNode<AnimationPlayer>("ButtonAnim");
+        promptLabel = GetNode<Label3D>("PromptLabel");
+        hannah = GetTree().GetFirstNodeInGroup("Hannah") as Hannah;
+        jason = GetTree().GetFirstNodeInGroup("Jason") as Jason;
+
+        promptLabel.GlobalPosition = GlobalPosition - Vector3.Down * -0.25f;
     }
 
     public override void _PhysicsProcess(double delta)
     {
+        promptLabel.Visible = canInteract ? true : false;
         if (!canInteract)
         {
             return;
@@ -30,10 +40,23 @@ public partial class PhysicalButton : AnimatableBody3D
 
         base._PhysicsProcess(delta);
 
-        //if (Input.IsActionJustPressed(interactKey))
-        //{
-        //    ToggleButton();
-        //}
+        if (canInteract && currentlyControlledCharacter == GetCurrentUserControlledCharacter())
+        {
+            promptLabel.Visible = true;
+            if (Input.IsActionJustPressed(interactKey))
+            {
+                ToggleButton();
+            }
+        }
+        else if (!hannah.isUserControlled || !jason.isUserControlled)
+        {
+            promptLabel.Visible = false;
+        }
+    }
+
+    private Player GetCurrentUserControlledCharacter()
+    {
+        return hannah.isUserControlled ? hannah : jason;
     }
 
     public void ToggleButton()
@@ -53,6 +76,7 @@ public partial class PhysicalButton : AnimatableBody3D
     {
         if(body.IsInGroup("Character"))
         {
+            currentlyControlledCharacter = body as Player;
             GD.Print(body.Name + " has entered " + Name + "\'s interaction zone.");
             canInteract = true;
         }

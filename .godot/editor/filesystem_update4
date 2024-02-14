@@ -1,4 +1,4 @@
-res://Scenes/DemoLevel1.tscn
+res://Scenes/PhysicalButton.tscn
 res://Scripts/CSharp/Hannah.cs
 res://Resources/NavigationMesh Resources/HannahNavMesh.tres
 res://Scripts/CSharp/Jason.cs
@@ -7,14 +7,13 @@ res://Scripts/CSharp/PhysicalButton.cs
 res://Scripts/CSharp/TimedButton.cs
 res://Scripts/CSharp/PressurePlate.cs
 res://Scripts/CSharp/PressurePlateConfig.cs
-res://Resources/Occluder Resources/DemoLevel1.occ
 res://Scenes/Hannah.tscn
 res://Scenes/TestingGround.tscn
 res://Scenes/Jason.tscn
-res://Scenes/PhysicalButton.tscn
 res://Scenes/TimedButton.tscn
 res://Scenes/Lever.tscn
 res://Scenes/PressurePlate.tscn
+res://Scenes/DemoLevel1.tscn
 res://Scripts/CSharp/AffectorInstance.cs
 res://Scripts/CSharp/GameManager.cs
 res://Scripts/CSharp/Lever.cs

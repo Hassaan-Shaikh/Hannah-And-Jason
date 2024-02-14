@@ -17,9 +17,9 @@ albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
 material = SubResource("StandardMaterial3D_fowyt")
 size = Vector3(0.7, 0.15, 0.2)
 
-[node name="Jason" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "camSpring", "camera", "rayCast") groups=["Character", "Jason"]]
+[node name="Jason" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "propHoldPoint", "camSpring", "camera", "rayCast") groups=["Character", "Jason"]]
 collision_layer = 4
-collision_mask = 11
+collision_mask = 43
 script = ExtResource("1_4gex0")
 moveSpeed = 3.7
 sprintSpeed = 5.6
@@ -28,6 +28,7 @@ mass = 15.0
 acceleration = 2.0
 rotationAcceleration = 10.0
 camHolder = NodePath("CamHolder")
+propHoldPoint = NodePath("CamHolder/PropHoldPoint")
 camSpring = NodePath("CamHolder/SpringArm3D")
 camera = NodePath("CamHolder/SpringArm3D/JasonCam")
 rayCast = NodePath("CamHolder/SpringArm3D/JasonCam/JasonRay")
@@ -54,7 +55,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51192, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CamHolder"]
-transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0.636, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, -0.636, 0, 0)
 collision_mask = 13
 spring_length = 1.6
 margin = 0.2
@@ -65,6 +66,9 @@ near = 0.001
 [node name="JasonRay" type="RayCast3D" parent="CamHolder/SpringArm3D/JasonCam"]
 target_position = Vector3(0, 0, -3.2)
 collision_mask = 27
+
+[node name="PropHoldPoint" type="Node3D" parent="CamHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634823, -0.149313, -1.64861)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

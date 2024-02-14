@@ -8,7 +8,16 @@ public partial class GameManager : Node3D
 	[Export] Array<Node3D> affectorList;
 	[Export] Array<Node3D> affectedList;
 
-	private void OnPhysicalButtonButtonPushed(int affectorId)
+    private void OnKillZoneBodyEntered(Node3D body)
+    {
+        if (body.IsInGroup("Character"))
+        {
+            GetTree().ReloadCurrentScene();
+        }
+    }
+
+
+    private void OnPhysicalButtonButtonPushed(int affectorId)
 	{
 		if (levelId == 0)
 		{
@@ -90,6 +99,54 @@ public partial class GameManager : Node3D
                     else
                     {
                         tween.TweenProperty(affectedList[4], "position", new Vector3(affectedList[4].Position.X, 0, affectedList[4].Position.Z), 3.0f);
+                    }
+                    break;
+                default:
+                    GD.PrintErr("An invalid Affector ID may have been provided. " + affectorId.ToString());
+                    break;
+            }
+        }
+    }
+
+    private void OnTimedButtonButtonPushed(int affectorId, bool pushed)
+    {
+        if (levelId == 0)
+        {
+            switch (affectorId)
+            {
+                case 4:
+                    Tween tween = GetTree().CreateTween().SetParallel(false);
+                    if (pushed)
+                    {
+                        tween.TweenProperty(affectedList[5], "position", new Vector3(affectedList[5].Position.X, 2.5f, affectedList[5].Position.Z), 0.2f);
+                    }
+                    else
+                    {
+                        tween.TweenProperty(affectedList[5], "position", new Vector3(affectedList[5].Position.X, 1f, affectedList[5].Position.Z), 0.2f);
+                    }
+                    break;
+                default:
+                    GD.PrintErr("An invalid Affector ID may have been provided. " + affectorId.ToString());
+                    break;
+            }
+        }
+    }
+
+    private void OnPressurePlate2PlatePushed(int affectorId, bool pushed)
+    {
+        if (levelId == 0)
+        {
+            switch (affectorId)
+            {
+                case 5:
+                    Tween tween = GetTree().CreateTween().SetParallel(false);
+                    if (pushed)
+                    {
+                        tween.TweenProperty(affectedList[6], "position", new Vector3(affectedList[6].Position.X, 3.2f, affectedList[6].Position.Z), 0.5f);
+                    }
+                    else
+                    {
+                        tween.TweenProperty(affectedList[6], "position", new Vector3(affectedList[6].Position.X, 1, affectedList[6].Position.Z), 0.5f);
                     }
                     break;
                 default:

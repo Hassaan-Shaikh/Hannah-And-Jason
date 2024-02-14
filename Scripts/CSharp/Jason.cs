@@ -18,7 +18,7 @@ public partial class Jason : Player
 
         HandleUserControl((float)delta);
 
-        HandleInteraction();
+        //HandleInteraction();
 
         camera.Current = isUserControlled;
     }

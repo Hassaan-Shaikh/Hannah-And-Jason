@@ -25,6 +25,7 @@ public partial class Player : CharacterBody3D
     [Export] public float clampAngle = 60.0f;
     [ExportGroup("References")]
 	[Export] public Node3D camHolder;
+    [Export] public Node3D propHoldPoint;
     [Export] public SpringArm3D camSpring;
     [Export] public Camera3D camera;
     [Export] public RayCast3D rayCast;
@@ -40,6 +41,7 @@ public partial class Player : CharacterBody3D
     public const string sprintKey = "sprint";
     public const string jumpKey = "jump";
     public const string interactKey = "interact";
+    public const string throwKey = "throw";
     public const string switchKey = "switch";
     public const string pauseKey = "pause";
     public const string repathKey = "repath";
@@ -128,6 +130,15 @@ public partial class Player : CharacterBody3D
                         break;
                     case Lever:
                         detected.Call("FlipLever");
+                        break;
+                    case RigidBody3D:
+                        RigidBody3D rigidBody3D = (RigidBody3D)detected;
+                        rigidBody3D.Reparent(propHoldPoint);
+                        rigidBody3D.Freeze = true;
+                        //rigidBody3D.SetCollisionMaskValue(1, false);
+                        //rigidBody3D.SetCollisionMaskValue(2, false);
+                        //rigidBody3D.SetCollisionMaskValue(3, false);
+                        //SetCollisionMaskValue(4, false);
                         break;
                     default:
                         break;

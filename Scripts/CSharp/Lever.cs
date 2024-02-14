@@ -15,13 +15,55 @@ public partial class Lever : AnimatableBody3D
     [ExportGroup("References")]
     [Export] public Node3D leverPivot;
     [Export] public AnimationPlayer leverAnim;
+    [Export] public Label3D promptLabel;
+    [ExportSubgroup("Characters")]
+    [Export] public Hannah hannah;
+    [Export] public Jason jason;
+
+    public Player currentlyControlledCharacter;
+
+    public const string interactKey = "interact";
 
     public override void _Ready()
     {
         base._Ready();
 
-        leverPivot = GetNode<Node3D>("LeverBaseMesh/LeverPivot") as Node3D;
-        leverAnim = GetNode<AnimationPlayer>("LeverAnim") as AnimationPlayer;
+        leverPivot = GetNode<Node3D>("LeverBaseMesh/LeverPivot");
+        leverAnim = GetNode<AnimationPlayer>("LeverAnim");
+        promptLabel = GetNode<Label3D>("PromptLabel");
+        hannah = GetTree().GetFirstNodeInGroup("Hannah") as Hannah;
+        jason = GetTree().GetFirstNodeInGroup("Jason") as Jason;
+
+        promptLabel.GlobalPosition = GlobalPosition - Vector3.Down * -0.25f;
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        promptLabel.Visible = canInteract ? true : false;
+        if (!canInteract)
+        {
+            return;
+        }
+
+        base._PhysicsProcess(delta);
+
+        if (canInteract && currentlyControlledCharacter == GetCurrentUserControlledCharacter())
+        {
+            promptLabel.Visible = true;
+            if (Input.IsActionJustPressed(interactKey))
+            {
+                FlipLever();
+            }
+        }
+        else if (!hannah.isUserControlled || !jason.isUserControlled)
+        {
+            promptLabel.Visible = false;
+        }
+    }
+
+    private Player GetCurrentUserControlledCharacter()
+    {
+        return hannah.isUserControlled ? hannah : jason;
     }
 
     public void FlipLever()

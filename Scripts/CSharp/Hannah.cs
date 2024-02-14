@@ -18,7 +18,7 @@ public partial class Hannah : Player
 
         HandleUserControl((float)delta);
 
-        HandleInteraction();
+        //HandleInteraction();
 
         camera.Current = isUserControlled;
     }

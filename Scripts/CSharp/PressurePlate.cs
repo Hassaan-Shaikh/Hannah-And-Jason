@@ -56,11 +56,33 @@ public partial class PressurePlate : AnimatableBody3D
                     break;
             }
         }
+        else if (body is RigidBody3D && isActive)
+        {
+            RigidBody3D rigidBody3D = (RigidBody3D)body;
+            switch (plateConfiguration.GetPlateType())
+            {
+                case PressurePlateConfig.PlateType.Light:
+                    //GD.Print(body.Name + " has entered " + Name + "\'s detection zone");
+                    plateAnim.Play("PushIn");
+                    isActive = true;
+                    break;
+                case PressurePlateConfig.PlateType.Heavy:
+                    //float bodyMass = (float)body.Call("GetMass");
+                    //GD.Print(body.Name + "\'s Mass = " + bodyMass);
+                    if (rigidBody3D.Mass >= weight)
+                    {
+                        GD.Print("The Rigidbody: ", rigidBody3D.Name, " is on the pressure plate.");
+                        plateAnim.Play("PushIn");
+                        isActive = true;
+                    }
+                    break;
+            }
+        }
     }
 
     private void OnDetectionZoneBodyExited(Node3D body)
     {
-        if (body.IsInGroup("Character") && isActive)
+        if ((body.IsInGroup("Character") || body is RigidBody3D) && isActive)
         {
             //GD.Print(body.Name + " has exited " + Name + "\'s detection zone");
             plateAnim.Play("PushOut");
