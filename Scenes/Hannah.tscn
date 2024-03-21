@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b88u2mk643itp"]
+[gd_scene load_steps=7 format=3 uid="uid://b88u2mk643itp"]
 
 [ext_resource type="Script" path="res://Scripts/CSharp/Hannah.cs" id="1_qgewe"]
+[ext_resource type="PackedScene" uid="uid://61l1ps4ois7w" path="res://Scenes/Hannah_mesh.tscn" id="2_jmhej"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ph2w"]
-radius = 0.25
+radius = 0.134661
 height = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wokyh"]
@@ -19,15 +20,15 @@ rings = 4
 [sub_resource type="BoxMesh" id="BoxMesh_ppuba"]
 size = Vector3(0.1, 0.3, 0.2)
 
-[node name="Hannah" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "propHoldPoint", "camSpring", "camera", "rayCast") groups=["Character", "Hannah"]]
+[node name="Hannah" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "propHoldPoint", "camSpring", "camera", "rayCast", "animPlayer", "characterVisuals") groups=["Character", "Hannah"]]
 collision_layer = 2
-collision_mask = 45
+collision_mask = 109
 script = ExtResource("1_qgewe")
 moveSpeed = 2.4
 sprintSpeed = 4.8
-jumpForce = 4.1
+jumpForce = 5.04
 mass = 4.0
-acceleration = 2.0
+acceleration = 10.0
 rotationAcceleration = 10.0
 isUserControlled = true
 camHolder = NodePath("CamHolder")
@@ -35,6 +36,8 @@ propHoldPoint = NodePath("CamHolder/PropHoldPoint")
 camSpring = NodePath("CamHolder/SpringArm3D")
 camera = NodePath("CamHolder/SpringArm3D/HannahCam")
 rayCast = NodePath("CamHolder/SpringArm3D/HannahCam/HannahRay")
+animPlayer = NodePath("HannahVisuals/AnimationPlayer")
+characterVisuals = NodePath("HannahVisuals")
 
 [node name="HannahCol" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -46,6 +49,7 @@ debug_path_custom_color = Color(0.607843, 0, 0.607843, 1)
 
 [node name="HTempMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_bpudb")
 
 [node name="HTempMesh2" type="MeshInstance3D" parent="HTempMesh"]
@@ -62,9 +66,11 @@ collision_mask = 13
 margin = 0.2
 
 [node name="HannahCam" type="Camera3D" parent="CamHolder/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.45058e-09, 0, -7.45058e-09, 1, 0, 0, 0)
 near = 0.001
 
 [node name="HannahRay" type="RayCast3D" parent="CamHolder/SpringArm3D/HannahCam"]
+visible = false
 target_position = Vector3(0, 0, -2)
 collision_mask = 29
 
@@ -81,6 +87,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -94,3 +101,23 @@ offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="HannahVisuals" parent="." instance=ExtResource("2_jmhej")]
+transform = Transform3D(-0.55, 0, -8.30477e-08, 0, 0.55, 0, 8.30477e-08, 0, -0.55, 0, 0, 0)
+
+[node name="Skeleton3D" parent="HannahVisuals/Hannah" index="0"]
+bones/9/rotation = Quaternion(0.384802, 0.069136, 0.0382873, 0.91961)
+bones/10/rotation = Quaternion(0.0153862, -0.0092342, 0.237663, 0.971182)
+bones/28/rotation = Quaternion(0.384803, -0.0691367, -0.0382877, 0.919609)
+bones/29/rotation = Quaternion(0.015385, 0.00923418, -0.237663, 0.971182)
+bones/46/rotation = Quaternion(-0.0019017, -0.0563657, 0.997845, -0.0335275)
+bones/47/rotation = Quaternion(-0.00267096, 0.000342832, -6.9176e-05, 0.999996)
+bones/48/rotation = Quaternion(0.495076, -0.0149602, -0.0299079, 0.868206)
+bones/50/rotation = Quaternion(-0.00541769, -0.0550491, 0.997932, 0.0327363)
+bones/51/rotation = Quaternion(-0.00267131, -0.000343724, 6.91027e-05, 0.999996)
+
+[node name="AnimationPlayer" parent="HannahVisuals" index="1"]
+callback_mode_process = 0
+playback_default_blend_time = 0.2
+
+[editable path="HannahVisuals"]

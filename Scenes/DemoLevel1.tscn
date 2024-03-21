@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cb27bjrrei1nt"]
+[gd_scene load_steps=29 format=3 uid="uid://cb27bjrrei1nt"]
 
 [ext_resource type="Script" path="res://Scripts/CSharp/GameManager.cs" id="1_65ndg"]
 [ext_resource type="PackedScene" uid="uid://b88u2mk643itp" path="res://Scenes/Hannah.tscn" id="1_mr3x8"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://6spuhhdj4apo" path="res://Scenes/Lever.tscn" id="6_upyl8"]
 [ext_resource type="PackedScene" uid="uid://dsh3y2ej5e8ry" path="res://Scenes/PressurePlate.tscn" id="7_c3nts"]
 [ext_resource type="Script" path="res://Scripts/CSharp/PressurePlateConfig.cs" id="9_ejscp"]
+[ext_resource type="PackedScene" uid="uid://boape00swxe3q" path="res://Scenes/LevelLoader.tscn" id="10_fxp5i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rk17o"]
 size = Vector3(1000, 2, 1000)
@@ -68,27 +69,30 @@ size = Vector3(3, 0.2, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jgm0j"]
 size = Vector3(3, 0.2, 3)
 
-[sub_resource type="Resource" id="Resource_myyvp"]
+[sub_resource type="Resource" id="Resource_y4efg"]
 resource_local_to_scene = true
 resource_name = "Light Pressure Plate"
 script = ExtResource("9_ejscp")
 plateType = 0
 weightThreshold = 0.0
 
-[sub_resource type="Resource" id="Resource_otpsb"]
+[sub_resource type="Resource" id="Resource_e5hgj"]
 resource_local_to_scene = true
 resource_name = "Light Pressure Plate"
 script = ExtResource("9_ejscp")
 plateType = 0
 weightThreshold = 0.0
 
-[node name="DemoLevel1" type="Node3D" node_paths=PackedStringArray("affectorList", "affectedList")]
+[node name="DemoLevel1" type="Node3D" node_paths=PackedStringArray("affectorList", "affectedList", "tutorialTriggers", "levelLoader")]
 script = ExtResource("1_65ndg")
 affectorList = [NodePath("PuzzleElements/Buttons/PhysicalButton"), NodePath("PuzzleElements/Levers/Lever"), NodePath("PuzzleElements/Levers/Lever2"), NodePath("PuzzleElements/PressurePlates/PressurePlate"), NodePath("PuzzleElements/Buttons/TimedButton")]
 affectedList = [NodePath("LevelLayout/Doors/Door"), NodePath("LevelLayout/Doors/Door2"), NodePath("LevelLayout/Doors/Door3"), NodePath("LevelLayout/Doors/Door4"), NodePath("LevelLayout/Platform"), NodePath("LevelLayout/Doors/Door5"), NodePath("LevelLayout/Doors/Door6")]
+tutorialTriggers = []
+levelLoader = NodePath("LevelLoader")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
 occluder = ExtResource("2_1cx4i")
+bake_mask = 4294967281
 
 [node name="KillZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
@@ -342,12 +346,14 @@ conflictingLevers = [NodePath("../Lever")]
 [node name="PressurePlate" parent="PuzzleElements/PressurePlates" instance=ExtResource("7_c3nts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0.05, -4)
 affectorId = 3
-plateConfiguration = SubResource("Resource_myyvp")
+plateConfiguration = SubResource("Resource_y4efg")
 
 [node name="PressurePlate2" parent="PuzzleElements/PressurePlates" instance=ExtResource("7_c3nts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.5, 0.05, -4.5)
 affectorId = 5
-plateConfiguration = SubResource("Resource_otpsb")
+plateConfiguration = SubResource("Resource_e5hgj")
+
+[node name="LevelLoader" parent="." instance=ExtResource("10_fxp5i")]
 
 [connection signal="body_entered" from="KillZone" to="." method="OnKillZoneBodyEntered"]
 [connection signal="ButtonPushed" from="PuzzleElements/Buttons/PhysicalButton" to="." method="OnPhysicalButtonButtonPushed"]

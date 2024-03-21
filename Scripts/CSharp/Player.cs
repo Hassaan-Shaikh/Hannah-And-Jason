@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 [Tool]
 [GlobalClass]
@@ -29,6 +30,8 @@ public partial class Player : CharacterBody3D
     [Export] public SpringArm3D camSpring;
     [Export] public Camera3D camera;
     [Export] public RayCast3D rayCast;
+    [Export] public AnimationPlayer animPlayer;
+    [Export] public Node3D characterVisuals;
     
     //public Vector3 p_Velocity;
     public Vector3 direction;
@@ -44,7 +47,7 @@ public partial class Player : CharacterBody3D
     public const string throwKey = "throw";
     public const string switchKey = "switch";
     public const string pauseKey = "pause";
-    public const string repathKey = "repath";
+    public const string walkAnim = "walkAnim";
 
     public override void _Ready()
     {
@@ -63,6 +66,11 @@ public partial class Player : CharacterBody3D
             {
                 isUserControlled = !isUserControlled;
             }
+        }
+
+        if (Input.IsActionJustPressed(pauseKey))
+        {
+            GetTree().Quit();
         }
     }
 
@@ -105,6 +113,8 @@ public partial class Player : CharacterBody3D
         }
 
         p_Velocity = p_Velocity.Lerp(direction * currentSpeed + p_Velocity.Y * Vector3.Up, acceleration * delta);
+
+        HandleAnimation(p_Velocity);
 
         Velocity = p_Velocity;
         MoveAndSlide();
@@ -164,6 +174,103 @@ public partial class Player : CharacterBody3D
             InputEventMouseMotion mouseMotion = (InputEventMouseMotion)@event;
             Rotation = new Vector3(0, Rotation.Y - mouseMotion.Relative.X / 1000 * sensitivity, 0f);
             camHolder.Rotation = new Vector3(Mathf.Clamp(camHolder.Rotation.X - mouseMotion.Relative.Y / 1000 * sensitivity, Mathf.DegToRad((clampAngle * -1.0f)), Mathf.DegToRad(clampAngle)), 0, 0);
+        }
+    }
+
+    private bool IsWalking()
+    {
+        return (Input.IsActionPressed(forwardKey) || Input.IsActionPressed(leftKey) || Input.IsActionPressed(rightKey));
+    }
+
+    private void HandleAnimation(Vector3 p_Velocity)
+    {
+        animPlayer.SpeedScale = p_Velocity.Y > 0 ? 0.5f : 1;
+        if (isUserControlled)
+        {
+            RotationalAdjustment();
+            if (Input.IsActionPressed(forwardKey) && Input.IsActionPressed(sprintKey) && IsOnFloor())
+            {
+                if (animPlayer.CurrentAnimation != "Run")                
+                    animPlayer.Play("Run");                
+            }
+            else if (Input.IsActionPressed(forwardKey) && IsOnFloor())
+            {
+                if (animPlayer.CurrentAnimation != "Walk")                
+                    animPlayer.Play("Walk");                
+            }
+            else if (Input.IsActionPressed(backKey) && IsOnFloor())
+            {
+                if (animPlayer.CurrentAnimation != "Walk")                
+                    animPlayer.Play("Walk");                
+            }
+            else if (Input.IsActionPressed(leftKey) && IsOnFloor())
+            {
+                if (animPlayer.CurrentAnimation != "Walk")                
+                    animPlayer.Play("Walk");                
+            }
+            else if (Input.IsActionPressed(rightKey) && IsOnFloor())
+            {
+                if (animPlayer.CurrentAnimation != "Walk")                
+                    animPlayer.Play("Walk");                
+            }
+        }
+        if (p_Velocity.Y > 0)
+        {
+            if (animPlayer.CurrentAnimation != "Jump")            
+                animPlayer.Play("Jump");            
+        }
+        else if (p_Velocity.Y < 0)
+        {
+            if (animPlayer.CurrentAnimation != "Fall")
+                animPlayer.Play("Fall");
+        }
+        else if (!Input.IsActionPressed(walkAnim) && IsOnFloor())
+        {
+            if (animPlayer.CurrentAnimation != "Idle")
+                animPlayer.Play("Idle");
+        }
+    }
+
+    private void RotationalAdjustment()
+    {
+        Vector3 currentRotation = Rotation;
+        Tween tween = GetTree().CreateTween().SetParallel(false);
+        if (Input.IsActionPressed(forwardKey))
+        {
+            if (currentRotation.Y >= -90)
+            {
+                tween.TweenProperty(characterVisuals, "rotation", new Vector3(0, Mathf.DegToRad(-180), 0), 0.2);
+            }
+            else if (currentRotation.Y <= -450)
+            {
+                tween.TweenProperty(characterVisuals, "rotation", new Vector3(0, Mathf.DegToRad(180), 0), 0.2);
+            }            
+        }
+        if (Input.IsActionPressed(leftKey))
+        {
+            if (currentRotation.Y >= Mathf.DegToRad(-365) && currentRotation.Y <= Mathf.DegToRad(-255))
+            {
+                tween.TweenProperty(characterVisuals, "rotation", new Vector3(0, Mathf.DegToRad(-90), 0), 0.2);
+            }
+            else
+            {
+                tween.TweenProperty(characterVisuals, "rotation", new Vector3(0, Mathf.DegToRad(-450), 0), 0.2);
+            }
+        }
+        if (Input.IsActionPressed(rightKey))
+        {
+            tween.TweenProperty(characterVisuals, "rotation", new Vector3(0, Mathf.DegToRad(-270), 0), 0.2);
+        }
+        if (Input.IsActionPressed(backKey))
+        {
+            if (currentRotation.Y >= Mathf.DegToRad(-275) && currentRotation.Y <= Mathf.DegToRad(-265))
+            {
+                tween.TweenProperty(characterVisuals, "rotation", new Vector3(0, Mathf.DegToRad(0), 0), 0.2);
+            }
+            else
+            {
+                tween.TweenProperty(characterVisuals, "rotation", new Vector3(0, Mathf.DegToRad(-360), 0), 0.2);
+            }
         }
     }
 }

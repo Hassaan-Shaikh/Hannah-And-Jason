@@ -3,11 +3,25 @@ using System;
 
 public partial class MainMenu : Control
 {
-    const string gameScene = "res://Scenes/DemoLevel1.tscn";
+    public LevelLoader levelLoader;
+
+    const string gameScene = "res://Scenes/MainGame.tscn";
+    const string demoScene = "res://Scenes/DemoLevel1.tscn";
+
+    public override void _Ready()
+    {
+        base._Ready();
+        levelLoader = GetNode<LevelLoader>("LevelLoader");
+    }
 
     private void OnPlayButtonPressed()
     {
-        GetTree().ChangeSceneToFile(gameScene);
+        levelLoader.SwitchScene(gameScene);
+    }
+
+    private void OnPuzzleButtonPressed()
+    {
+        levelLoader.SwitchScene(demoScene);
     }
 
     private void OnQuitButtonPressed()

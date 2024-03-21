@@ -7,12 +7,77 @@ public partial class GameManager : Node3D
 	[Export] private int levelId;
 	[Export] Array<Node3D> affectorList;
 	[Export] Array<Node3D> affectedList;
+    [Export] Array<Area3D> tutorialTriggers;
+    [Export] string[] tips;
+    [Export] LevelLoader levelLoader;
+
+    Label tutorialTip;
+
+    const string gameScene = "res://Scenes/MainGame.tscn";
+    const string demoScene = "res://Scenes/DemoLevel1.tscn";
+
+    public override void _Ready()
+    {
+        base._Ready();
+        tutorialTip = GetNode<Label>("TutorialTips/TutorialTip");
+        foreach (Area3D tutorialTrigger in tutorialTriggers)
+        {
+            tutorialTrigger.BodyExited += OnTutorialTriggerExited;
+        }
+    }
+
+    private void OnTutorialTriggerEntered(Node3D body)
+    {
+        if (body.IsInGroup("Character"))
+        {
+            for (int i = 0; i < tutorialTriggers.Count; i++)
+            {
+                if (tutorialTriggers[i].Name.ToString().Equals(i.ToString()))
+                {
+                    tutorialTip.Text = tips[i];
+                    GD.Print(tutorialTriggers[i].Name);
+                }
+            }
+        }
+    }
+
+    void On0BodyEntered(Node3D body)
+    {
+        if (body.IsInGroup("Character"))
+        {
+            tutorialTip.Text = tips[0];
+        }
+    }
+
+    void On1BodyEntered(Node3D body)
+    {
+        if (body.IsInGroup("Character"))
+        {
+            tutorialTip.Text = tips[1];
+        }
+    }
+
+    private void OnTutorialTriggerExited(Node3D body)
+    {
+        if (body.IsInGroup("Character"))
+        {
+            tutorialTip.Text = "";
+            GD.Print("Not insde any tutorial trigger.");
+        }
+    }
 
     private void OnKillZoneBodyEntered(Node3D body)
     {
         if (body.IsInGroup("Character"))
         {
-            GetTree().ReloadCurrentScene();
+            if (levelId == 0)
+            {
+                levelLoader.SwitchScene(demoScene);
+            }
+            else if (levelId == 1)
+            {
+                levelLoader.SwitchScene(gameScene);
+            }
         }
     }
 
@@ -42,6 +107,19 @@ public partial class GameManager : Node3D
 					break;
 			}
 		}
+        else if (levelId == 1)
+        {
+            switch (affectorId)
+            {
+                case 0:
+                    Tween tween = GetTree().CreateTween();
+                    tween.TweenProperty(affectedList[0], "position", new Vector3(affectedList[0].Position.X, affectedList[0].Position.Y + 3.5f, affectedList[0].Position.Z), 2f);
+                    break;
+                default:
+                    GD.PrintErr("An invalid Affector ID may have been provided. " + affectorId.ToString());
+                    break;
+            }
+        }
     }
 
 	private void OnLeverLeverFlipped(int affectorId, bool flippedOn)
