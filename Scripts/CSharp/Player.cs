@@ -68,10 +68,10 @@ public partial class Player : CharacterBody3D
             }
         }
 
-        if (Input.IsActionJustPressed(pauseKey))
-        {
-            GetTree().Quit();
-        }
+        //if (Input.IsActionJustPressed(pauseKey))
+        //{
+        //    GetTree().Quit();
+        //}
     }
 
     public void HandleUserControl(float delta)
@@ -97,14 +97,7 @@ public partial class Player : CharacterBody3D
 
             if (direction != Vector3.Zero)
             {
-                if (Input.IsActionPressed(forwardKey) && Input.IsActionPressed(sprintKey))
-                {
-                    currentSpeed = sprintSpeed;
-                }
-                else
-                {
-                    currentSpeed = moveSpeed;
-                }
+                currentSpeed = Input.IsActionPressed(sprintKey) ? sprintSpeed : moveSpeed;
             }
         }
         else if (IsOnFloor())
@@ -114,7 +107,9 @@ public partial class Player : CharacterBody3D
 
         p_Velocity = p_Velocity.Lerp(direction * currentSpeed + p_Velocity.Y * Vector3.Up, acceleration * delta);
 
-        HandleAnimation(p_Velocity);
+        characterVisuals.LookAt(Position + direction);
+
+        HandleAnimation(p_Velocity, delta);
 
         Velocity = p_Velocity;
         MoveAndSlide();
@@ -145,10 +140,6 @@ public partial class Player : CharacterBody3D
                         RigidBody3D rigidBody3D = (RigidBody3D)detected;
                         rigidBody3D.Reparent(propHoldPoint);
                         rigidBody3D.Freeze = true;
-                        //rigidBody3D.SetCollisionMaskValue(1, false);
-                        //rigidBody3D.SetCollisionMaskValue(2, false);
-                        //rigidBody3D.SetCollisionMaskValue(3, false);
-                        //SetCollisionMaskValue(4, false);
                         break;
                     default:
                         break;
@@ -174,6 +165,7 @@ public partial class Player : CharacterBody3D
             InputEventMouseMotion mouseMotion = (InputEventMouseMotion)@event;
             Rotation = new Vector3(0, Rotation.Y - mouseMotion.Relative.X / 1000 * sensitivity, 0f);
             camHolder.Rotation = new Vector3(Mathf.Clamp(camHolder.Rotation.X - mouseMotion.Relative.Y / 1000 * sensitivity, Mathf.DegToRad((clampAngle * -1.0f)), Mathf.DegToRad(clampAngle)), 0, 0);
+            characterVisuals.RotateY(mouseMotion.Relative.X / 1000 * sensitivity);
         }
     }
 
@@ -182,16 +174,16 @@ public partial class Player : CharacterBody3D
         return (Input.IsActionPressed(forwardKey) || Input.IsActionPressed(leftKey) || Input.IsActionPressed(rightKey));
     }
 
-    private void HandleAnimation(Vector3 p_Velocity)
+    private void HandleAnimation(Vector3 p_Velocity, float delta)
     {
         animPlayer.SpeedScale = p_Velocity.Y > 0 ? 0.5f : 1;
         if (isUserControlled)
         {
-            RotationalAdjustment();
-            if (Input.IsActionPressed(forwardKey) && Input.IsActionPressed(sprintKey) && IsOnFloor())
+            RotationalAdjustment(delta);
+            if (Input.IsActionPressed(sprintKey) && Input.IsActionPressed(walkAnim) && IsOnFloor())
             {
-                if (animPlayer.CurrentAnimation != "Run")                
-                    animPlayer.Play("Run");                
+                if (animPlayer.CurrentAnimation != "Run")
+                    animPlayer.Play("Run");
             }
             else if (Input.IsActionPressed(forwardKey) && IsOnFloor())
             {
@@ -231,46 +223,8 @@ public partial class Player : CharacterBody3D
         }
     }
 
-    private void RotationalAdjustment()
+    private void RotationalAdjustment(float delta)
     {
-        Vector3 currentRotation = Rotation;
-        Tween tween = GetTree().CreateTween().SetParallel(false);
-        if (Input.IsActionPressed(forwardKey))
-        {
-            if (currentRotation.Y >= -90)
-            {
-                tween.TweenProperty(characterVisuals, "rotation", new Vector3(0, Mathf.DegToRad(-180), 0), 0.2);
-            }
-            else if (currentRotation.Y <= -450)
-            {
-                tween.TweenProperty(characterVisuals, "rotation", new Vector3(0, Mathf.DegToRad(180), 0), 0.2);
-            }            
-        }
-        if (Input.IsActionPressed(leftKey))
-        {
-            if (currentRotation.Y >= Mathf.DegToRad(-365) && currentRotation.Y <= Mathf.DegToRad(-255))
-            {
-                tween.TweenProperty(characterVisuals, "rotation", new Vector3(0, Mathf.DegToRad(-90), 0), 0.2);
-            }
-            else
-            {
-                tween.TweenProperty(characterVisuals, "rotation", new Vector3(0, Mathf.DegToRad(-450), 0), 0.2);
-            }
-        }
-        if (Input.IsActionPressed(rightKey))
-        {
-            tween.TweenProperty(characterVisuals, "rotation", new Vector3(0, Mathf.DegToRad(-270), 0), 0.2);
-        }
-        if (Input.IsActionPressed(backKey))
-        {
-            if (currentRotation.Y >= Mathf.DegToRad(-275) && currentRotation.Y <= Mathf.DegToRad(-265))
-            {
-                tween.TweenProperty(characterVisuals, "rotation", new Vector3(0, Mathf.DegToRad(0), 0), 0.2);
-            }
-            else
-            {
-                tween.TweenProperty(characterVisuals, "rotation", new Vector3(0, Mathf.DegToRad(-360), 0), 0.2);
-            }
-        }
+        Vector3 direction = Input.GetAxis(leftKey, rightKey) * Vector3.Right + Input.GetAxis(backKey, forwardKey) * Vector3.Forward;
     }
 }

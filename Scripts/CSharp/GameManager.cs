@@ -8,21 +8,68 @@ public partial class GameManager : Node3D
 	[Export] Array<Node3D> affectorList;
 	[Export] Array<Node3D> affectedList;
     [Export] Array<Area3D> tutorialTriggers;
-    [Export] string[] tips;
+    [Export] Array<Area3D> checkpointMarkers;
+    [Export] string[] tips = {
+    "Use [W][A][S][D] keys to move.",
+    "Use the mouse to look around.",
+    "Walk up to the button and press [E] when prompted to press it.",
+    "You can press [R] to restart at a saved checkpoint."
+    };
     [Export] LevelLoader levelLoader;
+    //[Export] PauseMenu pauseMenu;
 
     Label tutorialTip;
+    Hannah hannah;
+    Jason jason;
+
+    private bool isGamePaused = false;
+    private Vector3 currentCheckpoint;
 
     const string gameScene = "res://Scenes/MainGame.tscn";
     const string demoScene = "res://Scenes/DemoLevel1.tscn";
+    const string pauseKey = "pause";
+    const string restartKey = "restart";
 
     public override void _Ready()
     {
         base._Ready();
+        hannah = GetTree().GetFirstNodeInGroup("Hannah") as Hannah;
+        jason = GetTree().GetFirstNodeInGroup("Jason") as Jason;
         tutorialTip = GetNode<Label>("TutorialTips/TutorialTip");
         foreach (Area3D tutorialTrigger in tutorialTriggers)
         {
-            tutorialTrigger.BodyExited += OnTutorialTriggerExited;
+            tutorialTrigger.BodyExited += (Node3D body) => 
+            {
+                if (body.IsInGroup("Character"))
+                {
+                    tutorialTip.Text = "";
+                    GD.Print("Not insde any tutorial trigger.");
+                }
+            };
+        }
+        if (Globals.markedCheckpoint == Vector3.Zero)
+        {
+            Globals.hannahCheckpoint = hannah.GlobalPosition;
+            Globals.jasonCheckpoint = jason.GlobalPosition;
+        }
+        hannah.GlobalPosition = Globals.hannahCheckpoint;
+        jason.GlobalPosition = Globals.jasonCheckpoint;
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+
+        if (Input.IsActionJustPressed(pauseKey))
+        {
+            isGamePaused = !isGamePaused;
+            GetTree().Paused = isGamePaused;
+            //PauseGame();
+        }
+
+        if (Input.IsActionJustPressed(restartKey))
+        {
+            levelLoader.SwitchScene(gameScene);
         }
     }
 
@@ -57,6 +104,22 @@ public partial class GameManager : Node3D
         }
     }
 
+    void On2BodyEntered(Node3D body)
+    {
+        if (body.IsInGroup("Character"))
+        {
+            tutorialTip.Text = tips[2];
+        }
+    }
+
+    void On3BodyEntered(Node3D body)
+    {
+        if (body.IsInGroup("Character"))
+        {
+            tutorialTip.Text = tips[3];
+        }
+    }
+
     private void OnTutorialTriggerExited(Node3D body)
     {
         if (body.IsInGroup("Character"))
@@ -85,10 +148,10 @@ public partial class GameManager : Node3D
     {
         base._PhysicsProcess(delta);
 
-        if(Input.IsActionJustPressed("pause"))
-        {
-            GetTree().Quit(); // Replace this line with appropriate code
-        }
+        //if(Input.IsActionJustPressed("pause"))
+        //{
+        //    GetTree().Quit(); // Replace this line with appropriate code
+        //}
     }
 
     private void OnPhysicalButtonButtonPushed(int affectorId)
@@ -239,6 +302,59 @@ public partial class GameManager : Node3D
                 default:
                     GD.PrintErr("An invalid Affector ID may have been provided. " + affectorId.ToString());
                     break;
+            }
+        }
+    }
+
+    //public void PauseGame()
+    //{
+    //    //Tween tween = GetTree().CreateTween();
+    //    isGamePaused = !isGamePaused;
+
+    //    Input.MouseMode = isGamePaused ? Input.MouseModeEnum.Visible : Input.MouseModeEnum.Captured;
+
+    //    //if (isGamePaused)
+    //    //{
+    //    //    Input.MouseMode = Input.MouseModeEnum.Visible;
+    //    //    //tween.TweenProperty(pauseMenu, "modulate", new Color(1, 1, 1, 1), 1.0);
+    //    //}
+    //    //else
+    //    //{
+    //    //    Input.MouseMode = Input.MouseModeEnum.Captured;
+    //    //    //tween.TweenProperty(pauseMenu, "modulate", new Color(1, 1, 1, 0), 1.0);
+    //    //}
+
+    //    pauseMenu.FadePauseMenu(isGamePaused);
+    //    //pauseMenu.Visible = isGamePaused;
+    //    //GetTree().Paused = isGamePaused;
+    //}
+
+    void OnCheckpoint0BodyEntered(Player player)
+    {
+        if (player != null)
+        {
+            GD.Print("Entered a checkpoint");
+            if (levelId == 1) 
+            {
+                currentCheckpoint = checkpointMarkers[0].GlobalPosition;
+                Globals.markedCheckpoint = currentCheckpoint;
+                if (!player.disableSwitch)
+                {
+                    Globals.hannahCheckpoint = currentCheckpoint + Vector3.Right * 1.5f;
+                    Globals.jasonCheckpoint = currentCheckpoint + Vector3.Left * 1.5f;
+                }
+                else
+                {
+                    switch (player)
+                    {
+                        case Hannah:
+                            Globals.hannahCheckpoint = currentCheckpoint;
+                            break;
+                        case Jason:
+                            Globals.jasonCheckpoint = currentCheckpoint;
+                            break;
+                    }
+                }
             }
         }
     }

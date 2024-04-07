@@ -7,24 +7,16 @@
       "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\leverconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\leverconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\lever.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\lever.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\timedbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\timedbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\pausemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\pausemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\jason.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,16 +27,32 @@
       "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\hannah.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\physicalbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\physicalbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\timedbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\timedbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\pressureplateconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\pressureplateconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\pressureplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\pressureplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\pressureplateconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\pressureplateconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\physicalbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\physicalbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\leverconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\leverconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\lever.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\lever.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\affectorinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,11 +66,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Globals.cs",
+              "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Globals.cs",
+              "RelativeDocumentMoniker": "Scripts\\CSharp\\Globals.cs",
+              "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Globals.cs",
+              "RelativeToolTip": "Scripts\\CSharp\\Globals.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T17:07:52.195Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PauseMenu.cs",
+              "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\PauseMenu.cs",
+              "RelativeDocumentMoniker": "Scripts\\CSharp\\PauseMenu.cs",
+              "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\PauseMenu.cs",
+              "RelativeToolTip": "Scripts\\CSharp\\PauseMenu.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T12:29:48.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Player.cs",
+              "RelativeDocumentMoniker": "Scripts\\CSharp\\Player.cs",
+              "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Player.cs",
+              "RelativeToolTip": "Scripts\\CSharp\\Player.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAawE4AAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-27T14:02:22.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Hannah.cs",
+              "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Hannah.cs",
+              "RelativeDocumentMoniker": "Scripts\\CSharp\\Hannah.cs",
+              "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Hannah.cs",
+              "RelativeToolTip": "Scripts\\CSharp\\Hannah.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-28T10:38:10.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Jason.cs",
+              "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Jason.cs",
+              "RelativeDocumentMoniker": "Scripts\\CSharp\\Jason.cs",
+              "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Jason.cs",
+              "RelativeToolTip": "Scripts\\CSharp\\Jason.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAwA4AAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-29T04:55:16.144Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -72,84 +145,45 @@
               "RelativeDocumentMoniker": "Scripts\\CSharp\\PressurePlate.cs",
               "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\PressurePlate.cs",
               "RelativeToolTip": "Scripts\\CSharp\\PressurePlate.cs",
-              "ViewState": "AQIAAFsAAAAAAAAAAAAUwDwAAAA4AAAA",
+              "ViewState": "AQIAAGEAAAAAAAAAAAAYwHkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-01-09T10:43:29.723Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 12,
               "Title": "Lever.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Lever.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\Lever.cs",
               "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Lever.cs",
               "RelativeToolTip": "Scripts\\CSharp\\Lever.cs",
-              "ViewState": "AQIAACgAAAAAAAAAAAAQwDEAAABNAAAA",
+              "ViewState": "AQIAAGcAAAAAAAAAAAAQwH4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-04T09:49:44.608Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-01-04T09:49:44.608Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "TimedButton.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\TimedButton.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\TimedButton.cs",
               "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\TimedButton.cs",
               "RelativeToolTip": "Scripts\\CSharp\\TimedButton.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAQwC8AAABTAAAA",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAQwGwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-02T04:40:45.512Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-01-02T04:40:45.512Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "PhysicalButton.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\PhysicalButton.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\PhysicalButton.cs",
               "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\PhysicalButton.cs",
               "RelativeToolTip": "Scripts\\CSharp\\PhysicalButton.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAYwCsAAABTAAAA",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAQwF8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2023-12-29T05:40:32.791Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Player.cs",
-              "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Player.cs",
-              "RelativeDocumentMoniker": "Scripts\\CSharp\\Player.cs",
-              "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Player.cs",
-              "RelativeToolTip": "Scripts\\CSharp\\Player.cs",
-              "ViewState": "AQIAADIAAAAAAAAAAAAAwEYAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-12-27T14:02:22.976Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Hannah.cs",
-              "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Hannah.cs",
-              "RelativeDocumentMoniker": "Scripts\\CSharp\\Hannah.cs",
-              "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Hannah.cs",
-              "RelativeToolTip": "Scripts\\CSharp\\Hannah.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-12-28T10:38:10.609Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Jason.cs",
-              "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Jason.cs",
-              "RelativeDocumentMoniker": "Scripts\\CSharp\\Jason.cs",
-              "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Jason.cs",
-              "RelativeToolTip": "Scripts\\CSharp\\Jason.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-12-29T04:55:16.144Z"
             },
             {
               "$type": "Document",
@@ -159,39 +193,39 @@
               "RelativeDocumentMoniker": "Scripts\\CSharp\\GameManager.cs",
               "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\GameManager.cs",
               "RelativeToolTip": "Scripts\\CSharp\\GameManager.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA6AAAA",
+              "ViewState": "AQIAAEIBAAAAAAAAAAAuwE0BAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-01-19T05:57:46.591Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "MainMenu.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\MainMenu.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\MainMenu.cs",
               "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\MainMenu.cs",
               "RelativeToolTip": "Scripts\\CSharp\\MainMenu.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA6AAAA",
+              "ViewState": "AQIAACYAAAAAAAAAAAAgwDAAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-03T15:53:19.492Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 8,
               "Title": "PressurePlateConfig.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\PressurePlateConfig.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\PressurePlateConfig.cs",
               "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\PressurePlateConfig.cs",
               "RelativeToolTip": "Scripts\\CSharp\\PressurePlateConfig.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAMAAAA",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAAC0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-01-14T14:28:33.118Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "AffectorInstance.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\AffectorInstance.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\AffectorInstance.cs",
@@ -203,16 +237,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 11,
               "Title": "LeverConfiguration.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\LeverConfiguration.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\LeverConfiguration.cs",
               "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\LeverConfiguration.cs",
               "RelativeToolTip": "Scripts\\CSharp\\LeverConfiguration.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAdAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-14T15:11:12.79Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-01-14T15:11:12.79Z"
             }
           ]
         },

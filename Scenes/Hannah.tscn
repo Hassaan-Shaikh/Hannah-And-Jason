@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b88u2mk643itp"]
+[gd_scene load_steps=8 format=3 uid="uid://b88u2mk643itp"]
 
 [ext_resource type="Script" path="res://Scripts/CSharp/Hannah.cs" id="1_qgewe"]
 [ext_resource type="PackedScene" uid="uid://61l1ps4ois7w" path="res://Scenes/Hannah_mesh.tscn" id="2_jmhej"]
@@ -20,9 +20,13 @@ rings = 4
 [sub_resource type="BoxMesh" id="BoxMesh_ppuba"]
 size = Vector3(0.1, 0.3, 0.2)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_g4wvp"]
+radius = 0.07
+
 [node name="Hannah" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "propHoldPoint", "camSpring", "camera", "rayCast", "animPlayer", "characterVisuals") groups=["Character", "Hannah"]]
+process_mode = 1
 collision_layer = 2
-collision_mask = 109
+collision_mask = 237
 script = ExtResource("1_qgewe")
 moveSpeed = 2.4
 sprintSpeed = 4.8
@@ -63,7 +67,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 [node name="SpringArm3D" type="SpringArm3D" parent="CamHolder"]
 transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0.4, 0, 0)
 collision_mask = 13
-margin = 0.2
+shape = SubResource("SphereShape3D_g4wvp")
 
 [node name="HannahCam" type="Camera3D" parent="CamHolder/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 7.45058e-09, 0, -7.45058e-09, 1, 0, 0, 0)
@@ -103,14 +107,13 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="HannahVisuals" parent="." instance=ExtResource("2_jmhej")]
-transform = Transform3D(-0.55, 0, -8.30477e-08, 0, 0.55, 0, 8.30477e-08, 0, -0.55, 0, 0, 0)
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
 
 [node name="Skeleton3D" parent="HannahVisuals/Hannah" index="0"]
 bones/9/rotation = Quaternion(0.384802, 0.069136, 0.0382873, 0.91961)
 bones/10/rotation = Quaternion(0.0153862, -0.0092342, 0.237663, 0.971182)
 bones/28/rotation = Quaternion(0.384803, -0.0691367, -0.0382877, 0.919609)
 bones/29/rotation = Quaternion(0.015385, 0.00923418, -0.237663, 0.971182)
-bones/46/rotation = Quaternion(-0.0019017, -0.0563657, 0.997845, -0.0335275)
 bones/47/rotation = Quaternion(-0.00267096, 0.000342832, -6.9176e-05, 0.999996)
 bones/48/rotation = Quaternion(0.495076, -0.0149602, -0.0299079, 0.868206)
 bones/50/rotation = Quaternion(-0.00541769, -0.0550491, 0.997932, 0.0327363)

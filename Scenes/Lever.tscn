@@ -108,6 +108,7 @@ _data = {
 }
 
 [node name="Lever" type="AnimatableBody3D" node_paths=PackedStringArray("conflictingLevers", "leverPivot", "leverAnim")]
+process_mode = 1
 script = ExtResource("1_5afa2")
 conflictingLevers = []
 leverPivot = NodePath("LeverBaseMesh/LeverPivot")

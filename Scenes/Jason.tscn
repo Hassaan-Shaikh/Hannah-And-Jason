@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccy1jdl8xb4xo"]
+[gd_scene load_steps=9 format=3 uid="uid://ccy1jdl8xb4xo"]
 
 [ext_resource type="Script" path="res://Scripts/CSharp/Jason.cs" id="1_4gex0"]
 [ext_resource type="PackedScene" uid="uid://64aqdwfq1luc" path="res://Scenes/Jason_mesh.tscn" id="2_01n3s"]
@@ -20,9 +20,13 @@ albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
 material = SubResource("StandardMaterial3D_fowyt")
 size = Vector3(0.7, 0.15, 0.2)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ennj3"]
+radius = 0.07
+
 [node name="Jason" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "propHoldPoint", "camSpring", "camera", "rayCast", "animPlayer", "characterVisuals") groups=["Character", "Jason"]]
+process_mode = 1
 collision_layer = 4
-collision_mask = 107
+collision_mask = 235
 script = ExtResource("1_4gex0")
 moveSpeed = 3.7
 sprintSpeed = 5.6
@@ -63,8 +67,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51192, 0)
 [node name="SpringArm3D" type="SpringArm3D" parent="CamHolder"]
 transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0.636, 0, 0)
 collision_mask = 13
+shape = SubResource("SphereShape3D_ennj3")
 spring_length = 1.6
-margin = 0.2
 
 [node name="JasonCam" type="Camera3D" parent="CamHolder/SpringArm3D"]
 near = 0.001
@@ -102,6 +106,5 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="JasonVisuals" parent="." instance=ExtResource("2_01n3s")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [editable path="JasonVisuals"]
