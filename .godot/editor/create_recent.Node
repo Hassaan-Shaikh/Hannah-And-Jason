@@ -1,4 +1,10 @@
+CSGBox3D
+AnimationPlayer
+TextureProgressBar
+Sprite3D
+MeshInstance3D
 CollisionShape3D
+StaticBody3D
 Area3D
 Node3D
 CheckBox
@@ -7,8 +13,3 @@ OptionButton
 MarginContainer
 Label
 HBoxContainer
-VBoxContainer
-PanelContainer
-Camera3D
-WorldEnvironment
-MeshInstance3D

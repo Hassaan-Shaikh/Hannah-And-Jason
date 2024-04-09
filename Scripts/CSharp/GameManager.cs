@@ -10,20 +10,25 @@ public partial class GameManager : Node3D
     [Export] Array<Area3D> tutorialTriggers;
     [Export] Array<Area3D> checkpointMarkers;
     [Export] string[] tips = {
-    "Use [W][A][S][D] keys to move.",
-    "Use the mouse to look around.",
-    "Walk up to the button and press [E] when prompted to press it.",
-    "You can press [R] to restart at a saved checkpoint."
+        "Use [W][A][S][D] keys to move.",
+        "Use the mouse to look around and [SHIFT] to run.",
+        "Walk up to the button and press [E] when prompted to press it.",
+        "You can press [R] to restart at a saved checkpoint.",
+        "Timed Buttons will deactivate after a while.",
+        "Press [TAB] to switch between Hannah and Jason.",
+        "Hannah can get through small spaces and Jason can reach high places."
     };
     [Export] LevelLoader levelLoader;
     //[Export] PauseMenu pauseMenu;
 
     Label tutorialTip;
+    AnimationPlayer checkpointAnim;
     Hannah hannah;
     Jason jason;
 
     private bool isGamePaused = false;
     private Vector3 currentCheckpoint;
+    private bool[] hasCheckpointReached;
 
     const string gameScene = "res://Scenes/MainGame.tscn";
     const string demoScene = "res://Scenes/DemoLevel1.tscn";
@@ -35,7 +40,8 @@ public partial class GameManager : Node3D
         base._Ready();
         hannah = GetTree().GetFirstNodeInGroup("Hannah") as Hannah;
         jason = GetTree().GetFirstNodeInGroup("Jason") as Jason;
-        tutorialTip = GetNode<Label>("TutorialTips/TutorialTip");
+        tutorialTip = GetNode<Label>("GameUI/TutorialTip");
+        checkpointAnim = GetNode<AnimationPlayer>("GameUI/CheckpointAnim");
         foreach (Area3D tutorialTrigger in tutorialTriggers)
         {
             tutorialTrigger.BodyExited += (Node3D body) => 
@@ -47,13 +53,19 @@ public partial class GameManager : Node3D
                 }
             };
         }
+        for (int i = 0; i < GetTree().GetNodesInGroup("Checkpoints").Count; i++)
+        {
+            checkpointMarkers[i] = GetTree().GetNodesInGroup("Checkpoints")[i] as Area3D;
+        }
         if (Globals.markedCheckpoint == Vector3.Zero)
         {
             Globals.hannahCheckpoint = hannah.GlobalPosition;
             Globals.jasonCheckpoint = jason.GlobalPosition;
         }
+        hasCheckpointReached = new bool[checkpointMarkers.Count];
         hannah.GlobalPosition = Globals.hannahCheckpoint;
         jason.GlobalPosition = Globals.jasonCheckpoint;
+        Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
     public override void _Process(double delta)
@@ -117,6 +129,30 @@ public partial class GameManager : Node3D
         if (body.IsInGroup("Character"))
         {
             tutorialTip.Text = tips[3];
+        }
+    }
+
+    void On4BodyEntered(Node3D body)
+    {
+        if (body.IsInGroup("Character"))
+        {
+            tutorialTip.Text = tips[4];
+        }
+    }
+
+    void On5BodyEntered(Node3D body)
+    {
+        if (body.IsInGroup("Character"))
+        {
+            tutorialTip.Text = tips[5];
+        }
+    }
+
+    void On6BodyEntered(Node3D body)
+    {
+        if (body.IsInGroup("Character"))
+        {
+            tutorialTip.Text = tips[6];
         }
     }
 
@@ -207,6 +243,23 @@ public partial class GameManager : Node3D
                     break;
             }
         }
+        else if (levelId == 1)
+        {
+            switch (affectorId)
+            {
+                case 2:
+                    Tween tween = GetTree().CreateTween();
+                    if (flippedOn) 
+                    {
+                        tween.TweenProperty(affectedList[3], "position", Vector3.Up * 2.5f, 0.5);
+                    }
+                    else
+                    {
+                        tween.TweenProperty(affectedList[3], "position", Vector3.Up * -2.5f, 0.5);
+                    }
+                    break;
+            }
+        }
     }
 
 	private void OnLever2LeverFlipped(int affectorId, bool flippedOn)
@@ -256,6 +309,19 @@ public partial class GameManager : Node3D
                     break;
             }
         }
+        else if (levelId == 1)
+        {
+            switch(affectorId)
+            {
+                case 3:
+                    Tween tween = GetTree().CreateTween();
+                    if (pushed)
+                        tween.TweenProperty(affectedList[2], "position", Vector3.Up * 2.5f, 0.5);
+                    else
+                        tween.TweenProperty(affectedList[2], "position", Vector3.Up * -2.5f, 0.5);
+                    break;
+            }
+        }
     }
 
     private void OnTimedButtonButtonPushed(int affectorId, bool pushed)
@@ -277,6 +343,23 @@ public partial class GameManager : Node3D
                     break;
                 default:
                     GD.PrintErr("An invalid Affector ID may have been provided. " + affectorId.ToString());
+                    break;
+            }
+        }
+        else if (levelId == 1)
+        {
+            switch (affectorId)
+            {
+                case 1:
+                    Tween tween = GetTree().CreateTween();
+                    if (pushed)
+                    {
+                        tween.TweenProperty(affectedList[1], "position", new Vector3(affectedList[1].GlobalPosition.X - 9, affectedList[1].GlobalPosition.Y, affectedList[1].GlobalPosition.Z), 0.5);
+                    }
+                    else
+                    {
+                        tween.TweenProperty(affectedList[1], "position", new Vector3(affectedList[1].GlobalPosition.X + 9, affectedList[1].GlobalPosition.Y, affectedList[1].GlobalPosition.Z), 0.5);
+                    }
                     break;
             }
         }
@@ -334,9 +417,45 @@ public partial class GameManager : Node3D
         if (player != null)
         {
             GD.Print("Entered a checkpoint");
+            checkpointAnim.Play("CheckpointReached");
+            checkpointMarkers[0].GetNode<CollisionShape3D>("CollisionShape3D").Disabled = true;
             if (levelId == 1) 
             {
                 currentCheckpoint = checkpointMarkers[0].GlobalPosition;
+                Globals.markedCheckpoint = currentCheckpoint;
+                if (!player.disableSwitch)
+                {
+                    Globals.hannahCheckpoint = currentCheckpoint + Vector3.Right * 1.5f;
+                    Globals.jasonCheckpoint = currentCheckpoint + Vector3.Left * 1.5f;
+                }
+                else
+                {
+                    switch (player)
+                    {
+                        case Hannah:
+                            Globals.hannahCheckpoint = currentCheckpoint;
+                            break;
+                        case Jason:
+                            Globals.jasonCheckpoint = currentCheckpoint;
+                            break;
+                    }
+                }
+            }
+        }
+    }
+
+    void OnCheckpoint1BodyEntered(Player player)
+    {
+        if (player != null)
+        {
+            GD.Print("Entered a checkpoint");
+            checkpointAnim.Play("CheckpointReached");
+            hannah.disableSwitch = false;
+            jason.disableSwitch = false;
+            checkpointMarkers[1].GetNode<CollisionShape3D>("CollisionShape3D").Disabled = true;
+            if (levelId == 1)
+            {
+                currentCheckpoint = checkpointMarkers[1].GlobalPosition;
                 Globals.markedCheckpoint = currentCheckpoint;
                 if (!player.disableSwitch)
                 {

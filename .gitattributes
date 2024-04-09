@@ -1,3 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 Models/HJ_House.glb filter=lfs diff=lfs merge=lfs -text
+Scenes/MainGame.tscn filter=lfs diff=lfs merge=lfs -text

@@ -53,7 +53,7 @@ public partial class Player : CharacterBody3D
     {
         base._Ready();
 
-        Input.MouseMode = Input.MouseModeEnum.Captured;
+        //Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
     public override void _PhysicsProcess(double delta)

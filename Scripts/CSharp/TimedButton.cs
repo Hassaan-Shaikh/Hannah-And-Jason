@@ -11,6 +11,7 @@ public partial class TimedButton : AnimatableBody3D
     [Export] public AnimationPlayer buttonAnim;
     [Export] public Timer buttonTimer;
     [Export] public Label3D promptLabel;
+    [Export] public TextureProgressBar timeRemaining;
     [Export] public Hannah hannah;
     [Export] public Jason jason;
 
@@ -27,11 +28,21 @@ public partial class TimedButton : AnimatableBody3D
         buttonAnim = GetNode<AnimationPlayer>("ButtonAnim");
         buttonTimer = GetNode<Timer>("ButtonTimer");
         promptLabel = GetNode<Label3D>("PromptLabel");
+        timeRemaining = GetNode<TextureProgressBar>("TimeRemaining");
+        timeRemaining.MaxValue = timeLimit;
         hannah = GetTree().GetFirstNodeInGroup("Hannah") as Hannah;
         jason = GetTree().GetFirstNodeInGroup("Jason") as Jason;
 
         promptLabel.GlobalPosition = GlobalPosition - Vector3.Down * -0.25f;
         buttonTimer.WaitTime = timeLimit;
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        timeRemaining.GlobalPosition = GetViewport().GetCamera3D().UnprojectPosition(GlobalPosition);
+        timeRemaining.Visible = (GetViewport().GetCamera3D().IsPositionInFrustum(GlobalPosition) && canInteract) || (GetViewport().GetCamera3D().IsPositionInFrustum(GlobalPosition) && buttonTimer.TimeLeft > 0);
+        timeRemaining.Value = buttonTimer.TimeLeft;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -74,6 +85,7 @@ public partial class TimedButton : AnimatableBody3D
                 isPushed = true;
                 EmitSignal(SignalName.ButtonPushed, affectorId, isPushed);
                 buttonTimer.Start();
+                timeRemaining.Value = timeLimit;
                 //GD.Print("The timed button has been pushed.");
             }
         }

@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://ugx7pm700e1s"]
+[gd_scene load_steps=13 format=3 uid="uid://ugx7pm700e1s"]
 
 [ext_resource type="Script" path="res://Scripts/CSharp/TimedButton.cs" id="1_d3tbp"]
+[ext_resource type="Texture2D" uid="uid://cedn7hx18vhlv" path="res://Resources/Graphics/TimedButtonProgress.png" id="2_op7qv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_isw06"]
 size = Vector3(0.507935, 0.19928, 0.501709)
@@ -77,7 +78,7 @@ _data = {
 "Unpush": SubResource("Animation_vgf1y")
 }
 
-[node name="TimedButton" type="AnimatableBody3D" node_paths=PackedStringArray("buttonAnim", "buttonTimer")]
+[node name="TimedButton" type="AnimatableBody3D" node_paths=PackedStringArray("buttonAnim", "buttonTimer", "promptLabel", "timeRemaining")]
 process_mode = 1
 collision_layer = 16
 collision_mask = 15
@@ -85,6 +86,8 @@ script = ExtResource("1_d3tbp")
 timeLimit = 3.0
 buttonAnim = NodePath("ButtonAnim")
 buttonTimer = NodePath("ButtonTimer")
+promptLabel = NodePath("PromptLabel")
+timeRemaining = NodePath("TimeRemaining")
 
 [node name="ButtonCol" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.10352e-05, -0.00149536, 0.000854492)
@@ -127,6 +130,14 @@ no_depth_test = true
 text = "Press 'E' to Interact"
 font_size = 16
 outline_size = 6
+
+[node name="TimeRemaining" type="TextureProgressBar" parent="."]
+offset_right = 64.0
+offset_bottom = 64.0
+max_value = 3.0
+step = 0.1
+fill_mode = 4
+texture_progress = ExtResource("2_op7qv")
 
 [connection signal="body_entered" from="TimedInteractionZone" to="." method="OnTimedInteractionZoneBodyEntered"]
 [connection signal="body_exited" from="TimedInteractionZone" to="." method="OnTimedInteractionZoneBodyExited"]

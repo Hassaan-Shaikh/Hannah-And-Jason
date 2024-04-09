@@ -69,14 +69,14 @@ size = Vector3(3, 0.2, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jgm0j"]
 size = Vector3(3, 0.2, 3)
 
-[sub_resource type="Resource" id="Resource_l5vx0"]
+[sub_resource type="Resource" id="Resource_jxy31"]
 resource_local_to_scene = true
 resource_name = "Light Pressure Plate"
 script = ExtResource("9_ejscp")
 plateType = 0
 weightThreshold = 0.0
 
-[sub_resource type="Resource" id="Resource_y4lhc"]
+[sub_resource type="Resource" id="Resource_8ttgi"]
 resource_local_to_scene = true
 resource_name = "Light Pressure Plate"
 script = ExtResource("9_ejscp")
@@ -348,12 +348,12 @@ conflictingLevers = [NodePath("../Lever")]
 [node name="PressurePlate" parent="PuzzleElements/PressurePlates" instance=ExtResource("7_c3nts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0.05, -4)
 affectorId = 3
-plateConfiguration = SubResource("Resource_l5vx0")
+plateConfiguration = SubResource("Resource_jxy31")
 
 [node name="PressurePlate2" parent="PuzzleElements/PressurePlates" instance=ExtResource("7_c3nts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.5, 0.05, -4.5)
 affectorId = 5
-plateConfiguration = SubResource("Resource_y4lhc")
+plateConfiguration = SubResource("Resource_8ttgi")
 
 [node name="LevelLoader" parent="." instance=ExtResource("10_fxp5i")]
 

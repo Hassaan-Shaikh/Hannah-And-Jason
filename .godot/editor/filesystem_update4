@@ -1,3 +1,4 @@
+res://Resources/Occluder Resources/MainGame.occ
 res://Scenes/MainGame.tscn
 res://Scripts/CSharp/Hannah.cs
 res://Resources/NavigationMesh Resources/HannahNavMesh.tres
@@ -7,27 +8,3 @@ res://Scripts/CSharp/PhysicalButton.cs
 res://Scripts/CSharp/TimedButton.cs
 res://Scripts/CSharp/PressurePlate.cs
 res://Scripts/CSharp/PressurePlateConfig.cs
-res://Scenes/Hannah.tscn
-res://Scenes/TestingGround.tscn
-res://Scenes/Jason.tscn
-res://Scenes/PhysicalButton.tscn
-res://Scenes/TimedButton.tscn
-res://Scenes/Lever.tscn
-res://Scenes/PressurePlate.tscn
-res://Scenes/DemoLevel1.tscn
-res://Scenes/MainMenu.tscn
-res://Scenes/Hannah_mesh.tscn
-res://Scenes/Jason_mesh.tscn
-res://Scenes/LevelLoader.tscn
-res://Scenes/House.tscn
-res://Scenes/HannahMenu.tscn
-res://Scenes/JasonMenu.tscn
-res://Scripts/CSharp/AffectorInstance.cs
-res://Scripts/CSharp/ConfirmQuit.cs
-res://Scripts/CSharp/GameManager.cs
-res://Scripts/CSharp/LevelLoader.cs
-res://Scripts/CSharp/Lever.cs
-res://Scripts/CSharp/LeverConfiguration.cs
-res://Scripts/CSharp/MainMenu.cs
-res://Scripts/CSharp/PauseMenu.cs
-res://Scripts/CSharp/Player.cs
