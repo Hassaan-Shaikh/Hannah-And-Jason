@@ -25,10 +25,6 @@ stream_5/stream = ExtResource("7_66l7t")
 stream_5/weight = 1.0
 
 [node name="JasonVisuals" instance=ExtResource("1_81rcg")]
-process_mode = 1
-
-[node name="Jason" parent="." index="0"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Jason" index="0"]
 bones/0/position = Vector3(-0.00516643, 0.931558, 0.0443235)

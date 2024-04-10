@@ -19,7 +19,6 @@ public partial class GameManager : Node3D
         "Hannah can get through small spaces and Jason can reach high places."
     };
     [Export] LevelLoader levelLoader;
-    //[Export] PauseMenu pauseMenu;
 
     Label tutorialTip;
     AnimationPlayer checkpointAnim;
@@ -28,12 +27,11 @@ public partial class GameManager : Node3D
 
     private bool isGamePaused = false;
     private Vector3 currentCheckpoint;
-    private bool[] hasCheckpointReached;
 
     const string gameScene = "res://Scenes/MainGame.tscn";
     const string demoScene = "res://Scenes/DemoLevel1.tscn";
-    const string pauseKey = "pause";
-    const string restartKey = "restart";
+    const string pauseKey = "";
+    const string restartKey = "";
 
     public override void _Ready()
     {
@@ -62,7 +60,6 @@ public partial class GameManager : Node3D
             Globals.hannahCheckpoint = hannah.GlobalPosition;
             Globals.jasonCheckpoint = jason.GlobalPosition;
         }
-        hasCheckpointReached = new bool[checkpointMarkers.Count];
         hannah.GlobalPosition = Globals.hannahCheckpoint;
         jason.GlobalPosition = Globals.jasonCheckpoint;
         Input.MouseMode = Input.MouseModeEnum.Captured;
@@ -82,112 +79,117 @@ public partial class GameManager : Node3D
         if (Input.IsActionJustPressed(restartKey))
         {
             levelLoader.SwitchScene(gameScene);
+            tutorialTip = GetNode<Label>("TutorialTips/TutorialTip");
+            foreach (Area3D tutorialTrigger in tutorialTriggers)
+            {
+                tutorialTrigger.BodyExited += OnTutorialTriggerExited;
+            }
         }
     }
 
-    private void OnTutorialTriggerEntered(Node3D body)
-    {
-        if (body.IsInGroup("Character"))
+        private void OnTutorialTriggerEntered(Node3D body)
         {
-            for (int i = 0; i < tutorialTriggers.Count; i++)
+            if (body.IsInGroup("Character"))
             {
-                if (tutorialTriggers[i].Name.ToString().Equals(i.ToString()))
+                for (int i = 0; i < tutorialTriggers.Count; i++)
                 {
-                    tutorialTip.Text = tips[i];
-                    GD.Print(tutorialTriggers[i].Name);
+                    if (tutorialTriggers[i].Name.ToString().Equals(i.ToString()))
+                    {
+                        tutorialTip.Text = tips[i];
+                        GD.Print(tutorialTriggers[i].Name);
+                    }
                 }
             }
         }
-    }
 
-    void On0BodyEntered(Node3D body)
-    {
-        if (body.IsInGroup("Character"))
+        void On0BodyEntered(Node3D body)
         {
-            tutorialTip.Text = tips[0];
-        }
-    }
-
-    void On1BodyEntered(Node3D body)
-    {
-        if (body.IsInGroup("Character"))
-        {
-            tutorialTip.Text = tips[1];
-        }
-    }
-
-    void On2BodyEntered(Node3D body)
-    {
-        if (body.IsInGroup("Character"))
-        {
-            tutorialTip.Text = tips[2];
-        }
-    }
-
-    void On3BodyEntered(Node3D body)
-    {
-        if (body.IsInGroup("Character"))
-        {
-            tutorialTip.Text = tips[3];
-        }
-    }
-
-    void On4BodyEntered(Node3D body)
-    {
-        if (body.IsInGroup("Character"))
-        {
-            tutorialTip.Text = tips[4];
-        }
-    }
-
-    void On5BodyEntered(Node3D body)
-    {
-        if (body.IsInGroup("Character"))
-        {
-            tutorialTip.Text = tips[5];
-        }
-    }
-
-    void On6BodyEntered(Node3D body)
-    {
-        if (body.IsInGroup("Character"))
-        {
-            tutorialTip.Text = tips[6];
-        }
-    }
-
-    private void OnTutorialTriggerExited(Node3D body)
-    {
-        if (body.IsInGroup("Character"))
-        {
-            tutorialTip.Text = "";
-            GD.Print("Not insde any tutorial trigger.");
-        }
-    }
-
-    private void OnKillZoneBodyEntered(Node3D body)
-    {
-        if (body.IsInGroup("Character"))
-        {
-            if (levelId == 0)
+            if (body.IsInGroup("Character"))
             {
-                levelLoader.SwitchScene(demoScene);
-            }
-            else if (levelId == 1)
-            {
-                levelLoader.SwitchScene(gameScene);
+                tutorialTip.Text = tips[0];
             }
         }
-    }
+
+        void On1BodyEntered(Node3D body)
+        {
+            if (body.IsInGroup("Character"))
+            {
+                tutorialTip.Text = tips[1];
+            }
+        }
+
+        void On2BodyEntered(Node3D body)
+        {
+            if (body.IsInGroup("Character"))
+            {
+                tutorialTip.Text = tips[2];
+            }
+        }
+
+        void On3BodyEntered(Node3D body)
+        {
+            if (body.IsInGroup("Character"))
+            {
+                tutorialTip.Text = tips[3];
+            }
+        }
+
+        void On4BodyEntered(Node3D body)
+        {
+            if (body.IsInGroup("Character"))
+            {
+                tutorialTip.Text = tips[4];
+            }
+        }
+
+        void On5BodyEntered(Node3D body)
+        {
+            if (body.IsInGroup("Character"))
+            {
+                tutorialTip.Text = tips[5];
+            }
+        }
+
+        void On6BodyEntered(Node3D body)
+        {
+            if (body.IsInGroup("Character"))
+            {
+                tutorialTip.Text = tips[6];
+            }
+        }
+
+        private void OnTutorialTriggerExited(Node3D body)
+        {
+            if (body.IsInGroup("Character"))
+            {
+                tutorialTip.Text = "";
+                GD.Print("Not insde any tutorial trigger.");
+            }
+        }
+
+        private void OnKillZoneBodyEntered(Node3D body)
+        {
+            if (body.IsInGroup("Character"))
+            {
+                if (levelId == 0)
+                {
+                    levelLoader.SwitchScene(demoScene);
+                }
+                else if (levelId == 1)
+                {
+                    levelLoader.SwitchScene(gameScene);
+                }
+            }
+        } 
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
 
-        //if(Input.IsActionJustPressed("pause"))
-        //{
-        //    GetTree().Quit(); // Replace this line with appropriate code
-        //}
+        if(Input.IsActionJustPressed("pause"))
+        {
+            GetTree().Quit(); // Replace this line with appropriate code
+        }
     }
 
     private void OnPhysicalButtonButtonPushed(int affectorId)
@@ -388,29 +390,6 @@ public partial class GameManager : Node3D
             }
         }
     }
-
-    //public void PauseGame()
-    //{
-    //    //Tween tween = GetTree().CreateTween();
-    //    isGamePaused = !isGamePaused;
-
-    //    Input.MouseMode = isGamePaused ? Input.MouseModeEnum.Visible : Input.MouseModeEnum.Captured;
-
-    //    //if (isGamePaused)
-    //    //{
-    //    //    Input.MouseMode = Input.MouseModeEnum.Visible;
-    //    //    //tween.TweenProperty(pauseMenu, "modulate", new Color(1, 1, 1, 1), 1.0);
-    //    //}
-    //    //else
-    //    //{
-    //    //    Input.MouseMode = Input.MouseModeEnum.Captured;
-    //    //    //tween.TweenProperty(pauseMenu, "modulate", new Color(1, 1, 1, 0), 1.0);
-    //    //}
-
-    //    pauseMenu.FadePauseMenu(isGamePaused);
-    //    //pauseMenu.Visible = isGamePaused;
-    //    //GetTree().Paused = isGamePaused;
-    //}
 
     void OnCheckpoint0BodyEntered(Player player)
     {

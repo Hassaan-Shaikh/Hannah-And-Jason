@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccy1jdl8xb4xo"]
+[gd_scene load_steps=4 format=3 uid="uid://ccy1jdl8xb4xo"]
 
 [ext_resource type="Script" path="res://Scripts/CSharp/Jason.cs" id="1_4gex0"]
 [ext_resource type="PackedScene" uid="uid://64aqdwfq1luc" path="res://Scenes/Jason_mesh.tscn" id="2_01n3s"]
@@ -7,26 +7,9 @@
 radius = 0.25
 height = 1.9
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1v1b4"]
-albedo_color = Color(0, 0.501961, 1, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_46kry"]
-material = SubResource("StandardMaterial3D_1v1b4")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fowyt"]
-albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8fpxv"]
-material = SubResource("StandardMaterial3D_fowyt")
-size = Vector3(0.7, 0.15, 0.2)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_ennj3"]
-radius = 0.07
-
 [node name="Jason" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "propHoldPoint", "camSpring", "camera", "rayCast", "animPlayer", "characterVisuals") groups=["Character", "Jason"]]
-process_mode = 1
 collision_layer = 4
-collision_mask = 235
+collision_mask = 107
 script = ExtResource("1_4gex0")
 moveSpeed = 3.7
 sprintSpeed = 5.6
@@ -46,29 +29,14 @@ characterVisuals = NodePath("JasonVisuals")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
 shape = SubResource("CapsuleShape3D_saxm8")
 
-[node name="JNavAgent" type="NavigationAgent3D" parent="."]
-path_height_offset = 0.5
-navigation_layers = 2
-debug_path_custom_color = Color(0, 0.447059, 0.447059, 1)
-
-[node name="JTempMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_46kry")
-
-[node name="JTempMesh2" type="MeshInstance3D" parent="JTempMesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0.523301, -0.427097)
-mesh = SubResource("BoxMesh_8fpxv")
-skeleton = NodePath("../..")
-
 [node name="CamHolder" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51192, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CamHolder"]
 transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0.636, 0, 0)
 collision_mask = 13
-shape = SubResource("SphereShape3D_ennj3")
 spring_length = 1.6
+margin = 0.2
 
 [node name="JasonCam" type="Camera3D" parent="CamHolder/SpringArm3D"]
 near = 0.001
@@ -80,31 +48,7 @@ collision_mask = 27
 [node name="PropHoldPoint" type="Node3D" parent="CamHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634823, -0.149313, -1.64861)
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="ColorRect" type="ColorRect" parent="UI"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
 [node name="JasonVisuals" parent="." instance=ExtResource("2_01n3s")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [editable path="JasonVisuals"]

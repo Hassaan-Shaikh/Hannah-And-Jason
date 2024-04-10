@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b88u2mk643itp"]
+[gd_scene load_steps=4 format=3 uid="uid://b88u2mk643itp"]
 
 [ext_resource type="Script" path="res://Scripts/CSharp/Hannah.cs" id="1_qgewe"]
 [ext_resource type="PackedScene" uid="uid://61l1ps4ois7w" path="res://Scenes/Hannah_mesh.tscn" id="2_jmhej"]
@@ -7,26 +7,9 @@
 radius = 0.134661
 height = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wokyh"]
-albedo_color = Color(1, 0, 1, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_bpudb"]
-material = SubResource("StandardMaterial3D_wokyh")
-radius = 0.25
-height = 1.0
-radial_segments = 32
-rings = 4
-
-[sub_resource type="BoxMesh" id="BoxMesh_ppuba"]
-size = Vector3(0.1, 0.3, 0.2)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_g4wvp"]
-radius = 0.07
-
 [node name="Hannah" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "propHoldPoint", "camSpring", "camera", "rayCast", "animPlayer", "characterVisuals") groups=["Character", "Hannah"]]
-process_mode = 1
 collision_layer = 2
-collision_mask = 237
+collision_mask = 109
 script = ExtResource("1_qgewe")
 moveSpeed = 2.4
 sprintSpeed = 4.8
@@ -47,27 +30,13 @@ characterVisuals = NodePath("HannahVisuals")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_1ph2w")
 
-[node name="HNavAgent" type="NavigationAgent3D" parent="."]
-path_height_offset = 0.5
-debug_path_custom_color = Color(0.607843, 0, 0.607843, 1)
-
-[node name="HTempMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_bpudb")
-
-[node name="HTempMesh2" type="MeshInstance3D" parent="HTempMesh"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.242621, -0.206313)
-mesh = SubResource("BoxMesh_ppuba")
-skeleton = NodePath("../..")
-
 [node name="CamHolder" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CamHolder"]
 transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0.4, 0, 0)
 collision_mask = 13
-shape = SubResource("SphereShape3D_g4wvp")
+margin = 0.2
 
 [node name="HannahCam" type="Camera3D" parent="CamHolder/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 7.45058e-09, 0, -7.45058e-09, 1, 0, 0, 0)
@@ -81,33 +50,8 @@ collision_mask = 29
 [node name="PropHoldPoint" type="Node3D" parent="CamHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.401964, -0.149313, -1.64861)
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="ColorRect" type="ColorRect" parent="UI"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
 [node name="HannahVisuals" parent="." instance=ExtResource("2_jmhej")]
-transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
+transform = Transform3D(-0.55, 0, -8.30477e-08, 0, 0.55, 0, 8.30477e-08, 0, -0.55, 0, 0, 0)
 
 [node name="Skeleton3D" parent="HannahVisuals/Hannah" index="0"]
 bones/9/rotation = Quaternion(0.384802, 0.069136, 0.0382873, 0.91961)

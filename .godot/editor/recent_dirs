@@ -1,7 +1,5 @@
-res://Resources/Graphics
-res://Models/Textures
-res://Scenes
 res://Resources/Occluder Resources
+res://Scenes
 res://Resources/Animations/Jason_anims
 res://Resources/Animations/Hannah_anims
 res://Scripts/CSharp

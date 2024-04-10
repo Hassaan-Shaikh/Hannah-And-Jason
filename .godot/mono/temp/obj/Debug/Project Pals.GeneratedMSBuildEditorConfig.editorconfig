@@ -1,6 +1,6 @@
 is_global = true
 build_property.GodotDisabledSourceGenerators = 
-build_property.GodotProjectDir = C:\GAME DEV\GODOT PROJECTS\PROJECT PALS\HANNAH-AND-JASON\
+build_property.GodotProjectDir = C:\Game Dev\Godot Projects\Project Pals\Hannah-And-Jason\
 build_property.GodotProjectDirBase64 = 
 build_property.GodotSourceGenerators = 
 build_property.IsGodotToolsProject = 
@@ -13,6 +13,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ProjectPals
-build_property.ProjectDir = C:\GAME DEV\GODOT PROJECTS\PROJECT PALS\HANNAH-AND-JASON\
+build_property.ProjectDir = C:\Game Dev\Godot Projects\Project Pals\Hannah-And-Jason\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

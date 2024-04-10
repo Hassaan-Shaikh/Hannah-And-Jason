@@ -78,9 +78,7 @@ _data = {
 "Unpush": SubResource("Animation_vgf1y")
 }
 
-[node name="TimedButton" type="AnimatableBody3D" node_paths=PackedStringArray("buttonAnim", "buttonTimer", "promptLabel", "timeRemaining")]
-process_mode = 1
-collision_layer = 16
+[node name="TimedButton" type="AnimatableBody3D" node_paths=PackedStringArray("buttonAnim", "buttonTimer")]collision_layer = 16
 collision_mask = 15
 script = ExtResource("1_d3tbp")
 timeLimit = 3.0

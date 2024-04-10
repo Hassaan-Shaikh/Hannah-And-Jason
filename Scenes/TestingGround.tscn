@@ -38,7 +38,6 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_vvbpq"]
 
-[sub_resource type="Resource" id="Resource_4ypus"]
 resource_local_to_scene = true
 resource_name = "Heavy Pressure Plate"
 script = ExtResource("7_52e6y")
@@ -53,7 +52,6 @@ plateType = 0
 weightThreshold = 0.0
 
 [node name="TestingGround" type="Node3D"]
-process_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_si30k")
@@ -131,8 +129,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, -1, -4.37114e-08, 4.37114e-08, -4.3
 
 [node name="PressurePlate" parent="." instance=ExtResource("6_m06xk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.78228, -4.76837e-07, 2.20172)
-plateConfiguration = SubResource("Resource_4ypus")
+plateConfiguration = SubResource("Resource_lms77")
 
 [node name="PressurePlate2" parent="." instance=ExtResource("6_m06xk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.29618, 0, -0.00487471)
-plateConfiguration = SubResource("Resource_begvw")
+plateConfiguration = SubResource("Resource_5nr1w")
