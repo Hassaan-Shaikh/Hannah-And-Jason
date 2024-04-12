@@ -16,9 +16,7 @@ public partial class GameManager : Node3D
         "You can press [R] to restart at a saved checkpoint.",
         "Timed Buttons will deactivate after a while.",
         "Press [TAB] to switch between Hannah and Jason.",
-        "Hannah can get through small spaces and Jason can reach high places.",
-        "Pressure plates can be activated when something is on them.",
-        "Heavy pressure plates, however, can only be activated when something heavy is on it."
+        "Hannah can get through small spaces and Jason can reach high places."
     };
     [Export] LevelLoader levelLoader;
 
@@ -156,14 +154,6 @@ public partial class GameManager : Node3D
             }
         }
 
-    void On7BodyEntered(Node3D body)
-    {
-        if (body.IsInGroup("Character"))
-        {
-            tutorialTip.Text = tips[7];
-        }
-    }
-
         private void OnTutorialTriggerExited(Node3D body)
         {
             if (body.IsInGroup("Character"))
@@ -253,24 +243,18 @@ public partial class GameManager : Node3D
         }
         else if (levelId == 1)
         {
-            Tween tween = GetTree().CreateTween();
             switch (affectorId)
             {
                 case 2:
+                    Tween tween = GetTree().CreateTween();
                     if (flippedOn) 
-                    {
-                        tween.TweenProperty(affectedList[2], "position", new Vector3(affectedList[2].GlobalPosition.X - 8, affectedList[2].GlobalPosition.Y, affectedList[2].GlobalPosition.Z), 1);
-                    }
-                    else
                     {
                         tween.TweenProperty(affectedList[2], "position", new Vector3(affectedList[2].GlobalPosition.X + 8, affectedList[2].GlobalPosition.Y, affectedList[2].GlobalPosition.Z), 1);
                     }
-                break;
-                case 3:
-                    if (flippedOn)
-                        tween.TweenProperty(affectedList[3], "position", new Vector3(affectedList[3].GlobalPosition.X, affectedList[3].GlobalPosition.Y + 3, affectedList[3].GlobalPosition.Z), 0.75);
                     else
-                        tween.TweenProperty(affectedList[3], "position", new Vector3(affectedList[3].GlobalPosition.X, affectedList[3].GlobalPosition.Y - 3, affectedList[3].GlobalPosition.Z), 0.75);
+                    {
+                        tween.TweenProperty(affectedList[2], "position", new Vector3(affectedList[2].GlobalPosition.X - 8, affectedList[2].GlobalPosition.Y, affectedList[2].GlobalPosition.Z), 1);
+                    }
                     break;
             }
         }
@@ -327,12 +311,12 @@ public partial class GameManager : Node3D
         {
             switch(affectorId)
             {
-                case 4:
+                case 3:
                     Tween tween = GetTree().CreateTween();
                     if (pushed)
-                        tween.TweenProperty(affectedList[4], "position", new Vector3(affectedList[4].GlobalPosition.X, affectedList[4].GlobalPosition.Y + 3, affectedList[4].GlobalPosition.Z), 0.5);
+                        tween.TweenProperty(affectedList[2], "position", Vector3.Up * 2.5f, 0.5);
                     else
-                        tween.TweenProperty(affectedList[4], "position", new Vector3(affectedList[4].GlobalPosition.X, affectedList[4].GlobalPosition.Y - 3, affectedList[4].GlobalPosition.Z), 0.5);
+                        tween.TweenProperty(affectedList[2], "position", Vector3.Up * -2.5f, 0.5);
                     break;
             }
         }

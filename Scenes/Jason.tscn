@@ -51,4 +51,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634823, -0.149313, -1.64861
 [node name="JasonVisuals" parent="." instance=ExtResource("2_01n3s")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
+[node name="JasonAudio" parent="JasonVisuals" index="2"]
+bus = &"SFX"
+
 [editable path="JasonVisuals"]
