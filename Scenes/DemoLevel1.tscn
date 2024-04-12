@@ -77,6 +77,8 @@ plateType = 0
 weightThreshold = 0.0
 
 [sub_resource type="Resource" id="Resource_w6eja"]
+resource_local_to_scene = true
+resource_name = "Light Pressure Plate"
 script = ExtResource("9_ejscp")
 weightThreshold = 0.0
 
