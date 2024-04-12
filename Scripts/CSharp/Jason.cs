@@ -10,6 +10,7 @@ public partial class Jason : Player
         base._Ready();
 
         hannah = GetTree().GetFirstNodeInGroup("Hannah") as Hannah;
+        isUserControlled = !Globals.isHannahControlled;
     }
 
     public override void _PhysicsProcess(double delta)
