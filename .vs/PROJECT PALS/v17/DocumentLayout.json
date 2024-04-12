@@ -7,18 +7,6 @@
       "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\jason.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\jason.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\hannah.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\hannah.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -29,6 +17,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\levelloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\levelloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\jason.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\jason.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\hannah.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\hannah.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\timedbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -74,17 +74,16 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Globals.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Globals.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\Globals.cs",
               "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Globals.cs",
               "RelativeToolTip": "Scripts\\CSharp\\Globals.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAxAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-07T17:07:52.195Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -92,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "LevelLoader.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\LevelLoader.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\LevelLoader.cs",
@@ -116,37 +115,37 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Player.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\Player.cs",
               "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Player.cs",
               "RelativeToolTip": "Scripts\\CSharp\\Player.cs",
-              "ViewState": "AQIAAK4AAAAAAAAAAAAmwDcAAAAIAAAA",
+              "ViewState": "AQIAACwAAAAAAAAAAAAswDcAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2023-12-27T14:02:22.976Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Hannah.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Hannah.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\Hannah.cs",
               "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Hannah.cs",
               "RelativeToolTip": "Scripts\\CSharp\\Hannah.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAwAAAAIAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2023-12-28T10:38:10.609Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Jason.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Jason.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\Jason.cs",
               "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Jason.cs",
               "RelativeToolTip": "Scripts\\CSharp\\Jason.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAcAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2023-12-29T04:55:16.144Z"
             },
@@ -164,7 +163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Lever.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Lever.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\Lever.cs",
@@ -206,7 +205,7 @@
               "RelativeDocumentMoniker": "Scripts\\CSharp\\GameManager.cs",
               "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\GameManager.cs",
               "RelativeToolTip": "Scripts\\CSharp\\GameManager.cs",
-              "ViewState": "AQIAAE0BAAAAAAAAAAAuwKwAAAAnAAAA",
+              "ViewState": "AQIAADYBAAAAAAAAAAAmwEYBAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-01-19T05:57:46.591Z",
               "EditorCaption": ""

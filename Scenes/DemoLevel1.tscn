@@ -69,18 +69,15 @@ size = Vector3(3, 0.2, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jgm0j"]
 size = Vector3(3, 0.2, 3)
 
-[sub_resource type="Resource" id="Resource_guwpe"]
+[sub_resource type="Resource" id="Resource_qykcv"]
 resource_local_to_scene = true
 resource_name = "Light Pressure Plate"
 script = ExtResource("9_ejscp")
 plateType = 0
 weightThreshold = 0.0
 
-[sub_resource type="Resource" id="Resource_4jry4"]
-resource_local_to_scene = true
-resource_name = "Light Pressure Plate"
+[sub_resource type="Resource" id="Resource_w6eja"]
 script = ExtResource("9_ejscp")
-plateType = 0
 weightThreshold = 0.0
 
 [node name="DemoLevel1" type="Node3D" node_paths=PackedStringArray("affectorList", "affectedList", "tutorialTriggers", "checkpointMarkers", "levelLoader")]
@@ -314,11 +311,9 @@ shape = SubResource("BoxShape3D_jgm0j")
 
 [node name="Hannah" parent="." instance=ExtResource("1_mr3x8")]
 transform = Transform3D(0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, 0, 0, 2)
-disableSwitch = true
 
 [node name="Jason" parent="." instance=ExtResource("2_nn4fi")]
 transform = Transform3D(-0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, 0, 0, -2)
-disableSwitch = true
 
 [node name="PuzzleElements" type="Node3D" parent="."]
 
@@ -349,12 +344,12 @@ conflictingLevers = [NodePath("../Lever")]
 [node name="PressurePlate" parent="PuzzleElements/PressurePlates" instance=ExtResource("7_c3nts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0.05, -4)
 affectorId = 3
-plateConfiguration = SubResource("Resource_guwpe")
+plateConfiguration = SubResource("Resource_qykcv")
 
 [node name="PressurePlate2" parent="PuzzleElements/PressurePlates" instance=ExtResource("7_c3nts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.5, 0.05, -4.5)
 affectorId = 5
-plateConfiguration = SubResource("Resource_4jry4")
+plateConfiguration = SubResource("Resource_w6eja")
 
 [node name="LevelLoader" parent="." instance=ExtResource("10_fxp5i")]
 

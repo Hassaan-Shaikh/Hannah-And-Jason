@@ -64,8 +64,6 @@ public partial class GameManager : Node3D
         }
         hannah.GlobalPosition = Globals.hannahCheckpoint;
         jason.GlobalPosition = Globals.jasonCheckpoint;
-        hannah.isUserControlled = Globals.isHannahControlled;
-        jason.isUserControlled = !Globals.isHannahControlled;
         //Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
@@ -269,11 +267,11 @@ public partial class GameManager : Node3D
                 case 2:
                     if (flippedOn) 
                     {
-                        tween.TweenProperty(affectedList[2], "position", new Vector3(affectedList[2].GlobalPosition.X - 8, affectedList[2].GlobalPosition.Y, affectedList[2].GlobalPosition.Z), 1);
+                        tween.TweenProperty(affectedList[2], "position", new Vector3(affectedList[2].GlobalPosition.X + 8, affectedList[2].GlobalPosition.Y, affectedList[2].GlobalPosition.Z), 1);
                     }
                     else
                     {
-                        tween.TweenProperty(affectedList[2], "position", new Vector3(affectedList[2].GlobalPosition.X + 8, affectedList[2].GlobalPosition.Y, affectedList[2].GlobalPosition.Z), 1);
+                        tween.TweenProperty(affectedList[2], "position", new Vector3(affectedList[2].GlobalPosition.X - 8, affectedList[2].GlobalPosition.Y, affectedList[2].GlobalPosition.Z), 1);
                     }
                 break;
                 case 3:

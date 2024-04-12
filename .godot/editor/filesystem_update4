@@ -5,6 +5,13 @@ res://Scripts/CSharp/PhysicalButton.cs
 res://Scripts/CSharp/TimedButton.cs
 res://Scripts/CSharp/PressurePlate.cs
 res://Scripts/CSharp/PressurePlateConfig.cs
+res://Scripts/CSharp/AffectorInstance.cs
+res://Scripts/CSharp/GameManager.cs
+res://Scripts/CSharp/LevelLoader.cs
+res://Scripts/CSharp/Lever.cs
+res://Scripts/CSharp/LeverConfiguration.cs
+res://Scripts/CSharp/MainMenu.cs
+res://Scripts/CSharp/Player.cs
 res://Scenes/LevelLoader.tscn
 res://Scenes/MainMenu.tscn
 res://Scenes/House.tscn
@@ -15,10 +22,3 @@ res://Scenes/PhysicalButton.tscn
 res://Scenes/PressurePlate.tscn
 res://Scenes/TimedButton.tscn
 res://Scenes/DemoLevel1.tscn
-res://Scripts/CSharp/AffectorInstance.cs
-res://Scripts/CSharp/GameManager.cs
-res://Scripts/CSharp/LevelLoader.cs
-res://Scripts/CSharp/Lever.cs
-res://Scripts/CSharp/LeverConfiguration.cs
-res://Scripts/CSharp/MainMenu.cs
-res://Scripts/CSharp/Player.cs
