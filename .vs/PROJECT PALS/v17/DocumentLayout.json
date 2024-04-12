@@ -86,6 +86,10 @@
               "IsPinned": true
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "LevelLoader.cs",
@@ -95,12 +99,7 @@
               "RelativeToolTip": "Scripts\\CSharp\\LevelLoader.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAAAwCIAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-12T14:24:41.307Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "WhenOpened": "2024-04-12T14:24:41.307Z"
             },
             {
               "$type": "Document",
@@ -124,8 +123,7 @@
               "RelativeToolTip": "Scripts\\CSharp\\Player.cs",
               "ViewState": "AQIAACwAAAAAAAAAAAAswDcAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-12-27T14:02:22.976Z",
-              "EditorCaption": ""
+              "WhenOpened": "2023-12-27T14:02:22.976Z"
             },
             {
               "$type": "Document",
@@ -137,8 +135,7 @@
               "RelativeToolTip": "Scripts\\CSharp\\Hannah.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-12-28T10:38:10.609Z",
-              "EditorCaption": ""
+              "WhenOpened": "2023-12-28T10:38:10.609Z"
             },
             {
               "$type": "Document",
@@ -150,8 +147,7 @@
               "RelativeToolTip": "Scripts\\CSharp\\Jason.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-12-29T04:55:16.144Z",
-              "EditorCaption": ""
+              "WhenOpened": "2023-12-29T04:55:16.144Z"
             },
             {
               "$type": "Document",
@@ -175,8 +171,7 @@
               "RelativeToolTip": "Scripts\\CSharp\\Lever.cs",
               "ViewState": "AQIAAE0AAAAAAAAAAAAAwH4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-04T09:49:44.608Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-01-04T09:49:44.608Z"
             },
             {
               "$type": "Document",
@@ -210,7 +205,7 @@
               "RelativeDocumentMoniker": "Scripts\\CSharp\\GameManager.cs",
               "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\GameManager.cs",
               "RelativeToolTip": "Scripts\\CSharp\\GameManager.cs",
-              "ViewState": "AQIAAFQBAAAAAAAAAAAuwGYBAABYAAAA",
+              "ViewState": "AQIAADsBAAAAAAAAAAD4v0wBAACbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-01-19T05:57:46.591Z",
               "EditorCaption": ""
