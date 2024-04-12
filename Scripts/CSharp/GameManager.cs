@@ -156,7 +156,15 @@ public partial class GameManager : Node3D
             }
         }
 
-        private void OnTutorialTriggerExited(Node3D body)
+    void On7BodyEntered(Node3D body)
+    {
+        if (body.IsInGroup("Character"))
+        {
+            tutorialTip.Text = tips[7];
+        }
+    }
+
+    private void OnTutorialTriggerExited(Node3D body)
         {
             if (body.IsInGroup("Character"))
             {
@@ -245,10 +253,10 @@ public partial class GameManager : Node3D
         }
         else if (levelId == 1)
         {
+            Tween tween = GetTree().CreateTween();
             switch (affectorId)
             {
                 case 2:
-                    Tween tween = GetTree().CreateTween();
                     if (flippedOn) 
                     {
                         tween.TweenProperty(affectedList[2], "position", new Vector3(affectedList[2].GlobalPosition.X + 8, affectedList[2].GlobalPosition.Y, affectedList[2].GlobalPosition.Z), 1);
@@ -257,7 +265,16 @@ public partial class GameManager : Node3D
                     {
                         tween.TweenProperty(affectedList[2], "position", new Vector3(affectedList[2].GlobalPosition.X - 8, affectedList[2].GlobalPosition.Y, affectedList[2].GlobalPosition.Z), 1);
                     }
-                    break;
+                break;
+                case 3:
+                    if (flippedOn)
+                        tween.TweenProperty(affectedList[3], "position", new Vector3(affectedList[3].GlobalPosition.X, affectedList[3].GlobalPosition.Y + 1.4f, affectedList[3].GlobalPosition.Z), 0.75f);
+                    else
+                        tween.TweenProperty(affectedList[3], "position", new Vector3(affectedList[3].GlobalPosition.X, affectedList[3].GlobalPosition.Y - 1.4f, affectedList[3].GlobalPosition.Z), 0.75f);
+                break;
+                default:
+                    GD.PrintErr("An invalid Affector ID may have been provided. " + affectorId.ToString());
+                break;
             }
         }
     }
@@ -293,16 +310,12 @@ public partial class GameManager : Node3D
         {
             switch(affectorId)
             {
-                case 3:
+                case 4:
                     Tween tween = GetTree().CreateTween().SetParallel(false);
                     if (pushed)
-                    {
-                        tween.TweenProperty(affectedList[4], "position", new Vector3(affectedList[4].Position.X, 20, affectedList[4].Position.Z), 3.0f);
-                    }
+                        tween.TweenProperty(affectedList[4], "position", new Vector3(affectedList[4].GlobalPosition.X, affectedList[4].GlobalPosition.Y + 3, affectedList[4].GlobalPosition.Z), 0.75f);
                     else
-                    {
-                        tween.TweenProperty(affectedList[4], "position", new Vector3(affectedList[4].Position.X, 0, affectedList[4].Position.Z), 3.0f);
-                    }
+                        tween.TweenProperty(affectedList[4], "position", new Vector3(affectedList[4].GlobalPosition.X, affectedList[4].GlobalPosition.Y - 3, affectedList[4].GlobalPosition.Z), 0.75f);
                     break;
                 default:
                     GD.PrintErr("An invalid Affector ID may have been provided. " + affectorId.ToString());
@@ -311,14 +324,14 @@ public partial class GameManager : Node3D
         }
         else if (levelId == 1)
         {
-            switch(affectorId)
+            Tween tween = GetTree().CreateTween();
+            switch (affectorId)
             {
-                case 3:
-                    Tween tween = GetTree().CreateTween();
+                case 4:
                     if (pushed)
-                        tween.TweenProperty(affectedList[2], "position", Vector3.Up * 2.5f, 0.5);
+                        tween.TweenProperty(affectedList[4], "position", new Vector3(affectedList[4].GlobalPosition.X, affectedList[4].GlobalPosition.Y + 3, affectedList[4].GlobalPosition.Z), 0.75f);
                     else
-                        tween.TweenProperty(affectedList[2], "position", Vector3.Up * -2.5f, 0.5);
+                        tween.TweenProperty(affectedList[4], "position", new Vector3(affectedList[4].GlobalPosition.X, affectedList[4].GlobalPosition.Y - 3, affectedList[4].GlobalPosition.Z), 0.75f);
                     break;
             }
         }

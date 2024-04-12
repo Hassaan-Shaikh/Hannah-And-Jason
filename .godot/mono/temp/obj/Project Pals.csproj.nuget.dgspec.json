@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GAME DEV\\GODOT PROJECTS\\PROJECT PALS\\HANNAH-AND-JASON\\Project Pals.csproj": {}
+    "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Project Pals.csproj": {}
   },
   "projects": {
-    "C:\\GAME DEV\\GODOT PROJECTS\\PROJECT PALS\\HANNAH-AND-JASON\\Project Pals.csproj": {
+    "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Project Pals.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GAME DEV\\GODOT PROJECTS\\PROJECT PALS\\HANNAH-AND-JASON\\Project Pals.csproj",
+        "projectUniqueName": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Project Pals.csproj",
         "projectName": "Project Pals",
-        "projectPath": "C:\\GAME DEV\\GODOT PROJECTS\\PROJECT PALS\\HANNAH-AND-JASON\\Project Pals.csproj",
+        "projectPath": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Project Pals.csproj",
         "packagesPath": "C:\\Users\\phngy\\.nuget\\packages\\",
-        "outputPath": "C:\\GAME DEV\\GODOT PROJECTS\\PROJECT PALS\\HANNAH-AND-JASON\\.godot\\mono\\temp\\obj\\",
+        "outputPath": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
