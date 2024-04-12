@@ -16,7 +16,9 @@ public partial class GameManager : Node3D
         "You can press [R] to restart at a saved checkpoint.",
         "Timed Buttons will deactivate after a while.",
         "Press [TAB] to switch between Hannah and Jason.",
-        "Hannah can get through small spaces and Jason can reach high places."
+        "Hannah can get through small spaces and Jason can reach high places.",
+        "Pressure plates activate when something is on them.",
+        "Heavy pressure plates, however, activate only when something heavy is on them.\n(Hint: Jason can activate heavy pressure plates.)"
     };
     [Export] LevelLoader levelLoader;
 

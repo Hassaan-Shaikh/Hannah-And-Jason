@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FLkDDN/WdhjB0mt7jlXRjvGhnaZ8DFb/zmEyLk0SHYibumQf+cyE8qGhhiATAj46mTeIsGmyTQPUfChHkVALdA==",
+  "dgSpecHash": "JiwLBlIX3u7sUvtDghZo8KhzV0lQK6iZhxhPDIwNUNUyaoo0J7ODfx60qcSVUd927bRXpBOYLqffnU0KsYZHVw==",
   "success": true,
-  "projectFilePath": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Project Pals.csproj",
+  "projectFilePath": "C:\\GAME DEV\\GODOT PROJECTS\\PROJECT PALS\\HANNAH-AND-JASON\\Project Pals.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\phngy\\.nuget\\packages\\godot.sourcegenerators\\4.2.1\\godot.sourcegenerators.4.2.1.nupkg.sha512",
     "C:\\Users\\phngy\\.nuget\\packages\\godotsharp\\4.2.1\\godotsharp.4.2.1.nupkg.sha512",
