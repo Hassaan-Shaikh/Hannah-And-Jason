@@ -53,7 +53,7 @@ public partial class Player : CharacterBody3D
     {
         base._Ready();
 
-        //Input.MouseMode = Input.MouseModeEnum.Captured;
+        Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -168,16 +168,15 @@ public partial class Player : CharacterBody3D
     public override void _UnhandledInput(InputEvent @event)
     {
         base._UnhandledInput(@event);
-        if (!isUserControlled)
+        if (isUserControlled)
         {
-            return;
-        }
-        if (@event is InputEventMouseMotion)
-        {
-            InputEventMouseMotion mouseMotion = (InputEventMouseMotion)@event;
-            Rotation = new Vector3(0, Rotation.Y - mouseMotion.Relative.X / 1000 * sensitivity, 0f);
-            camHolder.Rotation = new Vector3(Mathf.Clamp(camHolder.Rotation.X - mouseMotion.Relative.Y / 1000 * sensitivity, Mathf.DegToRad((clampAngle * -1.0f)), Mathf.DegToRad(clampAngle)), 0, 0);
-            characterVisuals.RotateY(mouseMotion.Relative.X / 1000 * sensitivity);
+            if (@event is InputEventMouseMotion)
+            {
+                InputEventMouseMotion mouseMotion = (InputEventMouseMotion)@event;
+                Rotation = new Vector3(0, Rotation.Y - mouseMotion.Relative.X / 1000 * sensitivity, 0f);
+                camHolder.Rotation = new Vector3(Mathf.Clamp(camHolder.Rotation.X - mouseMotion.Relative.Y / 1000 * sensitivity, Mathf.DegToRad(clampAngle * -1.0f), Mathf.DegToRad(clampAngle)), 0, 0);
+                characterVisuals.RotateY(mouseMotion.Relative.X / 1000 * sensitivity);
+            }
         }
     }
 
@@ -192,27 +191,12 @@ public partial class Player : CharacterBody3D
         if (isUserControlled)
         {
             //RotationalAdjustment();
-            if (Input.IsActionPressed(forwardKey) && Input.IsActionPressed(sprintKey) && IsOnFloor())
+            if (Input.IsActionPressed(walkAnim) && Input.IsActionPressed(sprintKey) && IsOnFloor())
             {
                 if (animPlayer.CurrentAnimation != "Run")                
                     animPlayer.Play("Run");                
             }
-            else if (Input.IsActionPressed(forwardKey) && IsOnFloor())
-            {
-                if (animPlayer.CurrentAnimation != "Walk")                
-                    animPlayer.Play("Walk");                
-            }
-            else if (Input.IsActionPressed(backKey) && IsOnFloor())
-            {
-                if (animPlayer.CurrentAnimation != "Walk")                
-                    animPlayer.Play("Walk");                
-            }
-            else if (Input.IsActionPressed(leftKey) && IsOnFloor())
-            {
-                if (animPlayer.CurrentAnimation != "Walk")                
-                    animPlayer.Play("Walk");                
-            }
-            else if (Input.IsActionPressed(rightKey) && IsOnFloor())
+            else if (Input.IsActionPressed(walkAnim) && IsOnFloor())
             {
                 if (animPlayer.CurrentAnimation != "Walk")                
                     animPlayer.Play("Walk");                

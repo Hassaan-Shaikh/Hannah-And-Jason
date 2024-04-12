@@ -9,7 +9,7 @@ height = 1.0
 
 [node name="Hannah" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "propHoldPoint", "camSpring", "camera", "rayCast", "animPlayer", "characterVisuals") groups=["Character", "Hannah"]]
 collision_layer = 2
-collision_mask = 109
+collision_mask = 493
 script = ExtResource("1_qgewe")
 moveSpeed = 2.4
 sprintSpeed = 4.8
@@ -67,5 +67,8 @@ bones/51/rotation = Quaternion(-0.00267131, -0.000343724, 6.91027e-05, 0.999996)
 [node name="AnimationPlayer" parent="HannahVisuals" index="1"]
 callback_mode_process = 0
 playback_default_blend_time = 0.2
+
+[node name="HannahAudio" parent="HannahVisuals" index="2"]
+bus = &"SFX"
 
 [editable path="HannahVisuals"]

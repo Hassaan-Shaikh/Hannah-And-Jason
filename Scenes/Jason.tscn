@@ -9,7 +9,7 @@ height = 1.9
 
 [node name="Jason" type="CharacterBody3D" node_paths=PackedStringArray("camHolder", "propHoldPoint", "camSpring", "camera", "rayCast", "animPlayer", "characterVisuals") groups=["Character", "Jason"]]
 collision_layer = 4
-collision_mask = 107
+collision_mask = 491
 script = ExtResource("1_4gex0")
 moveSpeed = 3.7
 sprintSpeed = 5.6
@@ -50,5 +50,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634823, -0.149313, -1.64861
 
 [node name="JasonVisuals" parent="." instance=ExtResource("2_01n3s")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="JasonAudio" parent="JasonVisuals" index="2"]
+bus = &"SFX"
 
 [editable path="JasonVisuals"]

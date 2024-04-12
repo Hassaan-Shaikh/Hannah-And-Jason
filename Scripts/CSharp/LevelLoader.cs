@@ -17,6 +17,7 @@ public partial class LevelLoader : Control
         loaderDelay = GetNode<Timer>("LoadDelay");
 
         loaderDelay.WaitTime = GD.RandRange(0.3f, 0.5f);
+        GetTree().Paused = false;
     }
     public void SwitchScene(string scenePath)
     {
@@ -26,7 +27,6 @@ public partial class LevelLoader : Control
             if (animName.Equals("FadeOut"))
             {
                 GetTree().ChangeSceneToFile(scenePath);
-                GetTree().Paused = false;
             }
         };
     }

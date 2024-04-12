@@ -30,8 +30,8 @@ public partial class GameManager : Node3D
 
     const string gameScene = "res://Scenes/MainGame.tscn";
     const string demoScene = "res://Scenes/DemoLevel1.tscn";
-    const string pauseKey = "";
-    const string restartKey = "";
+    const string pauseKey = "pause";
+    const string restartKey = "restart";
 
     public override void _Ready()
     {
@@ -62,7 +62,7 @@ public partial class GameManager : Node3D
         }
         hannah.GlobalPosition = Globals.hannahCheckpoint;
         jason.GlobalPosition = Globals.jasonCheckpoint;
-        Input.MouseMode = Input.MouseModeEnum.Captured;
+        //Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
     public override void _Process(double delta)
@@ -80,10 +80,6 @@ public partial class GameManager : Node3D
         {
             levelLoader.SwitchScene(gameScene);
             tutorialTip = GetNode<Label>("TutorialTips/TutorialTip");
-            foreach (Area3D tutorialTrigger in tutorialTriggers)
-            {
-                tutorialTrigger.BodyExited += OnTutorialTriggerExited;
-            }
         }
     }
 
@@ -253,11 +249,11 @@ public partial class GameManager : Node3D
                     Tween tween = GetTree().CreateTween();
                     if (flippedOn) 
                     {
-                        tween.TweenProperty(affectedList[3], "position", Vector3.Up * 2.5f, 0.5);
+                        tween.TweenProperty(affectedList[2], "position", new Vector3(affectedList[2].GlobalPosition.X + 8, affectedList[2].GlobalPosition.Y, affectedList[2].GlobalPosition.Z), 1);
                     }
                     else
                     {
-                        tween.TweenProperty(affectedList[3], "position", Vector3.Up * -2.5f, 0.5);
+                        tween.TweenProperty(affectedList[2], "position", new Vector3(affectedList[2].GlobalPosition.X - 8, affectedList[2].GlobalPosition.Y, affectedList[2].GlobalPosition.Z), 1);
                     }
                     break;
             }
@@ -356,13 +352,13 @@ public partial class GameManager : Node3D
                     Tween tween = GetTree().CreateTween();
                     if (pushed)
                     {
-                        tween.TweenProperty(affectedList[1], "position", new Vector3(affectedList[1].GlobalPosition.X - 9, affectedList[1].GlobalPosition.Y, affectedList[1].GlobalPosition.Z), 0.5);
+                        tween.TweenProperty(affectedList[1], "position", new Vector3(0, affectedList[1].GlobalPosition.Y, affectedList[1].GlobalPosition.Z), 1);
                     }
                     else
                     {
-                        tween.TweenProperty(affectedList[1], "position", new Vector3(affectedList[1].GlobalPosition.X + 9, affectedList[1].GlobalPosition.Y, affectedList[1].GlobalPosition.Z), 0.5);
+                        tween.TweenProperty(affectedList[1], "position", new Vector3(1.8f, affectedList[1].GlobalPosition.Y, affectedList[1].GlobalPosition.Z), 1);
                     }
-                    break;
+                break;
             }
         }
     }
@@ -454,6 +450,15 @@ public partial class GameManager : Node3D
                     }
                 }
             }
+        }
+    }
+
+    void OnDrawerTrapBodyEntered(Node3D body)
+    {
+        if (body.IsInGroup("Character"))
+        {
+            Tween tween = GetTree().CreateTween();
+            tween.TweenProperty(affectedList[1], "position", new Vector3(0, affectedList[1].GlobalPosition.Y, affectedList[1].GlobalPosition.Z), 1);
         }
     }
 }
