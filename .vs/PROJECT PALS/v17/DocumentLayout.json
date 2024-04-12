@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\hannah.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\hannah.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|solutionrelative:scripts\\csharp\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{65EB2620-72B2-4D73-8DA4-B57D8DDD2AEC}|Project Pals.csproj|c:\\game dev\\godot projects\\project pals\\hannah-and-jason\\scripts\\csharp\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -70,11 +70,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Globals.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Globals.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\Globals.cs",
@@ -124,12 +124,11 @@
               "RelativeToolTip": "Scripts\\CSharp\\Player.cs",
               "ViewState": "AQIAAK4AAAAAAAAAAAAmwDcAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-12-27T14:02:22.976Z",
-              "EditorCaption": ""
+              "WhenOpened": "2023-12-27T14:02:22.976Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Hannah.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Hannah.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\Hannah.cs",
@@ -137,12 +136,11 @@
               "RelativeToolTip": "Scripts\\CSharp\\Hannah.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAwAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-12-28T10:38:10.609Z",
-              "EditorCaption": ""
+              "WhenOpened": "2023-12-28T10:38:10.609Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Jason.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\Jason.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\Jason.cs",
@@ -150,8 +148,7 @@
               "RelativeToolTip": "Scripts\\CSharp\\Jason.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2023-12-29T04:55:16.144Z",
-              "EditorCaption": ""
+              "WhenOpened": "2023-12-29T04:55:16.144Z"
             },
             {
               "$type": "Document",
@@ -203,13 +200,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\GameManager.cs",
               "RelativeDocumentMoniker": "Scripts\\CSharp\\GameManager.cs",
               "ToolTip": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Scripts\\CSharp\\GameManager.cs",
               "RelativeToolTip": "Scripts\\CSharp\\GameManager.cs",
-              "ViewState": "AQIAADUAAAAAAAAAAAAAAEMAAAA9AAAA",
+              "ViewState": "AQIAAE0BAAAAAAAAAAAuwKwAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-01-19T05:57:46.591Z",
               "EditorCaption": ""

@@ -166,6 +166,14 @@ public partial class GameManager : Node3D
         }
     }
 
+    void On8BodyEntered(Node3D body)
+    {
+        if (body.IsInGroup("Character"))
+        {
+            tutorialTip.Text = tips[8];
+        }
+    }
+
     private void OnTutorialTriggerExited(Node3D body)
         {
             if (body.IsInGroup("Character"))
@@ -335,6 +343,15 @@ public partial class GameManager : Node3D
                     else
                         tween.TweenProperty(affectedList[4], "position", new Vector3(affectedList[4].GlobalPosition.X, affectedList[4].GlobalPosition.Y - 3, affectedList[4].GlobalPosition.Z), 0.75f);
                     break;
+                case 5:
+                    if (pushed)
+                        tween.TweenProperty(affectedList[5], "position", new Vector3(affectedList[5].GlobalPosition.X, affectedList[5].GlobalPosition.Y + 4, affectedList[5].GlobalPosition.Z), 1.25f);
+                    else
+                        tween.TweenProperty(affectedList[5], "position", new Vector3(affectedList[5].GlobalPosition.X, affectedList[5].GlobalPosition.Y - 4, affectedList[5].GlobalPosition.Z), 1.25f);
+                    break;
+                default:
+                    GD.PrintErr("An invalid Affector ID may have been provided. ");
+                    break;
             }
         }
     }
@@ -448,6 +465,38 @@ public partial class GameManager : Node3D
             if (levelId == 1)
             {
                 currentCheckpoint = checkpointMarkers[1].GlobalPosition;
+                Globals.markedCheckpoint = currentCheckpoint;
+                if (!player.disableSwitch)
+                {
+                    Globals.hannahCheckpoint = currentCheckpoint + Vector3.Right * 1.5f;
+                    Globals.jasonCheckpoint = currentCheckpoint + Vector3.Left * 1.5f;
+                }
+                else
+                {
+                    switch (player)
+                    {
+                        case Hannah:
+                            Globals.hannahCheckpoint = currentCheckpoint;
+                            break;
+                        case Jason:
+                            Globals.jasonCheckpoint = currentCheckpoint;
+                            break;
+                    }
+                }
+            }
+        }
+    }
+
+    void OnCheckpoint2BodyEntered(Player player)
+    {
+        if (player != null)
+        {
+            GD.Print("Entered a checkpoint");
+            checkpointAnim.Play("CheckpointReached");
+            checkpointMarkers[0].GetNode<CollisionShape3D>("CollisionShape3D").Disabled = true;
+            if (levelId == 1)
+            {
+                currentCheckpoint = checkpointMarkers[0].GlobalPosition;
                 Globals.markedCheckpoint = currentCheckpoint;
                 if (!player.disableSwitch)
                 {
