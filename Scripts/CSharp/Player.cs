@@ -68,10 +68,10 @@ public partial class Player : CharacterBody3D
             }
         }
 
-        if (Input.IsActionJustPressed(pauseKey))
-        {
-            GetTree().Quit();
-        }
+        //if (Input.IsActionJustPressed(pauseKey))
+        //{
+        //    GetTree().Quit();
+        //}
     }
 
     public void HandleUserControl(float delta)

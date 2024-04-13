@@ -41,12 +41,15 @@ public partial class TimedButton : AnimatableBody3D
     {
         base._Process(delta);
         timeRemaining.GlobalPosition = GetViewport().GetCamera3D().UnprojectPosition(GlobalPosition);
-        timeRemaining.Visible = (GetViewport().GetCamera3D().IsPositionInFrustum(GlobalPosition) && canInteract) || (GetViewport().GetCamera3D().IsPositionInFrustum(GlobalPosition) && buttonTimer.TimeLeft > 0);
+        timeRemaining.Visible = (GetViewport().GetCamera3D().IsPositionInFrustum(GlobalPosition) && (canInteract || buttonTimer.TimeLeft > 0));
         timeRemaining.Value = buttonTimer.TimeLeft;
     }
 
     public override void _PhysicsProcess(double delta)
     {
+        timeRemaining.GlobalPosition = GetViewport().GetCamera3D().UnprojectPosition(GlobalPosition);
+        timeRemaining.Visible = (GetViewport().GetCamera3D().IsPositionInFrustum(GlobalPosition) && (canInteract || buttonTimer.TimeLeft > 0));
+        timeRemaining.Value = buttonTimer.TimeLeft;
         promptLabel.Visible = canInteract;
         if (!canInteract)
         {
@@ -85,7 +88,7 @@ public partial class TimedButton : AnimatableBody3D
                 isPushed = true;
                 EmitSignal(SignalName.ButtonPushed, affectorId, isPushed);
                 buttonTimer.Start();
-                timeRemaining.Value = timeLimit;
+                //timeRemaining.Value = timeLimit;
                 //GD.Print("The timed button has been pushed.");
             }
         }

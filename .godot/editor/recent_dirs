@@ -1,10 +1,2 @@
-res://Models/Textures
-res://Resources/Audio/Audio Buses
-res://Resources/Occluder Resources
 res://Scenes
-res://Resources/Animations/Jason_anims
-res://Resources/Animations/Hannah_anims
-res://Scripts/CSharp
-res://Resources/Custom Resources
-res://Resources/NavigationMesh Resources
-res://Resources
+res://Resources/Graphics

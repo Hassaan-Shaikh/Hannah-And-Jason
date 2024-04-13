@@ -21,5 +21,6 @@ public partial class Hannah : Player
         //HandleInteraction();
 
         camera.Current = isUserControlled;
+        Globals.isHannahControlled = isUserControlled;
     }
 }

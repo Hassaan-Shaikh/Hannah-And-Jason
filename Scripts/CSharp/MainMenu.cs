@@ -12,6 +12,7 @@ public partial class MainMenu : Control
     {
         base._Ready();
         levelLoader = GetNode<LevelLoader>("LevelLoader");
+        Input.MouseMode = Input.MouseModeEnum.Visible;
     }
 
     private void OnPlayButtonPressed()

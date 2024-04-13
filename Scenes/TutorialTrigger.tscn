@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://76ve230brnp1"]
+
+[ext_resource type="Script" path="res://Scripts/CSharp/TutorialTrigger.cs" id="1_mytob"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cqr32"]
+resource_local_to_scene = true
+
+[node name="TutorialTrigger0" type="Area3D"]
+collision_layer = 65
+collision_mask = 6
+script = ExtResource("1_mytob")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_cqr32")

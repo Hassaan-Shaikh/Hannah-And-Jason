@@ -25,21 +25,21 @@ public partial class PressurePlateConfig : Resource
 
     public PlateType GetPlateType()
     {
-        return plateType;
+        return this.plateType;
     }
 
     public void SetPlateType(PlateType type)
     {
-        plateType = type;
+        this.plateType = type;
     }
 
     public float GetWeightThreshold()
     {
-        return weightThreshold;
+        return this.weightThreshold;
     }
 
     public void SetWeightThreshold(float newThreashold)
     {
-        weightThreshold = newThreashold;
+        this.weightThreshold = newThreashold;
     }
 }

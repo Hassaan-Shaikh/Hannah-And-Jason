@@ -32,6 +32,8 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
 window/size/resizable=false
+mouse_cursor/custom_image="res://Resources/Graphics/Cursor.png"
+mouse_cursor/custom_image_hotspot=Vector2(5, 5)
 
 [dotnet]
 

@@ -9,10 +9,10 @@ C:\Game Dev\Godot Projects\Project Pals\Hannah-And-Jason\.godot\mono\temp\obj\De
 C:\Game Dev\Godot Projects\Project Pals\Hannah-And-Jason\.godot\mono\temp\obj\Debug\Project Pals.AssemblyInfoInputs.cache
 C:\Game Dev\Godot Projects\Project Pals\Hannah-And-Jason\.godot\mono\temp\obj\Debug\Project Pals.AssemblyInfo.cs
 C:\Game Dev\Godot Projects\Project Pals\Hannah-And-Jason\.godot\mono\temp\obj\Debug\Project Pals.csproj.CoreCompileInputs.cache
+C:\Game Dev\Godot Projects\Project Pals\Hannah-And-Jason\.godot\mono\temp\obj\Debug\Project Pals.sourcelink.json
+C:\Game Dev\Godot Projects\Project Pals\Hannah-And-Jason\.godot\mono\temp\obj\Debug\Project .7AF2491E.Up2Date
 C:\Game Dev\Godot Projects\Project Pals\Hannah-And-Jason\.godot\mono\temp\obj\Debug\Project Pals.dll
 C:\Game Dev\Godot Projects\Project Pals\Hannah-And-Jason\.godot\mono\temp\obj\Debug\refint\Project Pals.dll
 C:\Game Dev\Godot Projects\Project Pals\Hannah-And-Jason\.godot\mono\temp\obj\Debug\Project Pals.pdb
 C:\Game Dev\Godot Projects\Project Pals\Hannah-And-Jason\.godot\mono\temp\obj\Debug\Project Pals.genruntimeconfig.cache
 C:\Game Dev\Godot Projects\Project Pals\Hannah-And-Jason\.godot\mono\temp\obj\Debug\ref\Project Pals.dll
-C:\Game Dev\Godot Projects\Project Pals\Hannah-And-Jason\.godot\mono\temp\obj\Debug\Project Pals.sourcelink.json
-C:\Game Dev\Godot Projects\Project Pals\Hannah-And-Jason\.godot\mono\temp\obj\Debug\Project .7AF2491E.Up2Date

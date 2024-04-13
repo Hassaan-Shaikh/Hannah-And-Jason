@@ -24,6 +24,7 @@ public partial class GameManager : Node3D
 
     Label tutorialTip;
     AnimationPlayer checkpointAnim;
+    CenterContainer pausePanel;
     Hannah hannah;
     Jason jason;
 
@@ -32,6 +33,8 @@ public partial class GameManager : Node3D
 
     const string gameScene = "res://Scenes/MainGame.tscn";
     const string demoScene = "res://Scenes/DemoLevel1.tscn";
+    const string endScene = "res://Scenes/EndDemo.tscn";
+    const string menuScene = "res://Scenes/MainMenu.tscn";
     const string pauseKey = "pause";
     const string restartKey = "restart";
 
@@ -42,6 +45,7 @@ public partial class GameManager : Node3D
         jason = GetTree().GetFirstNodeInGroup("Jason") as Jason;
         tutorialTip = GetNode<Label>("GameUI/TutorialTip");
         checkpointAnim = GetNode<AnimationPlayer>("GameUI/CheckpointAnim");
+        pausePanel = GetNode<CenterContainer>("GameUI/PausePanel");
         foreach (Area3D tutorialTrigger in tutorialTriggers)
         {
             tutorialTrigger.BodyExited += (Node3D body) => 
@@ -71,6 +75,9 @@ public partial class GameManager : Node3D
     {
         base._Process(delta);
 
+        pausePanel.Visible = isGamePaused;
+        Input.MouseMode = isGamePaused ? Input.MouseModeEnum.Visible : Input.MouseModeEnum.Captured;
+
         if (Input.IsActionJustPressed(pauseKey))
         {
             isGamePaused = !isGamePaused;
@@ -99,6 +106,11 @@ public partial class GameManager : Node3D
                 }
             }
         }
+
+    void OnTutorialTriggerTriggered(int id)
+    {
+        tutorialTip.Text = tips[id];
+    }
 
         void On0BodyEntered(Node3D body)
         {
@@ -200,10 +212,10 @@ public partial class GameManager : Node3D
     {
         base._PhysicsProcess(delta);
 
-        if(Input.IsActionJustPressed("pause"))
-        {
-            GetTree().Quit(); // Replace this line with appropriate code
-        }
+        //if(Input.IsActionJustPressed("pause"))
+        //{
+        //    GetTree().Quit(); // Replace this line with appropriate code
+        //}
     }
 
     private void OnPhysicalButtonButtonPushed(int affectorId)
@@ -224,11 +236,14 @@ public partial class GameManager : Node3D
 		}
         else if (levelId == 1)
         {
+            Tween tween = GetTree().CreateTween();
             switch (affectorId)
             {
                 case 0:
-                    Tween tween = GetTree().CreateTween();
                     tween.TweenProperty(affectedList[0], "position", new Vector3(affectedList[0].Position.X, affectedList[0].Position.Y + 3.5f, affectedList[0].Position.Z), 2f);
+                    break;
+                case 6:
+                    tween.TweenProperty(affectedList[7], "rotation", Vector3.Up * Mathf.DegToRad(-15), 3);
                     break;
                 default:
                     GD.PrintErr("An invalid Affector ID may have been provided. " + affectorId.ToString());
@@ -264,21 +279,23 @@ public partial class GameManager : Node3D
             Tween tween = GetTree().CreateTween();
             switch (affectorId)
             {
-                case 2:
+                case 5:
                     if (flippedOn) 
                     {
-                        tween.TweenProperty(affectedList[2], "position", new Vector3(affectedList[2].GlobalPosition.X + 8, affectedList[2].GlobalPosition.Y, affectedList[2].GlobalPosition.Z), 1);
+                        tween.TweenProperty(affectedList[5], "position", new Vector3(-10.553f, affectedList[5].GlobalPosition.Y, affectedList[5].GlobalPosition.Z), .25f);
+                        tween.TweenProperty(affectedList[6], "position", new Vector3(-8.756f, affectedList[6].GlobalPosition.Y, affectedList[6].GlobalPosition.Z), .25f);
                     }
                     else
                     {
-                        tween.TweenProperty(affectedList[2], "position", new Vector3(affectedList[2].GlobalPosition.X - 8, affectedList[2].GlobalPosition.Y, affectedList[2].GlobalPosition.Z), 1);
+                        tween.TweenProperty(affectedList[5], "position", new Vector3(-8.756f, affectedList[5].GlobalPosition.Y, affectedList[5].GlobalPosition.Z), .25f);
+                        tween.TweenProperty(affectedList[6], "position", new Vector3(-10.553f, affectedList[6].GlobalPosition.Y, affectedList[6].GlobalPosition.Z), .25f);
                     }
                 break;
-                case 3:
+                case 2:
                     if (flippedOn)
-                        tween.TweenProperty(affectedList[3], "position", new Vector3(affectedList[3].GlobalPosition.X, affectedList[3].GlobalPosition.Y + 1.4f, affectedList[3].GlobalPosition.Z), 0.75f);
+                        tween.TweenProperty(affectedList[2], "position", new Vector3(affectedList[2].GlobalPosition.X, affectedList[2].GlobalPosition.Y + 1.4f, affectedList[2].GlobalPosition.Z), 0.75f);
                     else
-                        tween.TweenProperty(affectedList[3], "position", new Vector3(affectedList[3].GlobalPosition.X, affectedList[3].GlobalPosition.Y - 1.4f, affectedList[3].GlobalPosition.Z), 0.75f);
+                        tween.TweenProperty(affectedList[2], "position", new Vector3(affectedList[2].GlobalPosition.X, affectedList[2].GlobalPosition.Y - 1.4f, affectedList[2].GlobalPosition.Z), 0.75f);
                 break;
                 default:
                     GD.PrintErr("An invalid Affector ID may have been provided. " + affectorId.ToString());
@@ -335,17 +352,17 @@ public partial class GameManager : Node3D
             Tween tween = GetTree().CreateTween();
             switch (affectorId)
             {
+                case 3:
+                    if (pushed)
+                        tween.TweenProperty(affectedList[3], "position", new Vector3(affectedList[3].GlobalPosition.X, affectedList[3].GlobalPosition.Y + 3, affectedList[3].GlobalPosition.Z), 0.75f);
+                    else
+                        tween.TweenProperty(affectedList[3], "position", new Vector3(affectedList[3].GlobalPosition.X, affectedList[3].GlobalPosition.Y - 3, affectedList[3].GlobalPosition.Z), 0.75f);
+                    break;
                 case 4:
                     if (pushed)
-                        tween.TweenProperty(affectedList[4], "position", new Vector3(affectedList[4].GlobalPosition.X, affectedList[4].GlobalPosition.Y + 3, affectedList[4].GlobalPosition.Z), 0.75f);
+                        tween.TweenProperty(affectedList[4], "position", new Vector3(affectedList[4].GlobalPosition.X, affectedList[4].GlobalPosition.Y + 4, affectedList[4].GlobalPosition.Z), 1.25f);
                     else
-                        tween.TweenProperty(affectedList[4], "position", new Vector3(affectedList[4].GlobalPosition.X, affectedList[4].GlobalPosition.Y - 3, affectedList[4].GlobalPosition.Z), 0.75f);
-                    break;
-                case 5:
-                    if (pushed)
-                        tween.TweenProperty(affectedList[5], "position", new Vector3(affectedList[5].GlobalPosition.X, affectedList[5].GlobalPosition.Y + 4, affectedList[5].GlobalPosition.Z), 1.25f);
-                    else
-                        tween.TweenProperty(affectedList[5], "position", new Vector3(affectedList[5].GlobalPosition.X, affectedList[5].GlobalPosition.Y - 4, affectedList[5].GlobalPosition.Z), 1.25f);
+                        tween.TweenProperty(affectedList[4], "position", new Vector3(affectedList[4].GlobalPosition.X, affectedList[4].GlobalPosition.Y - 4, affectedList[4].GlobalPosition.Z), 1.25f);
                     break;
                 default:
                     GD.PrintErr("An invalid Affector ID may have been provided. ");
@@ -384,11 +401,11 @@ public partial class GameManager : Node3D
                     Tween tween = GetTree().CreateTween();
                     if (pushed)
                     {
-                        tween.TweenProperty(affectedList[1], "position", new Vector3(0, affectedList[1].GlobalPosition.Y, affectedList[1].GlobalPosition.Z), 1);
+                        tween.TweenProperty(affectedList[1], "position", new Vector3(affectedList[1].GlobalPosition.X - 8, affectedList[1].GlobalPosition.Y, affectedList[1].GlobalPosition.Z), 1);
                     }
                     else
                     {
-                        tween.TweenProperty(affectedList[1], "position", new Vector3(1.8f, affectedList[1].GlobalPosition.Y, affectedList[1].GlobalPosition.Z), 1);
+                        tween.TweenProperty(affectedList[1], "position", new Vector3(affectedList[1].GlobalPosition.X + 8, affectedList[1].GlobalPosition.Y, affectedList[1].GlobalPosition.Z), 1);
                     }
                 break;
             }
@@ -414,6 +431,22 @@ public partial class GameManager : Node3D
                     break;
                 default:
                     GD.PrintErr("An invalid Affector ID may have been provided. " + affectorId.ToString());
+                    break;
+            }
+        }
+        else if (levelId == 1)
+        {
+            Tween tween = GetTree().CreateTween().SetParallel(false);
+            switch (affectorId)
+            {
+                case 4:
+                    if (pushed)
+                        tween.TweenProperty(affectedList[4], "position", new Vector3(affectedList[4].GlobalPosition.X, 32.857f, affectedList[4].GlobalPosition.Z), 1.25f);
+                    else
+                        tween.TweenProperty(affectedList[4], "position", new Vector3(affectedList[4].GlobalPosition.X, 28.057f, affectedList[4].GlobalPosition.Z), 1.25f);
+                    break;
+                default:
+                    GD.PrintErr("An invalid Affector ID may have been provided. ");
                     break;
             }
         }
@@ -491,10 +524,12 @@ public partial class GameManager : Node3D
         {
             GD.Print("Entered a checkpoint");
             checkpointAnim.Play("CheckpointReached");
-            checkpointMarkers[0].GetNode<CollisionShape3D>("CollisionShape3D").Disabled = true;
+            hannah.disableSwitch = false;
+            jason.disableSwitch = false;
+            checkpointMarkers[1].GetNode<CollisionShape3D>("CollisionShape3D").Disabled = true;
             if (levelId == 1)
             {
-                currentCheckpoint = checkpointMarkers[0].GlobalPosition;
+                currentCheckpoint = checkpointMarkers[1].GlobalPosition;
                 Globals.markedCheckpoint = currentCheckpoint;
                 if (!player.disableSwitch)
                 {
@@ -524,5 +559,24 @@ public partial class GameManager : Node3D
             Tween tween = GetTree().CreateTween();
             tween.TweenProperty(affectedList[1], "position", new Vector3(0, affectedList[1].GlobalPosition.Y, affectedList[1].GlobalPosition.Z), 1);
         }
+    }
+
+    void OnEndDemoBodyEntered(Node3D body)
+    {
+        if (body.IsInGroup("Character"))
+        {
+            levelLoader.SwitchScene(endScene);
+        }
+    }
+
+    void OnResumeButtonPressed()
+    {
+        isGamePaused = false;
+        GetTree().Paused = isGamePaused;
+    }
+
+    void OnQuitButtonPressed()
+    {
+        levelLoader.SwitchScene(menuScene);
     }
 }

@@ -21,6 +21,7 @@ material = SubResource("StandardMaterial3D_6t6w8")
 size = Vector3(0.8, 0.1, 0.8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_004t1"]
+resource_local_to_scene = true
 size = Vector3(0.8, 0.175, 0.8)
 
 [sub_resource type="Animation" id="Animation_ls3bi"]
