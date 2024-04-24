@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "FLkDDN/WdhjB0mt7jlXRjvGhnaZ8DFb/zmEyLk0SHYibumQf+cyE8qGhhiATAj46mTeIsGmyTQPUfChHkVALdA==",
+  "dgSpecHash": "xL0BOL43BGZpLYO4Sd8Bsm8G3N99TQtPusM7aKctmYFvzTcmtDFUMcfBS3GJP7/XY8gkcl23XpGlXBrmXOFuQA==",
   "success": true,
   "projectFilePath": "C:\\Game Dev\\Godot Projects\\Project Pals\\Hannah-And-Jason\\Project Pals.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\phngy\\.nuget\\packages\\godot.sourcegenerators\\4.2.1\\godot.sourcegenerators.4.2.1.nupkg.sha512",
     "C:\\Users\\phngy\\.nuget\\packages\\godotsharp\\4.2.1\\godotsharp.4.2.1.nupkg.sha512",
-    "C:\\Users\\phngy\\.nuget\\packages\\godotsharpeditor\\4.2.1\\godotsharpeditor.4.2.1.nupkg.sha512"
+    "C:\\Users\\phngy\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.28\\microsoft.netcore.app.runtime.win-x64.6.0.28.nupkg.sha512",
+    "C:\\Users\\phngy\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.28\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.28.nupkg.sha512",
+    "C:\\Users\\phngy\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.28\\microsoft.aspnetcore.app.runtime.win-x64.6.0.28.nupkg.sha512"
   ],
   "logs": []
 }

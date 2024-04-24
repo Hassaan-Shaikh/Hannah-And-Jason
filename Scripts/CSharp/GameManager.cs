@@ -276,7 +276,7 @@ public partial class GameManager : Node3D
         }
         else if (levelId == 1)
         {
-            Tween tween = GetTree().CreateTween();
+            Tween tween = GetTree().CreateTween().SetParallel(true);
             switch (affectorId)
             {
                 case 5:
