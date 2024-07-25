@@ -1,9 +1,0 @@
-res://Scenes/MainMenu.tscn
-res://Resources/Shaders/Blur.gdshader
-res://Scenes/MainGame.tscn
-res://Scenes/Hannah.tscn
-res://Scenes/Jason.tscn
-res://Scenes/TimedButton.tscn
-res://Scenes/DemoLevel1.tscn
-res://Scenes/HannahMenu.tscn
-res://Scenes/JasonMenu.tscn
